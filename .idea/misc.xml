@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$APPLICATION_HOME_DIR$/jbr/bin/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game" />
+    <file type="web" url="file:///cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game" />
     <file type="web" url="file://$PROJECT_DIR$" />
+    <file type="web" url="file://$APPLICATION_HOME_DIR$/jbr/bin/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="corretto-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />

@@ -60,6 +60,8 @@ public class InventoryScreen implements Drawable {
 
     @Override
     public void draw() {
+        g.pushMatrix();
+        g.translate(g.cameraPosition.x - g.width / 2f, g.cameraPosition.y - g.height / 2f);
 
         // make sure display is centered
         ArrayList<Card> cardList = player.getCards();
@@ -71,19 +73,11 @@ public class InventoryScreen implements Drawable {
         curPosition.add(new PVector(-1 * cardSize.x * 0.5f * (endIndex - startIndex), 0));
 
         // draw left button
-        float buttonSizePorportion = 0.3f;
-
-        Runnable prev = new Runnable() {
-            @Override
-            public void run() {
-                previousBatch();
-            }
-        };
-
-        leftArrow = new Button((int) (curPosition.x - cardSize.x * buttonSizePorportion), (int) (curPosition.y + cardSize.y * 0.5f), (int) (cardSize.x * buttonSizePorportion), (int) (cardSize.x * buttonSizePorportion), "prev", prev);
+        float buttonSizeProportion = 0.3f;
+        Runnable prev = this::previousBatch;
+        leftArrow = new Button((int) (curPosition.x - cardSize.x * buttonSizeProportion), (int) (curPosition.y + cardSize.y * 0.5f), (int) (cardSize.x * buttonSizeProportion), (int) (cardSize.x * buttonSizeProportion), "prev", prev);
 
         // draw cards
-
         for (Card card : curCardList) {
             if (!card.isPaired() && !card.isDragged()) card.setCoord(curPosition);
             if (!card.isPaired()) card.draw();
@@ -91,17 +85,12 @@ public class InventoryScreen implements Drawable {
         }
 
         // draw right button
-        Runnable next = new Runnable() {
-            @Override
-            public void run() {
-                nextBatch();
-            }
-        };
-        rightArrow = new Button((int) (curPosition.x), (int) (curPosition.y + cardSize.y * 0.5f), (int) (cardSize.x * buttonSizePorportion), (int) (cardSize.x * buttonSizePorportion), "next", next);
+        Runnable next = this::nextBatch;
+        rightArrow = new Button((int) (curPosition.x), (int) (curPosition.y + cardSize.y * 0.5f), (int) (cardSize.x * buttonSizeProportion), (int) (cardSize.x * buttonSizeProportion), "next", next);
 
         leftArrow.draw();
         rightArrow.draw();
-
+        g.popMatrix();
     }
 
     @Override

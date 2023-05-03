@@ -13,16 +13,13 @@ public class EventScreen implements Drawable{
     Button confirmBtn;
 
     public EventScreen(Event event, Player player, InventoryScreen inventoryScreen) {
+//        slot.update();
+//        screen.update();
         this.event = event;
         this.player = player;
         this.inventory = inventoryScreen;
         this.slots = new ArrayList<>();
-        Runnable confirm = new Runnable() {
-            @Override
-            public void run() {
-                event.executeResult(checkSuccessful());
-            }
-        };
+        Runnable confirm = () -> event.executeResult(checkSuccessful());
         PVector curPosition = new PVector(
                 g.width * (1 - Configurations.EVT_MAIN_WIDTH_PROPORTION - Configurations.EVT_IMG_WIDTH_PROPORTION) / 2,
                 g.height * Configurations.EVT_Y_PROPORTION
@@ -64,6 +61,8 @@ public class EventScreen implements Drawable{
 
     @Override
     public void draw() {
+        g.pushMatrix();
+        g.translate(g.cameraPosition.x - g.width / 2f, g.cameraPosition.y - g.height / 2f);
         PVector curPosition = new PVector(
                 g.width * (1 - Configurations.EVT_MAIN_WIDTH_PROPORTION - Configurations.EVT_IMG_WIDTH_PROPORTION) / 2,
                 g.height * Configurations.EVT_Y_PROPORTION
@@ -105,6 +104,7 @@ public class EventScreen implements Drawable{
         confirmBtn.draw();
 
         // drawing inventory
+        g.popMatrix();
         inventory.draw();
     }
 

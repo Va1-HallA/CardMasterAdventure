@@ -1,7 +1,7 @@
 package org.deckmaster;
 
 public class Input {
-    private static Game g = Game.game;
+    private static final Game g = Game.game;
     public static boolean wPressed = false;
     public static boolean sPressed = false;
     public static boolean aPressed = false;

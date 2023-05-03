@@ -1,6 +1,6 @@
 package org.deckmaster;
 
-public class Button {
+public class Button implements Drawable {
     private final Game g = Game.game;
     int x, y;
     int w, h;
@@ -17,6 +17,11 @@ public class Button {
         this.onClick = onClick;
     }
 
+    @Override
+    public void setup() {
+
+    }
+
     public void draw() {
         hovered = g.overRect(x, y, w, h);
         g.fill(0);
@@ -29,6 +34,11 @@ public class Button {
 //        g.textSize(40);
         g.textFont(Configurations.CARD_FONT);
         g.text(label, x + w / 2f, y + h / 2f);
+    }
+
+    @Override
+    public void update() {
+
     }
 
     public void onClick(int mx, int my) {

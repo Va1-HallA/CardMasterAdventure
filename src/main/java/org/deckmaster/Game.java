@@ -1,6 +1,8 @@
 package org.deckmaster;
-import com.jogamp.oculusvr.OVR;
+import org.deckmaster.mapgen.Map;
+import org.deckmaster.mapgen.TileLocation;
 import processing.core.PApplet;
+import processing.core.PMatrix2D;
 import processing.core.PVector;
 import processing.opengl.PShader;
 
@@ -10,8 +12,14 @@ import java.util.*;
 // TODO: display info when hover mouse to slot and property, next event (event train), file loading, save/load, proactive events (hotkey to activate a event that allows player to spend a card, trigger some results e.g. another events)
 public class Game extends PApplet {
     public static Game game = null;
-    PVector cameraPosition = new PVector(0, 0);
-    Player player;
+    public PVector cameraPosition = new PVector(0, 0);
+    public Player player;
+    public Map map;
+    public boolean debug = true;
+
+    public final float UPDATE_TIME = 16.6f;
+    private float lag = 0f;
+    public long lastUpdate = System.currentTimeMillis();
     InventoryScreen screen;
     EventScreen evtscreen;
     CardSlot slot;
@@ -19,25 +27,30 @@ public class Game extends PApplet {
 
     @Override
     public void settings() {
-        // TODO: uncomment next line will cause the game only displaying at the bottom half screen, so commented it
-//        size(displayWidth, displayHeight, P2D);
+        size(displayWidth, displayHeight, P2D);
         fullScreen();
     }
 
     @Override
     public void setup() {
         game = this;
-        state = GameState.EVENT;
-        player = new Player();
+        state = GameState.WORLD;
+        player = new Player(new PVector(0, 0), 10);
+
+        map = new Map();
+        map.setup();
+
         screen = new InventoryScreen(player);
+
         for (int i = 0; i < 10; i++) {
             Card c = new Card("a", "images/cards/Merlin.png", new HashMap<>());
             c.addProperty(Property.LUNAR, 1);
             player.addCard(c);
         }
+
         slot = new CardSlot(new ArrayList<>(List.of(Property.LUNAR)));
         slot.setCoord(new PVector((float) g.width * 0.5f, (float) g.height * 0.3f));
-//        screen.show();
+        screen.show();
 
         evtscreen = new EventScreen(new Event("title", "description", "images/cards/background.png", 1, new HashMap<>(), new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "", "", 1), player, screen);
         evtscreen.show();
@@ -72,36 +85,78 @@ public class Game extends PApplet {
 
     @Override
     public void draw() {
-        background(150);
-        update();
-        if (state == GameState.EVENT) evtscreen.draw();
-//        slot.draw();
-//        screen.draw();
+        // Calculate deltaTime for Physics
+        if (state != GameState.MAIN_MENU) {
+            long deltaTime = System.currentTimeMillis() - lastUpdate;
+            lastUpdate = System.currentTimeMillis();
+            lag += deltaTime;
+        }
 
+        background(20);
+
+        // Made the camera follow the Player.
+        calcCameraPos();
+        game.translate(width / 2f - cameraPosition.x, height / 2f - cameraPosition.y);
+
+        switch (state) {
+            case MAIN_MENU -> {
+            }
+            case WORLD -> {
+                map.draw();
+                screen.draw();
+//                slot.draw();
+                player.draw();
+
+                fill(255, 255, 255);
+                textAlign(LEFT, CENTER);
+                textSize(12);
+                text(String.format("X: %f Y: %f Z: %f", player.pos.x, player.pos.y, map.tileMap.get(TileLocation.worldToTileCoords(player.pos)).height), cameraPosition.x - width / 2f + 20, cameraPosition.y - height / 2f + 20);
+            }
+            case EVENT -> {
+                map.draw();
+                evtscreen.draw();
+            }
+        }
+
+        // Show player coordinates.
+        update();
     }
 
-//    private void calcCameraPos() {
-//        if (Math.abs(cameraPosition.x - player.location.x) > width / 4f) {
-//            if (cameraPosition.x > player.location.x) {
-//                cameraPosition.x -= Math.abs(cameraPosition.x - player.location.x) - width / 4f;
-//            } else {
-//                cameraPosition.x += Math.abs(cameraPosition.x - player.location.x) - width / 4f;
-//            }
-//        }
-//
-//        if (Math.abs(cameraPosition.y - player.location.y) > height / 4f) {
-//            if (cameraPosition.y > player.location.y) {
-//                cameraPosition.y -= Math.abs(cameraPosition.y - player.location.y) - height / 4f;
-//            } else {
-//                cameraPosition.y += Math.abs(cameraPosition.y - player.location.y) - height / 4f;
-//            }
-//        }
-//    }
-
     public void update() {
-//        slot.update();
-//        screen.update();
-        if (state == GameState.EVENT) evtscreen.update();
+        while (lag > UPDATE_TIME) {
+            switch(state) {
+                case MAIN_MENU -> {
+                }
+                case WORLD -> {
+                    player.update();
+                    slot.update();
+                    screen.update();
+                }
+                case EVENT -> {
+                    evtscreen.update();
+                }
+            }
+
+            lag -= UPDATE_TIME;
+        }
+    }
+
+    private void calcCameraPos() {
+        if (Math.abs(cameraPosition.x - player.pos.x) > width / 4f) {
+            if (cameraPosition.x > player.pos.x) {
+                cameraPosition.x -= Math.abs(cameraPosition.x - player.pos.x) - width / 4f;
+            } else {
+                cameraPosition.x += Math.abs(cameraPosition.x - player.pos.x) - width / 4f;
+            }
+        }
+
+        if (Math.abs(cameraPosition.y - player.pos.y) > height / 4f) {
+            if (cameraPosition.y > player.pos.y) {
+                cameraPosition.y -= Math.abs(cameraPosition.y - player.pos.y) - height / 4f;
+            } else {
+                cameraPosition.y += Math.abs(cameraPosition.y - player.pos.y) - height / 4f;
+            }
+        }
     }
 
     @Override
