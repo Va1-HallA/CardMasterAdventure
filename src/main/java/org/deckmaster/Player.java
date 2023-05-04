@@ -3,6 +3,8 @@ package org.deckmaster;
 import org.deckmaster.mapgen.Map;
 import org.deckmaster.mapgen.MapTile;
 import org.deckmaster.mapgen.TileLocation;
+import org.deckmaster.mapgen.TileState;
+import processing.core.PImage;
 import processing.core.PVector;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class Player implements Drawable {
         g.pushMatrix();
         g.stroke(0, 255, 255);
         g.fill(0, 255, 255);
-        g.circle(pos.x, pos.y, size * 2);
+        g.rect(pos.x - 12, pos.y - 12, 24, 24);
         g.popMatrix();
     }
 
@@ -57,6 +59,8 @@ public class Player implements Drawable {
         MapTile tileMovedTo = g.map.tileMap.get(TileLocation.worldToTileCoords(PVector.add(pos, moveVector)));
 
         if (tileMovedTo.height < 0) return;
+        if (tileMovedTo.state == TileState.WHITE_ROCK_3 || tileMovedTo.state == TileState.MOSS_ROCK_3
+                || tileMovedTo.state == TileState.ROCK_3 || tileMovedTo.state == TileState.SNOW_ROCK_3) return;
         pos = pos.add(moveVector);
     }
 

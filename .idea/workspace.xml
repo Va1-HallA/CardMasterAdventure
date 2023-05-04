@@ -5,38 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="561a89c0-1910-4e7d-901c-8aeb2a59d87d" name="Changes" comment="Initializing the Repository with some necessary functionality.">
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/MapTile.java" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileLocation.java" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/Map.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/MapTile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/TileLocation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/TileState.java" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/gradle.xml" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/misc.xml" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/misc.xml" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Christmas_tree3.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Flower_tree2-1.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Fruit_tree3.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock1_1.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock1_3.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock1_4.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock3_1.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock3_3.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock3_4.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock4_1.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock4_3.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock4_4.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock5_1.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock5_3.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock5_4.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Tree3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Christmas_tree3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Flower_tree2-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Fruit_tree3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Rock1_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Rock1_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Rock1_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Rock3_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Rock3_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Rock3_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Rock4_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Rock4_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Rock4_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Rock5_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Rock5_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Rock5_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Tree3.png" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/build.gradle" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/build.gradle" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Button.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Button.java" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Card.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Card.java" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/CardSlot.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/CardSlot.java" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/EventScreen.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/EventScreen.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/gradlew" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/gradlew" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Game.java" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Input.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Input.java" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/InventoryScreen.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/InventoryScreen.java" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Player.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/MapTile.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/MapTile.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileState.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/CardSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/CardSlot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/EventScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/EventScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Input.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/InventoryScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/InventoryScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/MapTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/MapTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/TileState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/TileState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,11 +110,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/oyy1/Documents/Year4/CS4303/CS4303-Game",
+    "extract.method.default.visibility": "private",
+    "last_opened_file_path": "/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/player",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -110,6 +126,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/player" />
+      <recent name="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map" />
       <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\images\cards" />
       <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4" />
     </key>
@@ -151,6 +169,9 @@
       <workItem from="1683124878675" duration="47000" />
       <workItem from="1683124954481" duration="21000" />
       <workItem from="1683124981143" duration="16949000" />
+      <workItem from="1683206552261" duration="2191000" />
+      <workItem from="1683208886438" duration="180000" />
+      <workItem from="1683209073326" duration="13233000" />
     </task>
     <task id="LOCAL-00001" summary="Card and event system">
       <created>1682088110994</created>
@@ -180,17 +201,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Card and event system" />
     <option name="LAST_COMMIT_MESSAGE" value="Card and event system" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file:///cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/MapTile.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

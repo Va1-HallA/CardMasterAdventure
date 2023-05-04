@@ -103,9 +103,9 @@ public class Game extends PApplet {
             }
             case WORLD -> {
                 map.draw();
-                screen.draw();
 //                slot.draw();
                 player.draw();
+//                screen.draw();
 
                 fill(255, 255, 255);
                 textAlign(LEFT, CENTER);
@@ -142,20 +142,31 @@ public class Game extends PApplet {
     }
 
     private void calcCameraPos() {
-        if (Math.abs(cameraPosition.x - player.pos.x) > width / 4f) {
-            if (cameraPosition.x > player.pos.x) {
-                cameraPosition.x -= Math.abs(cameraPosition.x - player.pos.x) - width / 4f;
-            } else {
-                cameraPosition.x += Math.abs(cameraPosition.x - player.pos.x) - width / 4f;
-            }
+//        if (Math.abs(cameraPosition.x - player.pos.x) > width / 4f) {
+//            if (cameraPosition.x > player.pos.x) {
+//                cameraPosition.x -= Math.abs(cameraPosition.x - player.pos.x) - width / 4f;
+//            } else {
+//                cameraPosition.x += Math.abs(cameraPosition.x - player.pos.x) - width / 4f;
+//            }
+//        }
+//
+//        if (Math.abs(cameraPosition.y - player.pos.y) > height / 4f) {
+//            if (cameraPosition.y > player.pos.y) {
+//                cameraPosition.y -= Math.abs(cameraPosition.y - player.pos.y) - height / 4f;
+//            } else {
+//                cameraPosition.y += Math.abs(cameraPosition.y - player.pos.y) - height / 4f;
+//            }
+//        }
+        if (cameraPosition.x > player.pos.x) {
+            cameraPosition.x -= Math.abs(cameraPosition.x - player.pos.x);
+        } else {
+            cameraPosition.x += Math.abs(cameraPosition.x - player.pos.x);
         }
 
-        if (Math.abs(cameraPosition.y - player.pos.y) > height / 4f) {
-            if (cameraPosition.y > player.pos.y) {
-                cameraPosition.y -= Math.abs(cameraPosition.y - player.pos.y) - height / 4f;
-            } else {
-                cameraPosition.y += Math.abs(cameraPosition.y - player.pos.y) - height / 4f;
-            }
+        if (cameraPosition.y > player.pos.y) {
+            cameraPosition.y -= Math.abs(cameraPosition.y - player.pos.y);
+        } else {
+            cameraPosition.y += Math.abs(cameraPosition.y - player.pos.y);
         }
     }
 
