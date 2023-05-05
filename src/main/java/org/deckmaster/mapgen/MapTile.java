@@ -3,12 +3,13 @@ package org.deckmaster.mapgen;
 import org.deckmaster.Drawable;
 import processing.core.*;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
 public class MapTile implements Drawable {
     public static Integer TILE_SIZE = 50;
-    TileLocation location;
+    public TileLocation location;
     float prevPlayerHeight = 0;
     public float height;
     public TileState state = TileState.EMPTY;
@@ -32,17 +33,40 @@ public class MapTile implements Drawable {
     static PImage snow_rock_1 = g.loadImage("images/map/Rock3_3.png");
     static PImage snow_rock_2 = g.loadImage("images/map/Rock3_4.png");
     static PImage snow_rock_3 = g.loadImage("images/map/Rock3_1.png");
+    static PImage building = g.loadImage("images/map/Smithy-TD.png");
 
     public MapTile(TileLocation loc, float height) {
         this.location = loc;
         this.height = height;
-        if (height >= 0 && height < 400 && Math.random() < 0.2f) {
+        double randomVal = Math.random();
+        if (height >= 0 && height < 400 && randomVal < 0.2f) {
             int treeSelect = random.nextInt(4);
             switch (treeSelect) {
                 case 0 -> state = TileState.TREE;
                 case 1 -> state = TileState.FLOWER_TREE;
                 case 2 -> state = TileState.FRUIT_TREE;
                 case 3 -> state = TileState.PINE_TREE;
+            }
+        } else if (height >= 0 && height < 400 && randomVal < 0.201f ) {
+            state = TileState.BUILDING_WALL;
+            ArrayList<MapTile> tiles = new ArrayList<>();
+            for (int i = 0; i > -4; i--) {
+                for (int j = 0; j > -4; j--) {
+                    if (g.map.getHeight(new TileLocation(location.x + i, location.y + j)) > 400 || Math.abs(height - g.map.getHeight(new TileLocation(location.x + i, location.y + j))) > 50) {
+                        this.state = TileState.EMPTY;
+                        return;
+                    }
+
+                    if (i == 0 && j == 0) continue;
+                    if ((i == -1 || i == -2) && j == 0) tiles.add(new MapTile(new TileLocation(location.x + i, location.y + j), height, TileState.BUILDING_ENTRANCE));
+                    else if (i == -1 && j == -1) tiles.add(new MapTile(new TileLocation(location.x + i, location.y + j), height + 1, TileState.BUILDING_DRAW));
+                    else if (j == -3) tiles.add(new MapTile(new TileLocation(location.x + i, location.y + j), height, TileState.EMPTY));
+                    else tiles.add(new MapTile(new TileLocation(location.x + i, location.y + j), height, TileState.BUILDING_WALL));
+                }
+            }
+
+            for (MapTile tile: tiles) {
+                g.map.tileMap.put(tile.location, tile);
             }
         }
 
@@ -77,6 +101,12 @@ public class MapTile implements Drawable {
         }
     }
 
+    public MapTile(TileLocation loc, float height, TileState state) {
+        this.location = loc;
+        this.height = height;
+        this.state = state;
+    }
+
     public float getHeight() {
         return height;
     }
@@ -92,7 +122,152 @@ public class MapTile implements Drawable {
         float playerHeight = g.map.tileMap.get(TileLocation.worldToTileCoords(g.player.pos)).height;
         playerHeight = PApplet.lerp(prevPlayerHeight, playerHeight, 0.05f);
         prevPlayerHeight = playerHeight;
-        float relativeHeight = height - playerHeight;
+        float relativeHeight = height < 0 ? -playerHeight : height - playerHeight;
+
+        PVector worldLocation = TileLocation.tileToWorldCoords(location);
+        PMatrix3D rightBlockMatrix = null;
+        PMatrix3D downBlockMatrix = null;
+        PMatrix3D leftBlockMatrix = null;
+        PMatrix3D upBlockMatrix = null;
+        PMatrix3D blockMatrix;
+
+        g.push();
+        g.translate(g.player.pos.x, g.player.pos.y);
+        g.scale(PApplet.map(relativeHeight, -1000, 1000, 0.5f, 1.5f));
+        blockMatrix = (PMatrix3D) g.getMatrix();
+        g.pop();
+
+        if (g.map.tileMap.containsKey(new TileLocation(location.x + 1, location.y))) {
+            MapTile rightTile = g.map.tileMap.get(new TileLocation(location.x + 1, location.y));
+            float rightBlockRelHeight = rightTile.height < 0 ? -playerHeight : rightTile.height - playerHeight;
+            g.push();
+            g.translate(g.player.pos.x, g.player.pos.y);
+            g.scale(PApplet.map(rightBlockRelHeight, -1000, 1000, 0.5f, 1.5f));
+            rightBlockMatrix = (PMatrix3D) g.getMatrix();
+            g.pop();
+        }
+
+        if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y + 1))) {
+            MapTile downTile = g.map.tileMap.get(new TileLocation(location.x, location.y + 1));
+            float downBlockRelHeight = downTile.height < 0 ? -playerHeight : downTile.height - playerHeight;
+            g.push();
+            g.translate(g.player.pos.x, g.player.pos.y);
+            g.scale(PApplet.map(downBlockRelHeight, -1000, 1000, 0.5f, 1.5f));
+            downBlockMatrix = (PMatrix3D) g.getMatrix();
+            g.pop();
+        }
+
+        if (g.map.tileMap.containsKey(new TileLocation(location.x - 1, location.y))) {
+            MapTile leftTile = g.map.tileMap.get(new TileLocation(location.x - 1, location.y));
+            float leftBlockRelHeight = leftTile.height < 0 ? -playerHeight : leftTile.height - playerHeight;
+            g.push();
+            g.translate(g.player.pos.x, g.player.pos.y);
+            g.scale(PApplet.map(leftBlockRelHeight, -1000, 1000, 0.5f, 1.5f));
+            leftBlockMatrix = (PMatrix3D) g.getMatrix();
+            g.pop();
+        }
+
+        if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y - 1))) {
+            MapTile upTile = g.map.tileMap.get(new TileLocation(location.x, location.y - 1));
+            float upBlockRelHeight = upTile.height < 0 ? -playerHeight : upTile.height - playerHeight;
+            g.push();
+            g.translate(g.player.pos.x, g.player.pos.y);
+            g.scale(PApplet.map(upBlockRelHeight, -1000, 1000, 0.5f, 1.5f));
+            upBlockMatrix = (PMatrix3D) g.getMatrix();
+            g.pop();
+        }
+
+        if (height < 400) {
+            g.fill(83,65,39);
+        } else if (height >= 400 && height < 800) {
+            g.fill(120 - (height - 400) / 4f);
+        } else {
+            g.fill(255);
+        }
+
+        if (g.map.tileMap.containsKey(new TileLocation(location.x + 1, location.y))) {
+            g.push();
+            PVector p1 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+            PVector p3 = rightBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p4 = rightBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+
+            g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
+
+            if (p1.x < p3.x) {
+                g.beginShape();
+                g.vertex(p1.x, p1.y);
+                g.vertex(p2.x, p2.y);
+                g.vertex(p4.x, p4.y);
+                g.vertex(p3.x, p3.y);
+                g.endShape();
+            }
+            g.pop();
+        }
+
+        if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y + 1))) {
+            g.push();
+            PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y + TILE_SIZE), null);
+            PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+            PVector p3 = downBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y + TILE_SIZE), null);
+            PVector p4 = downBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+
+
+            if (p1.y < p3.y) {
+                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
+
+                g.beginShape();
+                g.vertex(p1.x, p1.y);
+                g.vertex(p2.x, p2.y);
+                g.vertex(p4.x, p4.y);
+                g.vertex(p3.x, p3.y);
+                g.endShape();
+            }
+            g.pop();
+        }
+
+        if (g.map.tileMap.containsKey(new TileLocation(location.x - 1, location.y))) {
+            g.push();
+            PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p2 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+            PVector p3 = leftBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p4 = leftBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+
+
+            if (p1.x > p3.x) {
+                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
+
+                g.beginShape();
+                g.vertex(p1.x, p1.y);
+                g.vertex(p2.x, p2.y);
+                g.vertex(p4.x, p4.y);
+                g.vertex(p3.x, p3.y);
+                g.endShape();
+            }
+            g.pop();
+        }
+
+        if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y - 1))) {
+            g.push();
+            PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p3 = upBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p4 = upBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+
+
+            if (p1.y > p3.y) {
+                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
+
+                g.beginShape();
+                g.vertex(p1.x, p1.y);
+                g.vertex(p2.x, p2.y);
+                g.vertex(p4.x, p4.y);
+                g.vertex(p3.x, p3.y);
+                g.endShape();
+            }
+            g.pop();
+        }
+
         if (height < 0) {
             g.fill(0, 26 + (255 + height) / 2f, 255 + height);
         } else {
@@ -105,24 +280,10 @@ public class MapTile implements Drawable {
             }
         }
 
-        PVector worldLocation = TileLocation.tileToWorldCoords(location);
         g.stroke(0);
         g.translate(g.player.pos.x, g.player.pos.y);
         g.scale(PApplet.map(relativeHeight, -1000, 1000, 0.5f, 1.5f));
         g.rect(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, TILE_SIZE, TILE_SIZE);
-//        if (g.debug) {
-//            g.textSize(12);
-//            g.fill(255, 0, 0);
-//            g.textAlign(g.CENTER, g.CENTER);
-//            g.text(height, worldLocation.x - g.player.pos.x + TILE_SIZE / 2f, worldLocation.y - g.player.pos.y + TILE_SIZE / 2f);
-//        }
-
-//        PVector playerLoc = new PVector(g.player.pos.x, g.player.pos.y, playerHeight);
-//        PVector blockLoc = new PVector(worldLocation.x, worldLocation.y, height);
-//
-//        g.fill(200, PVector.dist(playerLoc, blockLoc) / 5f);
-//        g.rect(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, TILE_SIZE, TILE_SIZE);
-
         g.popMatrix();
     }
 
@@ -196,6 +357,10 @@ public class MapTile implements Drawable {
             }
             case SNOW_ROCK_3 -> {
                 g.image(snow_rock_3, worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, 50, 50);
+            }
+
+            case BUILDING_DRAW -> {
+                g.image(building, worldLocation.x - g.player.pos.x - 2 * TILE_SIZE, worldLocation.y - g.player.pos.y - 2 * TILE_SIZE, 4 * TILE_SIZE, 4 * TILE_SIZE);
             }
         }
         g.popMatrix();

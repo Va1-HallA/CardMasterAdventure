@@ -23,5 +23,9 @@ public enum TileState {
 
     SNOW_ROCK_1,
     SNOW_ROCK_2,
-    SNOW_ROCK_3
+    SNOW_ROCK_3,
+
+    BUILDING_WALL,
+    BUILDING_ENTRANCE,
+    BUILDING_DRAW,
 }

@@ -3,8 +3,8 @@ package org.deckmaster.mapgen;
 import processing.core.PVector;
 
 public class TileLocation {
-    int x;
-    int y;
+    public int x;
+    public int y;
 
     @Override
     public boolean equals(Object o) {

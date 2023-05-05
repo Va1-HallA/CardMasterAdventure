@@ -4,52 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="561a89c0-1910-4e7d-901c-8aeb2a59d87d" name="Changes" comment="Initializing the Repository with some necessary functionality.">
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Christmas_tree3.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Flower_tree2-1.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Fruit_tree3.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock1_1.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock1_3.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock1_4.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock3_1.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock3_3.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock3_4.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock4_1.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock4_3.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock4_4.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock5_1.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock5_3.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Rock5_4.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Tree3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Christmas_tree3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Flower_tree2-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Fruit_tree3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Rock1_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Rock1_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Rock1_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Rock3_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Rock3_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Rock3_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Rock4_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Rock4_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Rock4_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Rock5_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Rock5_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Rock5_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/map/Tree3.png" afterDir="false" />
+    <list default="true" id="561a89c0-1910-4e7d-901c-8aeb2a59d87d" name="Changes" comment="Added some foliage and rocks to the terrain.">
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Smithy-TD.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/player/hero.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/map/Smithy-TD.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/player/hero.png" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/gradlew" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/gradlew" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Game.java" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Player.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Player.java" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/MapTile.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/MapTile.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileLocation.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileLocation.java" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileState.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/Map.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/MapTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/MapTile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/TileLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/TileLocation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/TileState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/TileState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +83,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
-    "last_opened_file_path": "/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/player",
+    "last_opened_file_path": "/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -126,8 +98,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/player" />
       <recent name="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map" />
+      <recent name="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/player" />
       <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\images\cards" />
       <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4" />
     </key>
@@ -171,7 +143,8 @@
       <workItem from="1683124981143" duration="16949000" />
       <workItem from="1683206552261" duration="2191000" />
       <workItem from="1683208886438" duration="180000" />
-      <workItem from="1683209073326" duration="13233000" />
+      <workItem from="1683209073326" duration="13481000" />
+      <workItem from="1683287936223" duration="15710000" />
     </task>
     <task id="LOCAL-00001" summary="Card and event system">
       <created>1682088110994</created>
@@ -200,7 +173,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Card and event system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Card and event system" />
+    <MESSAGE value="Added some foliage and rocks to the terrain." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some foliage and rocks to the terrain." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

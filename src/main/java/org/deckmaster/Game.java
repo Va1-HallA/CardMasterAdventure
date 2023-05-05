@@ -35,7 +35,7 @@ public class Game extends PApplet {
     public void setup() {
         game = this;
         state = GameState.WORLD;
-        player = new Player(new PVector(0, 0), 10);
+        player = new Player(new PVector(25, 25), 10);
 
         map = new Map();
         map.setup();
@@ -56,32 +56,32 @@ public class Game extends PApplet {
         evtscreen.show();
     }
 
-    @Override
-    public void mousePressed() {
-        if (state == GameState.WORLD || state == GameState.EVENT) {
-            for (Card card: player.getCards()) {
-                if (card.getCoord() != null) card.onClick(mouseX, mouseY);
-            }
-        }
-    }
+//    @Override
+//    public void mousePressed() {
+//        if (state == GameState.WORLD || state == GameState.EVENT) {
+//            for (Card card: player.getCards()) {
+//                if (card.getCoord() != null) card.onClick(mouseX, mouseY);
+//            }
+//        }
+//    }
 
-    @Override
-    public void mouseReleased() {
-        if (state == GameState.WORLD) {
-            screen.leftArrow.onClick(mouseX, mouseY);
-            screen.rightArrow.onClick(mouseX, mouseY);
-            for (Card card: player.getCards()) {
-                if (card.getCoord() != null) card.onRelease(new ArrayList<>());
-            }
-        } else if (state == GameState.EVENT) {
-            evtscreen.confirmBtn.onClick(mouseX, mouseY);
-            evtscreen.inventory.leftArrow.onClick(mouseX, mouseY);
-            evtscreen.inventory.rightArrow.onClick(mouseX, mouseY);
-            for (Card card: player.getCards()) {
-                if (card.getCoord() != null) card.onRelease(evtscreen.getSlots());
-            }
-        }
-    }
+//    @Override
+//    public void mouseReleased() {
+//        if (state == GameState.WORLD) {
+//            screen.leftArrow.onClick(mouseX, mouseY);
+//            screen.rightArrow.onClick(mouseX, mouseY);
+//            for (Card card: player.getCards()) {
+//                if (card.getCoord() != null) card.onRelease(new ArrayList<>());
+//            }
+//        } else if (state == GameState.EVENT) {
+//            evtscreen.confirmBtn.onClick(mouseX, mouseY);
+//            evtscreen.inventory.leftArrow.onClick(mouseX, mouseY);
+//            evtscreen.inventory.rightArrow.onClick(mouseX, mouseY);
+//            for (Card card: player.getCards()) {
+//                if (card.getCoord() != null) card.onRelease(evtscreen.getSlots());
+//            }
+//        }
+//    }
 
     @Override
     public void draw() {
@@ -89,6 +89,7 @@ public class Game extends PApplet {
         if (state != GameState.MAIN_MENU) {
             long deltaTime = System.currentTimeMillis() - lastUpdate;
             lastUpdate = System.currentTimeMillis();
+            System.out.println(deltaTime);
             lag += deltaTime;
         }
 
