@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="561a89c0-1910-4e7d-901c-8aeb2a59d87d" name="Changes" comment="Added some foliage and rocks to the terrain.">
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Smithy-TD.png" afterDir="false" />
-      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/player/hero.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/images/map/Smithy-TD.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/images/player/hero.png" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Game.java" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Player.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Player.java" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/MapTile.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/MapTile.java" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileLocation.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileLocation.java" afterDir="false" />
-      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileState.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileState.java" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map/Smithy-TD.png" afterDir="false" />
+      <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/player/hero.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Player.java" afterDir="false" />
@@ -23,6 +18,13 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/MapTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/MapTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/TileLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/TileLocation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/TileState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/TileState.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Game.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Player.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Player.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/MapTile.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/MapTile.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileLocation.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileLocation.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileState.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/TileState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +42,17 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="CS4303-Game" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -75,27 +85,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "http.proxy",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map" />

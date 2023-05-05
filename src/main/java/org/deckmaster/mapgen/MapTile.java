@@ -47,17 +47,22 @@ public class MapTile implements Drawable {
                 case 2 -> state = TileState.FRUIT_TREE;
                 case 3 -> state = TileState.PINE_TREE;
             }
-        } else if (height >= 0 && height < 400 && randomVal < 0.201f ) {
+        } else if (height >= 0 && height < 400 && randomVal < 0.205f ) {
             state = TileState.BUILDING_WALL;
             ArrayList<MapTile> tiles = new ArrayList<>();
             for (int i = 0; i > -4; i--) {
                 for (int j = 0; j > -4; j--) {
+                    if (i == 0 && j == 0) continue;
                     if (g.map.getHeight(new TileLocation(location.x + i, location.y + j)) > 400 || Math.abs(height - g.map.getHeight(new TileLocation(location.x + i, location.y + j))) > 50) {
                         this.state = TileState.EMPTY;
                         return;
                     }
 
-                    if (i == 0 && j == 0) continue;
+                    if (g.map.tileMap.containsKey(new TileLocation(location.x + i, location.y + j))) {
+                        MapTile tile = g.map.tileMap.get(new TileLocation(location.x + i, location.y + j));
+                        if (tile.state == TileState.BUILDING_WALL || tile.state == TileState.BUILDING_DRAW || tile.state == TileState.BUILDING_ENTRANCE) return;
+                    }
+
                     if ((i == -1 || i == -2) && j == 0) tiles.add(new MapTile(new TileLocation(location.x + i, location.y + j), height, TileState.BUILDING_ENTRANCE));
                     else if (i == -1 && j == -1) tiles.add(new MapTile(new TileLocation(location.x + i, location.y + j), height + 1, TileState.BUILDING_DRAW));
                     else if (j == -3) tiles.add(new MapTile(new TileLocation(location.x + i, location.y + j), height, TileState.EMPTY));
