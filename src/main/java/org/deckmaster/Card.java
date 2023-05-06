@@ -4,11 +4,12 @@ import processing.core.PConstants;
 import processing.core.PImage;
 import processing.core.PVector;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Card implements Comparable, Drawable {
+public class Card implements Comparable, Drawable, Serializable {
 
     private static PVector size = new PVector(g.width * Configurations.CARD_WIDTH_PROPORTION, g.height * Configurations.CARD_HEIGHT_PROPORTION);
     private static PImage background = g.loadImage("images/cards/background.png");

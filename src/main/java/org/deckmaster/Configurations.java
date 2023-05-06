@@ -50,4 +50,12 @@ public class Configurations {
     public static float SLOT_HEIGHT_PROPORTION = 0.64f;
     public static float EVT_BTN_HEIGHT_PROPORTION = 0.935f;
     public static float EVT_BTN_SIZE_PROPORTION = 0.04f;
+
+    /**
+     * Saving settings
+     */
+
+    public static String MAP_SAVING_LOCATION = "saving/map.txt";
+    public static String PLAYER_SAVING_LOCATION = "saving/player.txt";
+    public static String EVENT_SAVING_LOCATION = "saving/event.txt";
 }

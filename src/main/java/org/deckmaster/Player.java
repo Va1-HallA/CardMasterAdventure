@@ -114,6 +114,8 @@ public class Player implements Drawable {
         return cards;
     }
 
+    public void setCards(ArrayList<Card> cards) {this.cards = cards;}
+
     public void addCard(Card card) {
         cards.add(card);
         Collections.sort(cards);

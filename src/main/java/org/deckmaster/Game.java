@@ -1,11 +1,13 @@
 package org.deckmaster;
 import org.deckmaster.mapgen.Map;
+import org.deckmaster.mapgen.MapTile;
 import org.deckmaster.mapgen.TileLocation;
 import processing.core.PApplet;
 import processing.core.PMatrix2D;
 import processing.core.PVector;
 import processing.opengl.PShader;
 
+import java.io.*;
 import java.util.*;
 
 
@@ -28,6 +30,8 @@ public class Game extends PApplet {
     ContentLoader contentLoader;
 
     ArrayList<String> trackedEvents;
+
+    // Event proactiveEvent = new Event(...);  // use this when press a key to trigger proactive event
 
     @Override
     public void settings() {
@@ -195,6 +199,50 @@ public class Game extends PApplet {
 
     public static void main(String[] args) {
         PApplet.main(Game.class);
+    }
+
+    public void save() {
+        try {
+            // saving map
+            FileOutputStream mapFoe = new FileOutputStream(Configurations.MAP_SAVING_LOCATION);
+            ObjectOutputStream mapOos = new ObjectOutputStream(mapFoe);
+            mapOos.writeObject(map.tileMap);
+
+            // saving player stats
+            FileOutputStream playerFoe = new FileOutputStream(Configurations.PLAYER_SAVING_LOCATION);
+            ObjectOutputStream playerOos = new ObjectOutputStream(playerFoe);
+            playerOos.writeObject(player.getCards());
+
+            // saving active events list
+            FileOutputStream eventFoe = new FileOutputStream(Configurations.EVENT_SAVING_LOCATION);
+            ObjectOutputStream eventOos = new ObjectOutputStream(eventFoe);
+            eventOos.writeObject(trackedEvents);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void load() {
+        try {
+            // loading map
+            FileInputStream mapFie = new FileInputStream(Configurations.MAP_SAVING_LOCATION);
+            ObjectInputStream mapOis = new ObjectInputStream(mapFie);
+            map.tileMap = (HashMap<TileLocation, MapTile>) mapOis.readObject();
+
+            // loading player
+            FileInputStream playerFie = new FileInputStream(Configurations.PLAYER_SAVING_LOCATION);
+            ObjectInputStream playerOis = new ObjectInputStream(playerFie);
+            player.setCards((ArrayList<Card>) playerOis.readObject());
+
+            // loading events
+            FileInputStream eventsFie = new FileInputStream(Configurations.EVENT_SAVING_LOCATION);
+            ObjectInputStream eventOis = new ObjectInputStream(eventsFie);
+            trackedEvents = (ArrayList<String>) eventOis.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void initEvents() {

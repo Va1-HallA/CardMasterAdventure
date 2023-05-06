@@ -2,7 +2,9 @@ package org.deckmaster.mapgen;
 
 import processing.core.PVector;
 
-public class TileLocation {
+import java.io.Serializable;
+
+public class TileLocation implements Serializable {
     public int x;
     public int y;
 

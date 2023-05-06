@@ -2,10 +2,11 @@ package org.deckmaster;
 
 import processing.core.PImage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Event implements Drawable {
+public class Event implements Drawable, Serializable {
     private String title;
     private String description;
     // indicator for developers to decide how hard this event should be, larger tier = harder

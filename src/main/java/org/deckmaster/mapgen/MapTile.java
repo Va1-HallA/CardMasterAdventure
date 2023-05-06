@@ -3,11 +3,12 @@ package org.deckmaster.mapgen;
 import org.deckmaster.Drawable;
 import processing.core.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 
-public class MapTile implements Drawable {
+public class MapTile implements Drawable, Serializable {
     public static Integer TILE_SIZE = 50;
     public TileLocation location;
     float prevPlayerHeight = 0;
