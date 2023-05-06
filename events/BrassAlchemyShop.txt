@@ -1,0 +1,5 @@
+title:Brass Alchemy Shop
+description:some description
+tier:1
+allowedCardNum:3
+imagePath:images/cards/background.png

@@ -31,7 +31,7 @@ public class ContentLoader {
         }
     }
 
-    private Card loadCard(String cardName) {
+    public Card loadCard(String cardName) {
         String fileName = nameFileIndexTable.get(cardName);
         try {
             Scanner sc = new Scanner(new File(fileName));
@@ -63,12 +63,11 @@ public class ContentLoader {
             return new Card(name, imagePath, propertyTable);
 
         } catch (IOException e) {
-            e.printStackTrace();
         }
         return null;
     }
 
-    private Event loadEvent(String eventName) {
+    public Event loadEvent(String eventName) {
         String fileName = nameFileIndexTable.get(eventName);
         try {
             Scanner sc = new Scanner(new File(fileName));
@@ -79,8 +78,8 @@ public class ContentLoader {
             String imagePath = "";
             int tier = 0;
             int allowedCardNum = 0;
-            String previousEventName = null;
-            String nextEventName = null;
+            String previousEventName = "";
+            String nextEventName = "";
             HashMap<Property, Integer> propertyTable = new HashMap<>();
             HashMap<Result, Integer> resultTable = new HashMap<>();
             ArrayList<String> rewards = new ArrayList<>();
@@ -140,7 +139,6 @@ public class ContentLoader {
             return new Event(title, description, imagePath, tier, propertyTable, resultTable, rewards, slotRequirements, previousEventName, nextEventName, allowedCardNum);
 
         } catch (IOException e) {
-            e.printStackTrace();
         }
         return null;
     }

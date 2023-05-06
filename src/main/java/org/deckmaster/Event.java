@@ -52,6 +52,14 @@ public class Event implements Drawable {
         return description;
     }
 
+    public String getPreviousEventName() {
+        return previousEventName;
+    }
+
+    public String getNextEventName() {
+        return nextEventName;
+    }
+
     public PImage getImage() {
         return image;
     }
@@ -87,6 +95,7 @@ public class Event implements Drawable {
     public void executeResult(boolean successful) {
         for (Result r : resultTable.keySet()) {
             if (r.successfulResult == successful) r.execute(resultTable.get(r));
+            // TODO: specific card requirement
         }
     }
 

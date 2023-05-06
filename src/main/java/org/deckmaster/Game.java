@@ -25,6 +25,10 @@ public class Game extends PApplet {
     CardSlot slot;
     GameState state;
 
+    ContentLoader contentLoader;
+
+    ArrayList<String> trackedEvents;
+
     @Override
     public void settings() {
         size(displayWidth, displayHeight, P2D);
@@ -39,6 +43,10 @@ public class Game extends PApplet {
 
         map = new Map();
         map.setup();
+
+        contentLoader = new ContentLoader();
+        trackedEvents = new ArrayList<>();
+        initEvents();
 
         screen = new InventoryScreen(player);
 
@@ -187,5 +195,15 @@ public class Game extends PApplet {
 
     public static void main(String[] args) {
         PApplet.main(Game.class);
+    }
+
+    private void initEvents() {
+        // TODO: when event has been triggered, update this list
+        for (String name : contentLoader.nameFileIndexTable.keySet()) {
+            Event e = contentLoader.loadEvent(name);
+            if (e != null && e.getPreviousEventName().equals("")) {
+                trackedEvents.add(e.getTitle());
+            }
+        }
     }
 }
