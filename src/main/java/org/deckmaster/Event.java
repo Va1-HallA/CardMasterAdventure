@@ -15,13 +15,20 @@ public class Event implements Drawable, Serializable {
     private String previousEventName;
     private String nextEventName;
     private int allowedCardNum;
-    private HashMap<Property, Integer> propertyTable;
-    private HashMap<Result, Integer> resultTable;
-    private ArrayList<String> rewards; // card names of rewards
+//    private HashMap<Property, Integer> propertyTable;
+//    private HashMap<Result, Integer> resultTable;
+    private HashMap<HashMap<Property, Integer>, HashMap<Result, Integer>> resultTable;
+//    private ArrayList<String> rewards; // card names of rewards
+    private HashMap<HashMap<Property, Integer>, ArrayList<String>> rewards;
+    private HashMap<HashMap<Property, Integer>, String> resultDes; // empty key for fail condition
     private ArrayList<ArrayList<Property>> slotsRequirements;
     private PImage image;
 
-    public Event(String title, String description, String imagePath, int tier, HashMap<Property, Integer> propertyTable, HashMap<Result, Integer> resultTable, ArrayList<String> rewards, ArrayList<ArrayList<Property>> slotsRequirements, String previousEventName, String nextEventName, int allowedCardNum) {
+    // result vars
+    private String curDes;
+    private ArrayList<Card> curRewardCards;
+
+    public Event(String title, String description, String imagePath, int tier, HashMap<HashMap<Property, Integer>, HashMap<Result, Integer>> resultTable, HashMap<HashMap<Property, Integer>, ArrayList<String>> rewards, ArrayList<ArrayList<Property>> slotsRequirements, String previousEventName, String nextEventName, int allowedCardNum) {
         this.title = title;
         this.description = description;
         this.tier = tier;
@@ -29,20 +36,14 @@ public class Event implements Drawable, Serializable {
         this.previousEventName = previousEventName;
         this.nextEventName = nextEventName;
         this.image = g.loadImage(imagePath);
-        this.propertyTable = new HashMap<>(propertyTable);
         this.resultTable = new HashMap<>(resultTable);
-        this.rewards = new ArrayList<>(rewards);
+        this.rewards = new HashMap<>(rewards);
         this.slotsRequirements = slotsRequirements;
 
         image.resize((int) (g.width * Configurations.EVT_IMG_WIDTH_PROPORTION), (int) (g.height * Configurations.EVT_IMG_HEIGHT_PROPORTION));
-    }
 
-    public void addProperty(Property property, int value) {
-        this.propertyTable.put(property, value);
-    }
-
-    public void removeProperty(Property property) {
-        this.propertyTable.remove(property);
+        curDes = "";
+        curRewardCards = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -73,8 +74,37 @@ public class Event implements Drawable, Serializable {
         return slotsRequirements;
     }
 
-    public boolean handleCardsInput(ArrayList<Card> cardList) {
+    public String getCurDes() {
+        return curDes;
+    }
+
+    public ArrayList<Card> getCurRewardCards() {
+        return curRewardCards;
+    }
+
+    //    public boolean handleCardsInput(ArrayList<Card> cardList) {
+//        HashMap<Property, Integer> curInput = new HashMap<>();
+//        for (Card c : cardList) {
+//            HashMap<Property, Integer> cardProperties = c.getPropertyTable();
+//            for (Property cp : cardProperties.keySet()) {
+//                int val = cardProperties.get(cp);
+//                if (!curInput.containsKey(cp)) curInput.put(cp, val);
+//                else curInput.put(cp, curInput.get(cp) + val);
+//            }
+//        }
+//
+//        // check with required properties table
+//        for (Property p : propertyTable.keySet()) {
+//            int targetValue = propertyTable.get(p);
+//            if (!curInput.containsKey(p) || curInput.get(p) < targetValue) return false;
+//        }
+//
+//        return true;
+//    }
+
+    public void handleCardsInput(ArrayList<Card> cardList) {
         HashMap<Property, Integer> curInput = new HashMap<>();
+
         for (Card c : cardList) {
             HashMap<Property, Integer> cardProperties = c.getPropertyTable();
             for (Property cp : cardProperties.keySet()) {
@@ -84,20 +114,54 @@ public class Event implements Drawable, Serializable {
             }
         }
 
-        // check with required properties table
-        for (Property p : propertyTable.keySet()) {
-            int targetValue = propertyTable.get(p);
-            if (!curInput.containsKey(p) || curInput.get(p) < targetValue) return false;
+        boolean fail = true;
+        for (HashMap<Property, Integer> conditions : resultTable.keySet()) {
+            if (conditions.keySet().size() == 0) break; // ignore failure condition
+            boolean fulfill = true;
+            for (Property p : conditions.keySet()) {
+                int targetValue = conditions.get(p);
+                if (!curInput.containsKey(p) || curInput.get(p) < targetValue) {
+                    fulfill = false;
+                    break;
+                }
+            }
+
+            if (fulfill) {
+                fail = false;
+                HashMap<Result, Integer> resExecution = resultTable.get(conditions);
+                ArrayList<String> rewStr = rewards.get(conditions);
+                String resDes = resultDes.get(conditions);
+
+                curDes = resDes;
+                for (String str : rewStr) {
+                    Card card = g.contentLoader.loadCard(str);
+                    curRewardCards.add(card);
+                }
+
+                for (Result r : resExecution.keySet()) {
+                    r.execute(resExecution.get(r));
+                }
+
+                for (Card c : curRewardCards) {
+                    g.player.addCard(c);
+                }
+                break;
+            }
         }
 
-        return true;
-    }
+        if (fail) {
+            HashMap<Property, Integer> failCondition = new HashMap<>();
+            HashMap<Result, Integer> resExecution = resultTable.get(failCondition);
+            curDes = resultDes.get(failCondition);
 
-    public void executeResult(boolean successful) {
-        for (Result r : resultTable.keySet()) {
-            if (r.successfulResult == successful) r.execute(resultTable.get(r));
-            // TODO: specific card requirement
+            for (Result r : resExecution.keySet()) {
+                r.execute(resExecution.get(r));
+            }
         }
+
+        // update game active events
+        g.trackedEvents.remove(this.getTitle());
+        if (!this.nextEventName.equals("")) g.trackedEvents.add(nextEventName);
     }
 
     @Override

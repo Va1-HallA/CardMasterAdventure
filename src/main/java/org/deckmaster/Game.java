@@ -33,12 +33,10 @@ public class Game extends PApplet {
 
     ArrayList<String> trackedEvents;
 
-    // Event proactiveEvent = new Event(...);  // use this when press a key to trigger proactive event
-
     @Override
     public void settings() {
         size(displayWidth, displayHeight, P2D);
-        fullScreen();
+//        fullScreen();
     }
 
     @Override
@@ -66,7 +64,7 @@ public class Game extends PApplet {
         slot.setCoord(new PVector((float) g.width * 0.5f, (float) g.height * 0.3f));
         screen.show();
 
-        evtscreen = new EventScreen(new Event("title", "description", "images/cards/background.png", 1, new HashMap<>(), new HashMap<>(), new ArrayList<>(), new ArrayList<>(), "", "", 1), player, screen);
+        evtscreen = new EventScreen(new Event("title", "description", "images/cards/background.png", 1, new HashMap<>(), new HashMap<>(), new ArrayList<>(), "", "", 1), player, screen);
         evtscreen.show();
     }
 
@@ -196,6 +194,12 @@ public class Game extends PApplet {
     @Override
     public void keyReleased() {
         Input.checkKeyReleased();
+        if (key == 't') {
+            Event event = contentLoader.loadEvent("xxx"); // TODO: PROACTIVE EVENT
+            evtscreen = new EventScreen(event, player, screen);
+            evtscreen.show();
+            state = GameState.EVENT;
+        }
     }
 
     public boolean overRect(int x, int y, int width, int height) {
@@ -218,6 +222,11 @@ public class Game extends PApplet {
             ObjectOutputStream playerOos = new ObjectOutputStream(playerFoe);
             playerOos.writeObject(player.getCards());
 
+            // saving player pos
+            FileOutputStream posFoe = new FileOutputStream(Configurations.POS_SAVING_LOCATION);
+            ObjectOutputStream posOos = new ObjectOutputStream(posFoe);
+            posOos.writeObject(player.pos);
+
             // saving active events list
             FileOutputStream eventFoe = new FileOutputStream(Configurations.EVENT_SAVING_LOCATION);
             ObjectOutputStream eventOos = new ObjectOutputStream(eventFoe);
@@ -239,6 +248,11 @@ public class Game extends PApplet {
             ObjectInputStream playerOis = new ObjectInputStream(playerFie);
             player.setCards((ArrayList<Card>) playerOis.readObject());
 
+            // loading player pos
+            FileInputStream posFie = new FileInputStream(Configurations.POS_SAVING_LOCATION);
+            ObjectInputStream posOis = new ObjectInputStream(posFie);
+            player.pos = (PVector) posOis.readObject();
+
             // loading events
             FileInputStream eventsFie = new FileInputStream(Configurations.EVENT_SAVING_LOCATION);
             ObjectInputStream eventOis = new ObjectInputStream(eventsFie);
@@ -251,7 +265,6 @@ public class Game extends PApplet {
     }
 
     private void initEvents() {
-        // TODO: when event has been triggered, update this list
         for (String name : contentLoader.nameFileIndexTable.keySet()) {
             Event e = contentLoader.loadEvent(name);
             if (e != null && e.getPreviousEventName().equals("")) {

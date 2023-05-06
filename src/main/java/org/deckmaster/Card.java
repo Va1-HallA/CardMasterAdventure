@@ -21,6 +21,10 @@ public class Card implements Comparable, Drawable, Serializable {
     private PVector originalMouseCoord;
     private CardSlot pairedSlot;
     private boolean isDragged;
+    private boolean isDisplayingProperty;
+    private Property curDisplayingProperty;
+
+    private HashMap<Property, PVector[]> propertyCoords;
 
     public Card(String name, String imagePath, HashMap<Property, Integer> propertyTable) {
         this.name = name;
@@ -28,6 +32,9 @@ public class Card implements Comparable, Drawable, Serializable {
         this.propertyTable = new HashMap<>(propertyTable);
         this.pairedSlot = null;
         this.isDragged = false;
+        this.isDisplayingProperty = false;
+        this.curDisplayingProperty = null;
+        this.propertyCoords = new HashMap<>();
     }
 
     public String getName() {
@@ -155,16 +162,45 @@ public class Card implements Comparable, Drawable, Serializable {
             icon.resize(iconSizeX, iconSizeY);
             g.image(icon, curPropertyCoord.x, curPropertyCoord.y);
             g.text(entry.getValue(), curPropertyCoord.x + iconSizeX * (1 + Configurations.PROPERTY_VALUE_INTERVAL_PROPORTION), curPropertyCoord.y + iconSizeY);
+
+            // updating property locations
+            propertyCoords.put(
+                    entry.getKey(),
+                    new PVector[]{
+                            new PVector(curPropertyCoord.x, curPropertyCoord.y),
+                            new PVector(curPropertyCoord.x + iconSizeX * (1 + Configurations.PROPERTY_VALUE_INTERVAL_PROPORTION), curPropertyCoord.y + iconSizeY)
+                    });
             curPropertyCoord.add(new PVector(-1 * (iconSizeX * (1 + Configurations.PROPERTY_VALUE_INTERVAL_PROPORTION)), 0));
+        }
+
+        // display property info if applicable
+        if (isDisplayingProperty) {
+            g.fill(g.color(55));
+            g.rect(g.mouseX, g.mouseY, g.width * Configurations.CARD_PROP_INFO_SIZE_PROPORTION, g.height * Configurations.CARD_PROP_INFO_SIZE_PROPORTION);
+            g.fill(g.color(255));
+            g.textFont(Configurations.CARD_FONT);
+            g.textAlign(PConstants.CENTER);
+            g.text(name, coord.x + size.x / 2, coord.y + size.y * Configurations.CARD_TITLE_HEIGHT_PROPORTION);
         }
     }
 
     @Override
     public void update() {
+        this.isDisplayingProperty = false;
         if (isDragged()) {
             PVector movement = new PVector(g.mouseX - getOriginalMouseCoord().x, g.mouseY - getOriginalMouseCoord().y);
             PVector finalPosition = new PVector(getOriginalCoord().x, getOriginalCoord().y).add(movement);
             setCoord(finalPosition);
+        } else {
+            // displaying info when mouse hovering on top of property icon
+            for (Property p : propertyCoords.keySet()) {
+                PVector[] loc = propertyCoords.get(p);
+                if (g.mouseX >= loc[0].x && g.mouseX <= loc[1].x && g.mouseY >= loc[0].y && g.mouseY <= loc[1].y) {
+                    this.isDisplayingProperty = true;
+                    this.curDisplayingProperty = p;
+                    break;
+                }
+            }
         }
     }
 

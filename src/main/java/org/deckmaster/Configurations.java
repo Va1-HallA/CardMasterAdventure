@@ -23,6 +23,7 @@ public class Configurations {
     public static float CARD_IMAGE_Y_PROPORTION = 0.84f;
 
     public static float CARD_TITLE_HEIGHT_PROPORTION = 0.055f;
+    public static float CARD_PROP_INFO_SIZE_PROPORTION = 0.12f;
 
     /**
      * Property settings
@@ -58,4 +59,5 @@ public class Configurations {
     public static String MAP_SAVING_LOCATION = "saving/map.txt";
     public static String PLAYER_SAVING_LOCATION = "saving/player.txt";
     public static String EVENT_SAVING_LOCATION = "saving/event.txt";
+    public static String POS_SAVING_LOCATION = "saving/pos.txt";
 }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -80,29 +81,55 @@ public class ContentLoader {
             int allowedCardNum = 0;
             String previousEventName = "";
             String nextEventName = "";
-            HashMap<Property, Integer> propertyTable = new HashMap<>();
-            HashMap<Result, Integer> resultTable = new HashMap<>();
-            ArrayList<String> rewards = new ArrayList<>();
+//            HashMap<Property, Integer> propertyTable = new HashMap<>();
+            HashMap<HashMap<Property, Integer>, HashMap<Result, Integer>> resultTable = new HashMap<>();
+            HashMap<HashMap<Property, Integer>, ArrayList<String>> rewards = new HashMap<>();
             ArrayList<ArrayList<Property>> slotRequirements = new ArrayList<>();
             while (sc.hasNextLine()) {
                 String nextLine = sc.nextLine();
                 String[] attribute = nextLine.split(":");
                 switch (attribute[0]) {
-                    case "property":
-                        String[] propertyData = attribute[1].split("-");
-                        Property property = Property.valueOf(propertyData[0]);
-                        int value = Integer.parseInt(propertyData[1]);
-                        propertyTable.put(property, value);
-                        break;
                     case "result":
                         String[] resultData = attribute[1].split("-");
-                        Result result = Result.valueOf(resultData[0]);
-                        int val = Integer.parseInt(resultData[1]);
-                        resultTable.put(result, val);
+                        String[] resultKeyStr = resultData[0].split(",");
+                        String[] resultValueStr = resultData[1].split(",");
+
+                        HashMap<Property, Integer> newResultKey = new HashMap<>();
+                        HashMap<Result, Integer> newResultValue = new HashMap<>();
+
+                        for (String str : resultKeyStr) {
+                            String[] propData = str.split("=");
+                            Property property = Property.valueOf(propData[0]);
+                            int num = Integer.parseInt(propData[1]);
+                            newResultKey.put(property, num);
+                        }
+
+                        for (String str : resultValueStr) {
+                            String[] resData = str.split("=");
+                            Result result = Result.valueOf(resData[0]);
+                            int num = Integer.parseInt(resData[1]);
+                            newResultValue.put(result, num);
+                        }
+
+                        resultTable.put(newResultKey, newResultValue);
                         break;
                     case "reward":
-                        String rewardData = attribute[1];
-                        rewards.add(rewardData);
+                        String[] rewardData = attribute[1].split("-");
+                        String[] rewardKeyStr = rewardData[0].split(",");
+                        String[] rewardValueStr = rewardData[1].split(",");
+
+                        HashMap<Property, Integer> newRewardKey = new HashMap<>();
+
+                        for (String str : rewardKeyStr) {
+                            String[] propData = str.split("=");
+                            Property property = Property.valueOf(propData[0]);
+                            int num = Integer.parseInt(propData[1]);
+                            newRewardKey.put(property, num);
+                        }
+
+                        ArrayList<String> newRewardValue = new ArrayList<>(Arrays.asList(rewardValueStr));
+
+                        rewards.put(newRewardKey, newRewardValue);
                     case "slotRequirement":
                         String[] slotRequirementData = attribute[1].split("-");
                         ArrayList<Property> reqList = new ArrayList<>();
@@ -136,7 +163,7 @@ public class ContentLoader {
                 }
             }
 
-            return new Event(title, description, imagePath, tier, propertyTable, resultTable, rewards, slotRequirements, previousEventName, nextEventName, allowedCardNum);
+            return new Event(title, description, imagePath, tier, resultTable, rewards, slotRequirements, previousEventName, nextEventName, allowedCardNum);
 
         } catch (IOException e) {
         }

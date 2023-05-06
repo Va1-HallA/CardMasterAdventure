@@ -11,6 +11,9 @@ public class EventScreen implements Drawable{
     private Player player;
     InventoryScreen inventory;
     Button confirmBtn;
+    private State state;
+
+    enum State{EVENT, RESULT}
 
     public EventScreen(Event event, Player player, InventoryScreen inventoryScreen) {
 //        slot.update();
@@ -19,7 +22,8 @@ public class EventScreen implements Drawable{
         this.player = player;
         this.inventory = inventoryScreen;
         this.slots = new ArrayList<>();
-        Runnable confirm = () -> event.executeResult(checkSuccessful());
+        this.state = State.EVENT;
+        Runnable confirm = this::handleCardsInput;
         PVector curPosition = new PVector(
                 g.width * (1 - Configurations.EVT_MAIN_WIDTH_PROPORTION - Configurations.EVT_IMG_WIDTH_PROPORTION) / 2,
                 g.height * Configurations.EVT_Y_PROPORTION
@@ -51,6 +55,7 @@ public class EventScreen implements Drawable{
     }
 
     public void vanish() {
+        inventory.vanish();
         slots.clear();
     }
 
@@ -75,31 +80,14 @@ public class EventScreen implements Drawable{
         g.fill(50);
         g.rect(curPosition.x, curPosition.y, g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION, g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION);
 
-        // drawing event info
         g.fill(0);
         g.textFont(Configurations.EVT_TITLE_FONT);
         PVector textPosition = new PVector(curPosition.x, curPosition.y);
         textPosition.add(new PVector(g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * 0.5f, g.height * Configurations.EVT_TITLE_Y_PROPORTION));
         g.text(event.getTitle(), textPosition.x, textPosition.y, g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION);
 
-        float textHeight = g.textAscent() + g.textDescent();
-        textPosition.add(new PVector(0, textHeight));
-        g.textFont(Configurations.EVT_DES_FONT);
-        g.text(event.getDescription(), textPosition.x, textPosition.y, g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION);
-
-        // drawing card slots
-        float slotsHeight = curPosition.y + g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION * Configurations.SLOT_HEIGHT_PROPORTION;
-        float slotWidth = g.width * Configurations.CARD_WIDTH_PROPORTION;
-        PVector slotPosition = new PVector(
-                curPosition.x + g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * 0.5f + (-1 * slotWidth * event.getAllowedCardNum() * 0.5f),
-                slotsHeight
-                );
-        for (CardSlot slot : slots) {
-            slot.setCoord(slotPosition);
-            slotPosition.add(new PVector(slotWidth, 0));
-            slot.draw();
-        }
-
+        if (state == State.EVENT) drawEventInfo(curPosition, textPosition);
+        else if(state == State.RESULT) drawResultInfo(curPosition, textPosition);
         // drawing button
         confirmBtn.draw();
 
@@ -112,14 +100,59 @@ public class EventScreen implements Drawable{
     public void update() {
         // track cards that are paired with slots (which are not tracked by inventory screen)
 
-        for (CardSlot slot : slots) {
-            if (slot.isFilled()) slot.getFilledCard().update();
+        if (state == State.EVENT) {
+            for (CardSlot slot : slots) {
+                if (slot.isFilled()) slot.getFilledCard().update();
+            }
         }
 
         inventory.update();
     }
 
-    private boolean checkSuccessful() {
+    private void drawEventInfo(PVector curPosition, PVector textPosition) {
+        // drawing event info
+        float textHeight = g.textAscent() + g.textDescent();
+        textPosition.add(new PVector(0, textHeight));
+        g.textFont(Configurations.EVT_DES_FONT);
+        g.text(event.getDescription(), textPosition.x, textPosition.y, g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION);
+
+        // drawing card slots
+        float slotsHeight = curPosition.y + g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION * Configurations.SLOT_HEIGHT_PROPORTION;
+        float slotWidth = g.width * Configurations.CARD_WIDTH_PROPORTION;
+        PVector slotPosition = new PVector(
+                curPosition.x + g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * 0.5f + (-1 * slotWidth * event.getAllowedCardNum() * 0.5f),
+                slotsHeight
+        );
+        for (CardSlot slot : slots) {
+            slot.setCoord(slotPosition);
+            slotPosition.add(new PVector(slotWidth, 0));
+            slot.draw();
+        }
+    }
+
+    private void drawResultInfo(PVector curPosition, PVector textPosition) {
+        // drawing result info
+        float textHeight = g.textAscent() + g.textDescent();
+        textPosition.add(new PVector(0, textHeight));
+        g.textFont(Configurations.EVT_DES_FONT);
+        g.text(event.getCurDes(), textPosition.x, textPosition.y, g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION);
+
+        // drawing rewards (if any)
+        float slotsHeight = curPosition.y + g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION * Configurations.SLOT_HEIGHT_PROPORTION;
+        float slotWidth = g.width * Configurations.CARD_WIDTH_PROPORTION;
+        PVector slotPosition = new PVector(
+                curPosition.x + g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * 0.5f + (-1 * slotWidth * event.getAllowedCardNum() * 0.5f),
+                slotsHeight
+        );
+        for (Card card : event.getCurRewardCards()) {
+            card.setCoord(slotPosition);
+            slotPosition.add(new PVector(slotWidth, 0));
+            card.draw();
+        }
+
+    }
+
+    private void handleCardsInput() {
         ArrayList<Card> input = new ArrayList<>();
         for (CardSlot cardSlot: slots) {
             if (cardSlot.isFilled()) {
@@ -128,6 +161,15 @@ public class EventScreen implements Drawable{
             }
         }
 
-        return event.handleCardsInput(input);
+        event.handleCardsInput(input);
+        this.state = State.RESULT;
+        confirmBtn.switchFunction(this::handleEventScreen);
+    }
+
+    private void handleEventScreen() {
+        this.vanish();
+        this.state = State.EVENT;
+        confirmBtn.switchFunction(this::handleCardsInput);
+        g.state = GameState.WORLD;
     }
 }

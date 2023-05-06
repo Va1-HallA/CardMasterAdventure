@@ -7,6 +7,7 @@ public enum Result {
     TAINT(false),
     CONSUME_FUNDS(false);
 
+    static final Player player = Game.game.player;
     boolean successfulResult;
 
     Result(boolean successfulResult) {

@@ -46,5 +46,9 @@ public class Button implements Drawable {
             onClick.run();
         }
     }
+
+    public void switchFunction(Runnable r) {
+        onClick = r;
+    }
 }
 
