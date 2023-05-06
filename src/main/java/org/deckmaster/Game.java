@@ -1,4 +1,5 @@
 package org.deckmaster;
+import org.deckmaster.mapgen.Building;
 import org.deckmaster.mapgen.Map;
 import org.deckmaster.mapgen.MapTile;
 import org.deckmaster.mapgen.TileLocation;
@@ -17,7 +18,6 @@ public class Game extends PApplet {
     public PVector cameraPosition = new PVector(0, 0);
     public Player player;
     public Map map;
-    public boolean debug = true;
 
     public final float UPDATE_TIME = 16.6f;
     private float lag = 0f;
@@ -26,6 +26,8 @@ public class Game extends PApplet {
     EventScreen evtscreen;
     CardSlot slot;
     GameState state;
+    public boolean inBuilding = false;
+    public Building buildingToDraw = null;
 
     ContentLoader contentLoader;
 
@@ -68,32 +70,32 @@ public class Game extends PApplet {
         evtscreen.show();
     }
 
-//    @Override
-//    public void mousePressed() {
-//        if (state == GameState.WORLD || state == GameState.EVENT) {
-//            for (Card card: player.getCards()) {
-//                if (card.getCoord() != null) card.onClick(mouseX, mouseY);
-//            }
-//        }
-//    }
+    @Override
+    public void mousePressed() {
+        if (state == GameState.WORLD || state == GameState.EVENT) {
+            for (Card card: player.getCards()) {
+                if (card.getCoord() != null) card.onClick(mouseX, mouseY);
+            }
+        }
+    }
 
-//    @Override
-//    public void mouseReleased() {
-//        if (state == GameState.WORLD) {
-//            screen.leftArrow.onClick(mouseX, mouseY);
-//            screen.rightArrow.onClick(mouseX, mouseY);
-//            for (Card card: player.getCards()) {
-//                if (card.getCoord() != null) card.onRelease(new ArrayList<>());
-//            }
-//        } else if (state == GameState.EVENT) {
-//            evtscreen.confirmBtn.onClick(mouseX, mouseY);
-//            evtscreen.inventory.leftArrow.onClick(mouseX, mouseY);
-//            evtscreen.inventory.rightArrow.onClick(mouseX, mouseY);
-//            for (Card card: player.getCards()) {
-//                if (card.getCoord() != null) card.onRelease(evtscreen.getSlots());
-//            }
-//        }
-//    }
+    @Override
+    public void mouseReleased() {
+        if (state == GameState.WORLD) {
+            screen.leftArrow.onClick(mouseX, mouseY);
+            screen.rightArrow.onClick(mouseX, mouseY);
+            for (Card card: player.getCards()) {
+                if (card.getCoord() != null) card.onRelease(new ArrayList<>());
+            }
+        } else if (state == GameState.EVENT) {
+            evtscreen.confirmBtn.onClick(mouseX, mouseY);
+            evtscreen.inventory.leftArrow.onClick(mouseX, mouseY);
+            evtscreen.inventory.rightArrow.onClick(mouseX, mouseY);
+            for (Card card: player.getCards()) {
+                if (card.getCoord() != null) card.onRelease(evtscreen.getSlots());
+            }
+        }
+    }
 
     @Override
     public void draw() {
@@ -101,7 +103,6 @@ public class Game extends PApplet {
         if (state != GameState.MAIN_MENU) {
             long deltaTime = System.currentTimeMillis() - lastUpdate;
             lastUpdate = System.currentTimeMillis();
-            System.out.println(deltaTime);
             lag += deltaTime;
         }
 
@@ -115,10 +116,14 @@ public class Game extends PApplet {
             case MAIN_MENU -> {
             }
             case WORLD -> {
-                map.draw();
+                if (!inBuilding) {
+                    map.draw();
+                } else {
+                    buildingToDraw.draw();
+                }
 //                slot.draw();
                 player.draw();
-//                screen.draw();
+                screen.draw();
 
                 fill(255, 255, 255);
                 textAlign(LEFT, CENTER);

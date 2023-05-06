@@ -26,9 +26,7 @@ public class Map implements Drawable {
         }
 
         MapTile tileToCheck = tileMap.get(TileLocation.worldToTileCoords(g.player.pos));
-        while (tileToCheck.height < 0 || tileToCheck.state == TileState.WHITE_ROCK_3 || tileToCheck.state == TileState.MOSS_ROCK_3
-                || tileToCheck.state == TileState.ROCK_3 || tileToCheck.state == TileState.SNOW_ROCK_3
-                || tileToCheck.state == TileState.BUILDING_WALL || tileToCheck.state == TileState.BUILDING_DRAW) {
+        while (tileToCheck.height < 0 || !tileToCheck.state.walkable) {
             g.player.pos.x += MapTile.TILE_SIZE;
             tileToCheck = tileMap.get(TileLocation.worldToTileCoords(g.player.pos));
         }

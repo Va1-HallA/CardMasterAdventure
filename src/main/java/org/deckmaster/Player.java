@@ -14,7 +14,7 @@ public class Player implements Drawable {
     private ArrayList<Card> cards;
     public PVector pos;
     private float size;
-    private final float MOVE_SPEED = 300.0f;
+    private final float MOVE_SPEED = 350.0f;
     private MovementDir dir = MovementDir.UP;
     private PImage playerImage;
     private PImage up;
@@ -25,9 +25,9 @@ public class Player implements Drawable {
         this.pos = pos;
         this.size = size;
         playerImage = g.loadImage("images/player/hero.png");
-        up = playerImage.get(16, 16, 16, 16);
-        down = playerImage.get(16, 32, 16, 16);
-        left = playerImage.get(16, 0, 16, 16);
+        up = playerImage.get(32, 32, 32, 32);
+        down = playerImage.get(32, 64, 32, 32);
+        left = playerImage.get(32, 0, 32, 32);
         cards = new ArrayList<>();
     }
 
@@ -60,6 +60,31 @@ public class Player implements Drawable {
     @Override
     public void update() {
         handleMovement();
+        TileLocation playerLocation = TileLocation.worldToTileCoords(pos);
+        if (!g.inBuilding) {
+            MapTile tile = g.map.tileMap.get(playerLocation);
+            if (tile.state == TileState.LOOT) {
+                tile.state = TileState.LOOT_EMPTY;
+            }
+
+            if (tile.state == TileState.EVENT) {
+                tile.state = TileState.EMPTY;
+                g.state = GameState.EVENT;
+            }
+
+            if (tile.state == TileState.BUILDING_ENTRANCE) {
+                g.buildingToDraw = tile.buildingMap;
+                g.inBuilding = true;
+            }
+        } else {
+            MapTile tile = g.buildingToDraw.tiles.get(playerLocation);
+            if (tile.state == TileState.BUILDING_INSIDE_CHEST) {
+                tile.state = TileState.BUILDING_INSIDE_CHEST_OPEN;
+            }
+            if (tile.state == TileState.BUILDING_EXIT) {
+                g.inBuilding = false;
+            }
+        }
     }
 
     private void handleMovement() {
@@ -88,10 +113,13 @@ public class Player implements Drawable {
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
                 if (i == 0 && j == 0) continue;
-                MapTile tileToCheck = g.map.tileMap.get(new TileLocation(playerLocation.x + i, playerLocation.y + j));
-                if (tileToCheck.height < 0 || tileToCheck.state == TileState.WHITE_ROCK_3 || tileToCheck.state == TileState.MOSS_ROCK_3
-                        || tileToCheck.state == TileState.ROCK_3 || tileToCheck.state == TileState.SNOW_ROCK_3
-                        || tileToCheck.state == TileState.BUILDING_WALL || tileToCheck.state == TileState.BUILDING_DRAW) {
+                MapTile tileToCheck;
+                if (!g.inBuilding) {
+                    tileToCheck = g.map.tileMap.get(new TileLocation(playerLocation.x + i, playerLocation.y + j));
+                } else {
+                    tileToCheck = g.buildingToDraw.tiles.get(new TileLocation(playerLocation.x + i, playerLocation.y + j));
+                }
+                if (tileToCheck.height < 0 || !tileToCheck.state.walkable) {
                     PVector tileLocation = TileLocation.tileToWorldCoords(tileToCheck.location);
                     PVector p = new PVector();
                     if (nextLocation.x <= tileLocation.x) {

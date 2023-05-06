@@ -14,7 +14,11 @@ public class MapTile implements Drawable, Serializable {
     float prevPlayerHeight = 0;
     public float height;
     public TileState state = TileState.EMPTY;
+    public Building buildingMap = null;
+
     static Random random = new Random();
+    static PImage event = g.loadImage("images/map/exclamation.png");
+
     static PImage tree = g.loadImage("images/map/Tree3.png");
     static PImage flower_tree = g.loadImage("images/map/Flower_tree2-1.png");
     static PImage fruit_tree = g.loadImage("images/map/Fruit_tree3.png");
@@ -34,11 +38,30 @@ public class MapTile implements Drawable, Serializable {
     static PImage snow_rock_1 = g.loadImage("images/map/Rock3_3.png");
     static PImage snow_rock_2 = g.loadImage("images/map/Rock3_4.png");
     static PImage snow_rock_3 = g.loadImage("images/map/Rock3_1.png");
+
     static PImage building = g.loadImage("images/map/Smithy-TD.png");
+
+    static PImage chests = g.loadImage("images/map/chests.png");
+    static PImage chest = chests.get(0, 0, 32, 32);
+    static PImage chestOpen = chests.get(64,0, 32, 32);
+
+    static PImage interiorSet = g.loadImage("images/map/indoorTileset.png");
+    static PImage woodenTile = interiorSet.get(interiorSet.width - 64, 4, 64, 64);
 
     public MapTile(TileLocation loc, float height) {
         this.location = loc;
         this.height = height;
+
+        if (Math.random() < 0.0005f) {
+            state = TileState.LOOT;
+            return;
+        }
+
+        if (Math.random() < 0.0005f) {
+            state = TileState.EVENT;
+            return;
+        }
+
         double randomVal = Math.random();
         if (height >= 0 && height < 400 && randomVal < 0.2f) {
             int treeSelect = random.nextInt(4);
@@ -48,13 +71,15 @@ public class MapTile implements Drawable, Serializable {
                 case 2 -> state = TileState.FRUIT_TREE;
                 case 3 -> state = TileState.PINE_TREE;
             }
-        } else if (height >= 0 && height < 400 && randomVal < 0.205f ) {
+        } else if (height >= 0 && height < 400 && randomVal < 0.2025f ) {
             state = TileState.BUILDING_WALL;
             ArrayList<MapTile> tiles = new ArrayList<>();
             for (int i = 0; i > -4; i--) {
                 for (int j = 0; j > -4; j--) {
                     if (i == 0 && j == 0) continue;
-                    if (g.map.getHeight(new TileLocation(location.x + i, location.y + j)) > 400 || Math.abs(height - g.map.getHeight(new TileLocation(location.x + i, location.y + j))) > 50) {
+                    if (g.map.getHeight(new TileLocation(location.x + i, location.y + j)) > 400
+                            || g.map.getHeight(new TileLocation(location.x + i, location.y + j)) < 0
+                            || Math.abs(height - g.map.getHeight(new TileLocation(location.x + i, location.y + j))) > 50) {
                         this.state = TileState.EMPTY;
                         return;
                     }
@@ -64,14 +89,26 @@ public class MapTile implements Drawable, Serializable {
                         if (tile.state == TileState.BUILDING_WALL || tile.state == TileState.BUILDING_DRAW || tile.state == TileState.BUILDING_ENTRANCE) return;
                     }
 
-                    if ((i == -1 || i == -2) && j == 0) tiles.add(new MapTile(new TileLocation(location.x + i, location.y + j), height, TileState.BUILDING_ENTRANCE));
+                    if ((i == -1 || i == -2) && j == 0) {
+                        tiles.add(new MapTile(new TileLocation(location.x + i, location.y + j), height, TileState.BUILDING_ENTRANCE));
+                    }
                     else if (i == -1 && j == -1) tiles.add(new MapTile(new TileLocation(location.x + i, location.y + j), height + 1, TileState.BUILDING_DRAW));
                     else if (j == -3) tiles.add(new MapTile(new TileLocation(location.x + i, location.y + j), height, TileState.EMPTY));
                     else tiles.add(new MapTile(new TileLocation(location.x + i, location.y + j), height, TileState.BUILDING_WALL));
                 }
             }
 
+            ArrayList<TileLocation> entrances = new ArrayList<>();
+
             for (MapTile tile: tiles) {
+                if (tile.state == TileState.BUILDING_ENTRANCE) entrances.add(tile.location);
+            }
+
+            Building building = new Building(height, random.nextInt(4, 9), random.nextInt(4, 9), entrances, this.location);
+            for (MapTile tile: tiles) {
+                if (tile.state == TileState.BUILDING_ENTRANCE) {
+                    tile.buildingMap = building;
+                }
                 g.map.tileMap.put(tile.location, tile);
             }
         }
@@ -125,7 +162,12 @@ public class MapTile implements Drawable, Serializable {
     @Override
     public void draw() {
         g.pushMatrix();
-        float playerHeight = g.map.tileMap.get(TileLocation.worldToTileCoords(g.player.pos)).height;
+        float playerHeight;
+        if (!g.inBuilding) {
+            playerHeight = g.map.tileMap.get(TileLocation.worldToTileCoords(g.player.pos)).height;
+        } else {
+            playerHeight = g.buildingToDraw.height;
+        }
         playerHeight = PApplet.lerp(prevPlayerHeight, playerHeight, 0.05f);
         prevPlayerHeight = playerHeight;
         float relativeHeight = height < 0 ? -playerHeight : height - playerHeight;
@@ -136,6 +178,7 @@ public class MapTile implements Drawable, Serializable {
         PMatrix3D leftBlockMatrix = null;
         PMatrix3D upBlockMatrix = null;
         PMatrix3D blockMatrix;
+        TileLocation loc;
 
         g.push();
         g.translate(g.player.pos.x, g.player.pos.y);
@@ -143,137 +186,140 @@ public class MapTile implements Drawable, Serializable {
         blockMatrix = (PMatrix3D) g.getMatrix();
         g.pop();
 
-        if (g.map.tileMap.containsKey(new TileLocation(location.x + 1, location.y))) {
-            MapTile rightTile = g.map.tileMap.get(new TileLocation(location.x + 1, location.y));
-            float rightBlockRelHeight = rightTile.height < 0 ? -playerHeight : rightTile.height - playerHeight;
-            g.push();
-            g.translate(g.player.pos.x, g.player.pos.y);
-            g.scale(PApplet.map(rightBlockRelHeight, -1000, 1000, 0.5f, 1.5f));
-            rightBlockMatrix = (PMatrix3D) g.getMatrix();
-            g.pop();
-        }
+        if (this.state != TileState.BUILDING_INSIDE && this.state != TileState.BUILDING_EXIT
+                && this.state != TileState.BUILDING_INSIDE_WALL && this.state != TileState.BUILDING_INSIDE_CHEST
+                && this.state != TileState.BUILDING_INSIDE_CHEST_OPEN ) {
+            if (g.map.tileMap.containsKey(new TileLocation(location.x + 1, location.y))) {
+                MapTile rightTile = g.map.tileMap.get(new TileLocation(location.x + 1, location.y));
+                rightBlockMatrix = getMatrix3D(playerHeight, rightTile);
+            }
 
-        if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y + 1))) {
-            MapTile downTile = g.map.tileMap.get(new TileLocation(location.x, location.y + 1));
-            float downBlockRelHeight = downTile.height < 0 ? -playerHeight : downTile.height - playerHeight;
-            g.push();
-            g.translate(g.player.pos.x, g.player.pos.y);
-            g.scale(PApplet.map(downBlockRelHeight, -1000, 1000, 0.5f, 1.5f));
-            downBlockMatrix = (PMatrix3D) g.getMatrix();
-            g.pop();
-        }
+            if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y + 1))) {
+                MapTile downTile = g.map.tileMap.get(new TileLocation(location.x, location.y + 1));
+                downBlockMatrix = getMatrix3D(playerHeight, downTile);
+            }
 
-        if (g.map.tileMap.containsKey(new TileLocation(location.x - 1, location.y))) {
-            MapTile leftTile = g.map.tileMap.get(new TileLocation(location.x - 1, location.y));
-            float leftBlockRelHeight = leftTile.height < 0 ? -playerHeight : leftTile.height - playerHeight;
-            g.push();
-            g.translate(g.player.pos.x, g.player.pos.y);
-            g.scale(PApplet.map(leftBlockRelHeight, -1000, 1000, 0.5f, 1.5f));
-            leftBlockMatrix = (PMatrix3D) g.getMatrix();
-            g.pop();
-        }
+            if (g.map.tileMap.containsKey(new TileLocation(location.x - 1, location.y))) {
+                MapTile leftTile = g.map.tileMap.get(new TileLocation(location.x - 1, location.y));
+                leftBlockMatrix = getMatrix3D(playerHeight, leftTile);
+            }
 
-        if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y - 1))) {
-            MapTile upTile = g.map.tileMap.get(new TileLocation(location.x, location.y - 1));
-            float upBlockRelHeight = upTile.height < 0 ? -playerHeight : upTile.height - playerHeight;
-            g.push();
-            g.translate(g.player.pos.x, g.player.pos.y);
-            g.scale(PApplet.map(upBlockRelHeight, -1000, 1000, 0.5f, 1.5f));
-            upBlockMatrix = (PMatrix3D) g.getMatrix();
-            g.pop();
-        }
+            if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y - 1))) {
+                MapTile upTile = g.map.tileMap.get(new TileLocation(location.x, location.y - 1));
+                upBlockMatrix = getMatrix3D(playerHeight, upTile);
+            }
 
-        if (height < 400) {
-            g.fill(83,65,39);
-        } else if (height >= 400 && height < 800) {
-            g.fill(120 - (height - 400) / 4f);
+            if (height < 400) {
+                g.fill(83, 65, 39);
+            } else if (height >= 400 && height < 800) {
+                g.fill(120 - (height - 400) / 4f);
+            } else {
+                g.fill(255);
+            }
+
+            loc = new TileLocation(location.x + 1, location.y);
+            if (g.map.tileMap.containsKey(loc) && this.height > g.map.tileMap.get(loc).height) {
+                g.push();
+                PVector p1 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+                PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+                PVector p3 = rightBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+                PVector p4 = rightBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+
+                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
+                if (p1.x < p3.x) {
+                    drawCustomQuad(p1, p2, p3, p4);
+                }
+                g.pop();
+            }
+
+            loc = new TileLocation(location.x, location.y + 1);
+            if (g.map.tileMap.containsKey(loc) && this.height > g.map.tileMap.get(loc).height) {
+                g.push();
+                PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y + TILE_SIZE), null);
+                PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+                PVector p3 = downBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y + TILE_SIZE), null);
+                PVector p4 = downBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+
+                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
+                if (p1.y < p3.y) {
+                    drawCustomQuad(p1, p2, p3, p4);
+                }
+                g.pop();
+            }
+
+            loc = new TileLocation(location.x - 1, location.y);
+            if (g.map.tileMap.containsKey(loc) && this.height > g.map.tileMap.get(loc).height) {
+                g.push();
+                PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+                PVector p2 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+                PVector p3 = leftBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+                PVector p4 = leftBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+
+                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
+                if (p1.x > p3.x) {
+                    drawCustomQuad(p1, p2, p3, p4);
+                }
+                g.pop();
+            }
+
+            loc = new TileLocation(location.x, location.y - 1);
+            if (g.map.tileMap.containsKey(loc) && this.height > g.map.tileMap.get(loc).height) {
+                g.push();
+                PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+                PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+                PVector p3 = upBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+                PVector p4 = upBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+
+                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
+                if (p1.y > p3.y) {
+                    drawCustomQuad(p1, p2, p3, p4);
+                }
+                g.pop();
+            }
+
+            heightColor(height);
+            g.stroke(0);
         } else {
-            g.fill(255);
-        }
-
-        if (g.map.tileMap.containsKey(new TileLocation(location.x + 1, location.y))) {
-            g.push();
-            PVector p1 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-            PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
-            PVector p3 = rightBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-            PVector p4 = rightBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
-
-            g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
-
-            if (p1.x < p3.x) {
-                g.beginShape();
-                g.vertex(p1.x, p1.y);
-                g.vertex(p2.x, p2.y);
-                g.vertex(p4.x, p4.y);
-                g.vertex(p3.x, p3.y);
-                g.endShape();
+            g.noFill();
+            g.noStroke();
+            if (state == TileState.BUILDING_EXIT) {
+                float outsideHeight = g.map.tileMap.get(this.location).height;
+                g.stroke(0);
+                heightColor(outsideHeight);
             }
-            g.pop();
         }
 
-        if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y + 1))) {
-            g.push();
-            PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y + TILE_SIZE), null);
-            PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
-            PVector p3 = downBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y + TILE_SIZE), null);
-            PVector p4 = downBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
-
-
-            if (p1.y < p3.y) {
-                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
-
-                g.beginShape();
-                g.vertex(p1.x, p1.y);
-                g.vertex(p2.x, p2.y);
-                g.vertex(p4.x, p4.y);
-                g.vertex(p3.x, p3.y);
-                g.endShape();
-            }
-            g.pop();
+        g.translate(g.player.pos.x, g.player.pos.y);
+        g.scale(PApplet.map(relativeHeight, -1000, 1000, 0.5f, 1.5f));
+        if (state == TileState.BUILDING_INSIDE || state == TileState.BUILDING_INSIDE_CHEST || state == TileState.BUILDING_INSIDE_CHEST_OPEN) {
+            g.image(woodenTile, worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, TILE_SIZE, TILE_SIZE);
+        } else {
+            g.rect(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, TILE_SIZE, TILE_SIZE);
         }
+        g.popMatrix();
+    }
 
-        if (g.map.tileMap.containsKey(new TileLocation(location.x - 1, location.y))) {
-            g.push();
-            PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-            PVector p2 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
-            PVector p3 = leftBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-            PVector p4 = leftBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+    private PMatrix3D getMatrix3D(float playerHeight, MapTile tile) {
+        PMatrix3D downBlockMatrix;
+        float downBlockRelHeight = tile.height < 0 ? -playerHeight : tile.height - playerHeight;
+        g.push();
+        g.translate(g.player.pos.x, g.player.pos.y);
+        g.scale(PApplet.map(downBlockRelHeight, -1000, 1000, 0.5f, 1.5f));
+        downBlockMatrix = (PMatrix3D) g.getMatrix();
+        g.pop();
+        return downBlockMatrix;
+    }
 
+    private void drawCustomQuad(PVector p1, PVector p2, PVector p3, PVector p4) {
+        g.beginShape();
+        g.vertex(p1.x, p1.y);
+        g.vertex(p2.x, p2.y);
+        g.vertex(p4.x, p4.y);
+        g.vertex(p3.x, p3.y);
+        g.endShape();
+    }
 
-            if (p1.x > p3.x) {
-                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
-
-                g.beginShape();
-                g.vertex(p1.x, p1.y);
-                g.vertex(p2.x, p2.y);
-                g.vertex(p4.x, p4.y);
-                g.vertex(p3.x, p3.y);
-                g.endShape();
-            }
-            g.pop();
-        }
-
-        if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y - 1))) {
-            g.push();
-            PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-            PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-            PVector p3 = upBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-            PVector p4 = upBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-
-
-            if (p1.y > p3.y) {
-                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
-
-                g.beginShape();
-                g.vertex(p1.x, p1.y);
-                g.vertex(p2.x, p2.y);
-                g.vertex(p4.x, p4.y);
-                g.vertex(p3.x, p3.y);
-                g.endShape();
-            }
-            g.pop();
-        }
-
+    private void heightColor(float height) {
         if (height < 0) {
             g.fill(0, 26 + (255 + height) / 2f, 255 + height);
         } else {
@@ -285,12 +331,6 @@ public class MapTile implements Drawable, Serializable {
                 g.fill(255);
             }
         }
-
-        g.stroke(0);
-        g.translate(g.player.pos.x, g.player.pos.y);
-        g.scale(PApplet.map(relativeHeight, -1000, 1000, 0.5f, 1.5f));
-        g.rect(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, TILE_SIZE, TILE_SIZE);
-        g.popMatrix();
     }
 
     public void drawObjects() {
@@ -305,11 +345,15 @@ public class MapTile implements Drawable, Serializable {
         g.scale(PApplet.map(relativeHeight, -1000, 1000, 0.5f, 1.5f));
 
         switch (state) {
-            case LOOT -> {
-
+            case LOOT, BUILDING_INSIDE_CHEST -> {
+                g.image(chest, worldLocation.x - g.player.pos.x + (TILE_SIZE - chest.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - chest.height) / 2f);
             }
-            case EVENT -> {
+            case LOOT_EMPTY, BUILDING_INSIDE_CHEST_OPEN -> {
+                g.image(chestOpen, worldLocation.x - g.player.pos.x + (TILE_SIZE - chestOpen.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - chestOpen.height) / 2f);
+            }
 
+            case EVENT -> {
+                g.image(event, worldLocation.x - g.player.pos.x + (TILE_SIZE - 12) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - 34) / 2f, 12, 34);
             }
 
             case TREE -> {
