@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class CardSlot implements Drawable {
     private static PVector size = new PVector(g.width * Configurations.CARD_WIDTH_PROPORTION, g.height * Configurations.CARD_HEIGHT_PROPORTION);
-    PImage bckground = g.loadImage("images/cards/background.png");
+    PImage bckground = g.loadImage("images/cards/SlotBackground.jpg");
     private PVector coord;
     private ArrayList<Property> requirements;
     private Card filledCard;

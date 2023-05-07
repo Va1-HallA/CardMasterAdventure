@@ -101,12 +101,12 @@ public class InventoryScreen implements Drawable {
         // display property info if applicable
         if (isDisplayingProperty) {
             g.fill(g.color(55));
-            g.rect(g.mouseX, g.mouseY, g.width * Configurations.CARD_PROP_INFO_WDITH_PROPORTION, g.height * Configurations.CARD_PROP_INFO_HEIGHT_PROPORTION);
+            g.rect(g.mouseX, g.mouseY, g.width * Configurations.CARD_PROP_INFO_WIDTH_PROPORTION, g.height * Configurations.CARD_PROP_INFO_HEIGHT_PROPORTION);
             g.fill(g.color(255));
             g.textFont(Configurations.PROPERTY_FONT);
             g.textAlign(PConstants.CENTER);
-            g.text(curDisplayingProperty.description, g.mouseX + g.width * Configurations.CARD_PROP_INFO_WDITH_PROPORTION / 2, g.mouseY + g.height * Configurations.CARD_PROP_INFO_HEIGHT_PROPORTION * 0.2f,
-                    g.width * Configurations.CARD_PROP_INFO_WDITH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION);
+            g.text(curDisplayingProperty.description, g.mouseX + g.width * Configurations.CARD_PROP_INFO_WIDTH_PROPORTION / 2, g.mouseY + g.height * Configurations.CARD_PROP_INFO_HEIGHT_PROPORTION * 0.2f,
+                    g.width * Configurations.CARD_PROP_INFO_WIDTH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION);
             isDisplayingProperty = false;
             curDisplayingProperty = null;
         }
@@ -118,7 +118,7 @@ public class InventoryScreen implements Drawable {
     public void update() {
 
         // update current card list
-        ArrayList<Card> cardList = player.getCards();
+        ArrayList<Card> cardList = new ArrayList<>(player.getCards());
         int startIndex = Configurations.BATCH_MAX_CARDS_NUM * curBatchNum;
         int endIndex = startIndex + Configurations.BATCH_MAX_CARDS_NUM;
         if (endIndex >= cardList.size()) endIndex = cardList.size();

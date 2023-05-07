@@ -12,7 +12,7 @@ import java.util.Map;
 public class Card implements Comparable, Drawable, Serializable {
 
     private static PVector size = new PVector(g.width * Configurations.CARD_WIDTH_PROPORTION, g.height * Configurations.CARD_HEIGHT_PROPORTION);
-    private static PImage background = g.loadImage("images/cards/background.png");
+    private static PImage background = g.loadImage("images/cards/Background.jpg");
     private String name;
     private PImage image;
     private HashMap<Property, Integer> propertyTable;
@@ -47,6 +47,10 @@ public class Card implements Comparable, Drawable, Serializable {
 
     public PVector getOriginalMouseCoord() {
         return originalMouseCoord;
+    }
+
+    public boolean hasProperty(Property property) {
+        return propertyTable.containsKey(property);
     }
 
     public boolean pair(CardSlot slot) {
@@ -136,22 +140,22 @@ public class Card implements Comparable, Drawable, Serializable {
     @Override
     public void draw() {
         background.resize((int) size.x, (int) size.y);
-        image.resize((int) (size.x * Configurations.CARD_IMAGE_X_PROPORTION), (int) (size.y * Configurations.CARD_IMAGE_X_PROPORTION)); // both use X proportion to keep constant size
+        image.resize((int) (size.x * Configurations.CARD_IMAGE_X_PROPORTION), (int) (size.y * Configurations.CARD_IMAGE_Y_PROPORTION));
 //        g.fill(g.color(0));
 //        g.rect(coord.x, coord.y, size.x, size.y);
         g.image(background, coord.x, coord.y);
-        g.fill(g.color(255));
+        g.fill(g.color(0));
         g.textFont(Configurations.CARD_FONT);
         g.textAlign(PConstants.CENTER);
         g.text(name, coord.x + size.x / 2, coord.y + size.y * Configurations.CARD_TITLE_HEIGHT_PROPORTION);
         g.image(image, coord.x + size.x * ((1 - Configurations.CARD_IMAGE_X_PROPORTION) / 2), coord.y + size.y * ((1 - Configurations.CARD_IMAGE_Y_PROPORTION) / 2));
 
         // draw property icons
-        int iconSizeX = (int) (size.x * Configurations.PROPERTY_ICON_SIZE_PROPORTION);
-        int iconSizeY = (int) (size.y * Configurations.PROPERTY_ICON_SIZE_PROPORTION);
+        int iconSizeX = (int) (size.x * Configurations.PROPERTY_ICON_WIDTH_PROPORTION);
+        int iconSizeY = (int) (size.y * Configurations.PROPERTY_ICON_HEIGHT_PROPORTION);
         PVector curPropertyCoord = new PVector(
-                coord.x + size.x * 0.88f - iconSizeX * (1 + Configurations.PROPERTY_VALUE_INTERVAL_PROPORTION) ,
-                coord.y + size.y * 0.92f - iconSizeY
+                coord.x + size.x * 0.82f - iconSizeX * (1 + Configurations.PROPERTY_VALUE_INTERVAL_PROPORTION) ,
+                coord.y + size.y * 0.89f - iconSizeY
         );
         for (Map.Entry<Property, Integer> entry : propertyTable.entrySet()) {
             PImage icon = entry.getKey().icon;
@@ -166,7 +170,7 @@ public class Card implements Comparable, Drawable, Serializable {
                             new PVector(curPropertyCoord.x, curPropertyCoord.y),
                             new PVector(curPropertyCoord.x + iconSizeX * (1 + Configurations.PROPERTY_VALUE_INTERVAL_PROPORTION), curPropertyCoord.y + iconSizeY)
                     });
-            curPropertyCoord.add(new PVector(-1 * (iconSizeX * (1 + Configurations.PROPERTY_VALUE_INTERVAL_PROPORTION)), 0));
+            curPropertyCoord.add(new PVector(-1.2f * (iconSizeX * (1 + Configurations.PROPERTY_VALUE_INTERVAL_PROPORTION)), 0));
         }
     }
 

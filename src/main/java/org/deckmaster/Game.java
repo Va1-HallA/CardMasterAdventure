@@ -4,9 +4,7 @@ import org.deckmaster.mapgen.Map;
 import org.deckmaster.mapgen.MapTile;
 import org.deckmaster.mapgen.TileLocation;
 import processing.core.PApplet;
-import processing.core.PMatrix2D;
 import processing.core.PVector;
-import processing.opengl.PShader;
 
 import java.io.*;
 import java.util.*;
@@ -36,7 +34,7 @@ public class Game extends PApplet {
     @Override
     public void settings() {
         size(displayWidth, displayHeight, P2D);
-        fullScreen();
+//        fullScreen();
     }
 
     @Override
@@ -55,17 +53,16 @@ public class Game extends PApplet {
         screen = new InventoryScreen(player);
 
         for (int i = 0; i < 10; i++) {
-            Card c = new Card("a", "images/cards/Merlin.png", new HashMap<>());
-            c.addProperty(Property.LUNAR, 1);
+//            Card c = new Card("a", "images/cards/Merlin.png", new HashMap<>());
+            Card c = contentLoader.loadCard("Ritual of Towers");
             player.addCard(c);
         }
 
-        slot = new CardSlot(new ArrayList<>(List.of(Property.LUNAR)));
-        slot.setCoord(new PVector((float) g.width * 0.5f, (float) g.height * 0.3f));
+//        slot = new CardSlot(new ArrayList<>(List.of(Property.LUNAR)));
+//        slot.setCoord(new PVector((float) g.width * 0.5f, (float) g.height * 0.3f));
         screen.show();
 
-        evtscreen = new EventScreen(new Event("title", "description", "images/cards/background.png", 1, new HashMap<>(), new HashMap<>(), new ArrayList<>(), "", "", 1), player, screen);
-        evtscreen.show();
+        evtscreen = null;
     }
 
     @Override
@@ -112,6 +109,7 @@ public class Game extends PApplet {
 
         switch (state) {
             case MAIN_MENU -> {
+                System.out.println("main menu");
             }
             case WORLD -> {
                 if (!inBuilding) {
@@ -145,7 +143,7 @@ public class Game extends PApplet {
                 }
                 case WORLD -> {
                     player.update();
-                    slot.update();
+//                    slot.update();
                     screen.update();
                 }
                 case EVENT -> {
@@ -195,7 +193,7 @@ public class Game extends PApplet {
     public void keyReleased() {
         Input.checkKeyReleased();
         if (key == 't') {
-            Event event = contentLoader.loadEvent("xxx"); // TODO: PROACTIVE EVENT
+            Event event = contentLoader.loadEvent("Trivial Matters"); // TODO: PROACTIVE EVENT
             evtscreen = new EventScreen(event, player, screen);
             evtscreen.show();
             state = GameState.EVENT;
@@ -267,7 +265,9 @@ public class Game extends PApplet {
     private void initEvents() {
         for (String name : contentLoader.nameFileIndexTable.keySet()) {
             Event e = contentLoader.loadEvent(name);
-            if (e != null && e.getPreviousEventName().equals("")) {
+
+            // ignoring proactive event, add others to list
+            if (e != null && e.getPreviousEventName().equals("") && !e.getTitle().equals("Trivial Matters")) {
                 trackedEvents.add(e.getTitle());
             }
         }

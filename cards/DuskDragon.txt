@@ -1,0 +1,3 @@
+name:Dusk Dragon
+property:LEGEND_DUSK_DRAGON=1
+imagePath:images/cards/DuskDragon.jpg

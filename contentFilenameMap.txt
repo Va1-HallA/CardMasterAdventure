@@ -1,1 +1,6 @@
-Brass Alchemy Shop:events/BrassAlchemyShop.txt
+// events
+Trivial Matters:events/TrivialMatters.txt
+
+// cards
+Dusk Dragon:cards/DuskDragon.txt
+Ritual of Towers:cards/RitualOfTowers.txt

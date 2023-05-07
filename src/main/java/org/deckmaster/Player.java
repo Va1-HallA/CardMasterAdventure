@@ -21,6 +21,8 @@ public class Player implements Drawable {
     private PImage down;
     private PImage left;
 
+    boolean hasWon;
+
     public Player (PVector pos, float size) {
         this.pos = pos;
         this.size = size;
@@ -29,6 +31,7 @@ public class Player implements Drawable {
         down = playerImage.get(32, 64, 32, 32);
         left = playerImage.get(32, 0, 32, 32);
         cards = new ArrayList<>();
+        hasWon = false;
     }
 
     @Override
@@ -69,6 +72,7 @@ public class Player implements Drawable {
 
             if (tile.state == TileState.EVENT) {
                 tile.state = TileState.EMPTY;
+                //TODO: randomly select an active event in the list
                 g.state = GameState.EVENT;
             }
 

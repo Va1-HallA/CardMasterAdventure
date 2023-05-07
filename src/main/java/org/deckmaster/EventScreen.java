@@ -1,11 +1,13 @@
 package org.deckmaster;
 
+import processing.core.PImage;
 import processing.core.PVector;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EventScreen implements Drawable{
+    private static PImage background = g.loadImage("images/events/EventScreenBackground.jpg");
     private List<CardSlot> slots;
     private Event event;
     private Player player;
@@ -77,8 +79,10 @@ public class EventScreen implements Drawable{
         g.image(event.getImage(), curPosition.x, curPosition.y);
 
         curPosition.add(new PVector(g.width * Configurations.EVT_IMG_WIDTH_PROPORTION, 0));
-        g.fill(50);
-        g.rect(curPosition.x, curPosition.y, g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION, g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION);
+        background.resize((int) (g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION), (int) (g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION));
+        g.image(background, curPosition.x, curPosition.y);
+//        g.fill(50);
+//        g.rect(curPosition.x, curPosition.y, g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION, g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION);
 
         g.fill(0);
         g.textFont(Configurations.EVT_TITLE_FONT);
@@ -158,6 +162,9 @@ public class EventScreen implements Drawable{
             if (cardSlot.isFilled()) {
                 Card card = cardSlot.getFilledCard();
                 input.add(card);
+
+                // delete appropriate cards after push the botton
+                if (!card.hasProperty(Property.ETERNAL)) player.removeCard(card);
             }
         }
 
@@ -170,6 +177,7 @@ public class EventScreen implements Drawable{
         this.vanish();
         this.state = State.EVENT;
         confirmBtn.switchFunction(this::handleCardsInput);
-        g.state = GameState.WORLD;
+        if (player.hasWon) g.state = GameState.MAIN_MENU;
+        else g.state = GameState.WORLD;
     }
 }

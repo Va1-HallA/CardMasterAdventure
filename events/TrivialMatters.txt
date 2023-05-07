@@ -1,0 +1,18 @@
+title:Trivial Matters
+description:Contemplation, a brief rest, or communication with an individual.
+tier:1
+allowedCardNum:3
+imagePath:images/events/TrivialMatters.jpg
+
+// tower ritual - get dusk dragon
+reward:RITUAL_TOWERS=1,LUNAR=10,MIRROR=10->Dusk Dragon
+resultDes:RITUAL_TOWERS=1,LUNAR=10,MIRROR=10->The moonlight recedes like water, and dusk follows closely. The dragon landed on the top of the tower, golden eyes gazing down upon the earth.
+
+// dusk dragon - final boss fight
+result:LEGEND_DUSK_DRAGON=1,SWORD=10->FINAL_BOSS_DEFEATED=1
+result:LEGEND_DUSK_DRAGON=1,SERPENT=10,SWORD=1->FINAL_BOSS_DEFEATED=1
+resultDes:LEGEND_DUSK_DRAGON=1,SWORD=10->Dragon roars, blood spills, and all falls into dusk. The tall towers collapse, the dragons plummet, the sky burns to ash. The roots of the old world peel away, and the new world sprouts in the dead soil.
+resultDes:LEGEND_DUSK_DRAGON=1,SERPENT=10,SWORD=1->Dragon roars, blood spills, and all falls into dusk. The tall towers collapse, the dragons plummet, the sky burns to ash. The roots of the old world peel away, and the new world sprouts in the dead soil.
+
+// default
+resultDes:->Nothing happened, and the dawn remained clear and transparent.
