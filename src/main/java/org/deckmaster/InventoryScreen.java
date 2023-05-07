@@ -1,5 +1,6 @@
 package org.deckmaster;
 
+import processing.core.PConstants;
 import processing.core.PVector;
 
 import java.util.*;
@@ -11,10 +12,16 @@ public class InventoryScreen implements Drawable {
     Button leftArrow;
     Button rightArrow;
 
+    boolean isDisplayingProperty;
+    Property curDisplayingProperty;
+
     public InventoryScreen(Player player) {
         this.player = player;
         curCardList = new ArrayList<>();
         curBatchNum = 0;
+
+        isDisplayingProperty = false;
+        curDisplayingProperty = null;
         // build a map for card highlighting
 
 //        // convert to list, sort and convert back to hashmap
@@ -90,6 +97,20 @@ public class InventoryScreen implements Drawable {
 
         leftArrow.draw();
         rightArrow.draw();
+
+        // display property info if applicable
+        if (isDisplayingProperty) {
+            g.fill(g.color(55));
+            g.rect(g.mouseX, g.mouseY, g.width * Configurations.CARD_PROP_INFO_WDITH_PROPORTION, g.height * Configurations.CARD_PROP_INFO_HEIGHT_PROPORTION);
+            g.fill(g.color(255));
+            g.textFont(Configurations.PROPERTY_FONT);
+            g.textAlign(PConstants.CENTER);
+            g.text(curDisplayingProperty.description, g.mouseX + g.width * Configurations.CARD_PROP_INFO_WDITH_PROPORTION / 2, g.mouseY + g.height * Configurations.CARD_PROP_INFO_HEIGHT_PROPORTION * 0.2f,
+                    g.width * Configurations.CARD_PROP_INFO_WDITH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION);
+            isDisplayingProperty = false;
+            curDisplayingProperty = null;
+        }
+
         g.popMatrix();
     }
 
@@ -105,5 +126,6 @@ public class InventoryScreen implements Drawable {
 
         // update each card
         for (Card card : curCardList) if (!card.isPaired()) card.update();
+
     }
 }

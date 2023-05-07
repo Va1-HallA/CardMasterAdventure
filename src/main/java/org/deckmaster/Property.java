@@ -3,7 +3,7 @@ package org.deckmaster;
 import processing.core.PImage;
 
 public enum Property {
-    LUNAR("images/properties/moon-icon-8.png", "LUNAR");
+    LUNAR("images/properties/moon-icon-8.png", "Lunar");
     PImage icon;
     String description;
 

@@ -36,7 +36,7 @@ public class Game extends PApplet {
     @Override
     public void settings() {
         size(displayWidth, displayHeight, P2D);
-//        fullScreen();
+        fullScreen();
     }
 
     @Override

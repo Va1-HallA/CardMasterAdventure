@@ -23,13 +23,15 @@ public class Configurations {
     public static float CARD_IMAGE_Y_PROPORTION = 0.84f;
 
     public static float CARD_TITLE_HEIGHT_PROPORTION = 0.055f;
-    public static float CARD_PROP_INFO_SIZE_PROPORTION = 0.12f;
+    public static float CARD_PROP_INFO_WDITH_PROPORTION = 0.12f;
+    public static float CARD_PROP_INFO_HEIGHT_PROPORTION = 0.04f;
 
     /**
      * Property settings
      */
     public static float PROPERTY_ICON_SIZE_PROPORTION = 0.06f;
     public static float PROPERTY_VALUE_INTERVAL_PROPORTION = 0.65f;
+    public static PFont PROPERTY_FONT = Game.game.createFont("Bell MT", Game.game.width * Configurations.CARD_FONT_SIZE_PROPORTION * 0.6f);
 
     /**
      * Inventory settings
