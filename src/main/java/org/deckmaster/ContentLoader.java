@@ -34,6 +34,7 @@ public class ContentLoader {
 
     public Card loadCard(String cardName) {
         String fileName = nameFileIndexTable.get(cardName);
+        if (!fileName.startsWith("cards")) return null;
         try {
             Scanner sc = new Scanner(new File(fileName));
 
@@ -71,6 +72,7 @@ public class ContentLoader {
 
     public Event loadEvent(String eventName) {
         String fileName = nameFileIndexTable.get(eventName);
+        if (!fileName.startsWith("events")) return null;
         try {
             Scanner sc = new Scanner(new File(fileName));
 
@@ -79,6 +81,7 @@ public class ContentLoader {
             String description = "";
             String imagePath = "";
             int tier = 0;
+            boolean excluded = false;
             int allowedCardNum = 0;
             String previousEventName = "";
             String nextEventName = "";
@@ -177,6 +180,9 @@ public class ContentLoader {
                     case "tier":
                         tier = Integer.parseInt(attribute[1]);
                         break;
+                    case "excluded":
+                        excluded = Boolean.parseBoolean(attribute[1]);
+                        break;
                     case "allowedCardNum":
                         allowedCardNum = Integer.parseInt(attribute[1]);
                         break;
@@ -189,7 +195,7 @@ public class ContentLoader {
                 }
             }
 
-            return new Event(title, description, imagePath, tier, resultTable, resultDes, rewards, slotRequirements, previousEventName, nextEventName, allowedCardNum);
+            return new Event(title, description, imagePath, tier, excluded, resultTable, resultDes, rewards, slotRequirements, previousEventName, nextEventName, allowedCardNum);
 
         } catch (IOException e) {
         }

@@ -1,6 +1,12 @@
 // events
 Trivial Matters:events/TrivialMatters.txt
+Sudden Death:events/SuddenDeath.txt
 
 // cards
+Drainage:cards/Drainage.txt
 Dusk Dragon:cards/DuskDragon.txt
+Fitness:cards/Fitness.txt
+Gold Coin:cards/GoldCoin.txt
+Mana:cards/Mana.txt
 Ritual of Towers:cards/RitualOfTowers.txt
+Withering:cards/Withering.txt

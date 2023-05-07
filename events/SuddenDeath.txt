@@ -1,0 +1,10 @@
+title:Sudden Death
+tier:1
+excluded:true
+allowedCardNum:0
+imagePath:images/events/SuddenDeath.jpg
+
+// automatically goes to result page
+
+result:->GAME_END=1
+resultDes:->Dizziness. The world transforms into black and white, with twisted threads. Blood leaves you uncontrollably, and everything fades into nothingness.

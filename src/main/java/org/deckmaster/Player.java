@@ -1,6 +1,5 @@
 package org.deckmaster;
 
-import org.deckmaster.mapgen.Map;
 import org.deckmaster.mapgen.MapTile;
 import org.deckmaster.mapgen.TileLocation;
 import org.deckmaster.mapgen.TileState;
@@ -21,8 +20,6 @@ public class Player implements Drawable {
     private PImage down;
     private PImage left;
 
-    boolean hasWon;
-
     public Player (PVector pos, float size) {
         this.pos = pos;
         this.size = size;
@@ -31,7 +28,6 @@ public class Player implements Drawable {
         down = playerImage.get(32, 64, 32, 32);
         left = playerImage.get(32, 0, 32, 32);
         cards = new ArrayList<>();
-        hasWon = false;
     }
 
     @Override
@@ -62,6 +58,7 @@ public class Player implements Drawable {
 
     @Override
     public void update() {
+        checkDeath();
         handleMovement();
         TileLocation playerLocation = TileLocation.worldToTileCoords(pos);
         if (!g.inBuilding) {
@@ -155,6 +152,20 @@ public class Player implements Drawable {
 
     public void removeCard(Card card) {
         cards.remove(card);
+    }
+
+    private void checkDeath() {
+        // check current fitness when in world state, if no fitness, trigger special event and end game
+        if (g.state == GameState.WORLD) {
+            boolean death = true;
+            for (Card c : cards) {
+                if (c.getName().equals("Fitness")) {
+                    death = false;
+                    break;
+                }
+            }
+            if (death) g.triggerSpecialEvents("Sudden Death");
+        }
     }
 }
 

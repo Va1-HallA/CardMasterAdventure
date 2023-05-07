@@ -32,7 +32,7 @@ public class Configurations {
     public static float PROPERTY_ICON_WIDTH_PROPORTION = 0.064f;
     public static float PROPERTY_ICON_HEIGHT_PROPORTION = 0.044f;
     public static float PROPERTY_VALUE_INTERVAL_PROPORTION = 0.4f;
-    public static PFont PROPERTY_FONT = Game.game.createFont("Bell MT", Game.game.width * Configurations.CARD_FONT_SIZE_PROPORTION * 0.7f);
+    public static PFont PROPERTY_FONT = Game.game.createFont("Bell MT", Game.game.width * Configurations.CARD_FONT_SIZE_PROPORTION * 0.75f);
 
     /**
      * Inventory settings
@@ -48,6 +48,7 @@ public class Configurations {
     public static float EVT_TITLE_Y_PROPORTION = 0.07f;
     public static float EVT_DES_Y_PROPORTION = 0.07f;
     public static float EVT_TEXT_WIDTH_PROPORTION = 0.9f;
+    public static float EVT_TEXT_HEIGHT_PROPORTION = 0.4f;
     public static float EVT_IMG_WIDTH_PROPORTION = 0.125f;
     public static float EVT_IMG_HEIGHT_PROPORTION = 0.35f;
     public static float EVT_Y_PROPORTION = 0.07f;

@@ -1,0 +1,5 @@
+name:Withering
+property:ETERNAL=1
+property:DEATH=1
+property:WATER=1
+imagePath:images/cards/Withering.jpg

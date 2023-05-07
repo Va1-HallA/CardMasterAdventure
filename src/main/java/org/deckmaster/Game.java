@@ -31,6 +31,8 @@ public class Game extends PApplet {
 
     ArrayList<String> trackedEvents;
 
+    boolean gameEnd;
+
     @Override
     public void settings() {
         size(displayWidth, displayHeight, P2D);
@@ -57,12 +59,16 @@ public class Game extends PApplet {
             Card c = contentLoader.loadCard("Ritual of Towers");
             player.addCard(c);
         }
+        Card fitness = contentLoader.loadCard("Fitness");
+        player.addCard(fitness);
 
 //        slot = new CardSlot(new ArrayList<>(List.of(Property.LUNAR)));
 //        slot.setCoord(new PVector((float) g.width * 0.5f, (float) g.height * 0.3f));
         screen.show();
 
         evtscreen = null;
+
+        gameEnd = false;
     }
 
     @Override
@@ -262,13 +268,22 @@ public class Game extends PApplet {
         }
     }
 
+    public void triggerSpecialEvents(String title) {
+        Event suddenDeath = contentLoader.loadEvent(title);
+        evtscreen = new EventScreen(suddenDeath, player, screen);
+        evtscreen.show();
+        state = GameState.EVENT;
+        evtscreen.handleCardsInput();
+    }
+
     private void initEvents() {
         for (String name : contentLoader.nameFileIndexTable.keySet()) {
             Event e = contentLoader.loadEvent(name);
 
             // ignoring proactive event, add others to list
-            if (e != null && e.getPreviousEventName().equals("") && !e.getTitle().equals("Trivial Matters")) {
+            if (e != null && e.getPreviousEventName().equals("") && !e.excluded) {
                 trackedEvents.add(e.getTitle());
+                System.out.printf("tracked %s.%n", e.getTitle());
             }
         }
     }

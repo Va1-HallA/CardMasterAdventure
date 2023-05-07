@@ -28,7 +28,9 @@ public class Event implements Drawable, Serializable {
     private String curDes;
     private ArrayList<Card> curRewardCards;
 
-    public Event(String title, String description, String imagePath, int tier, HashMap<HashMap<Property, Integer>, HashMap<Result, Integer>> resultTable, HashMap<HashMap<Property, Integer>, String> resultDes, HashMap<HashMap<Property, Integer>, ArrayList<String>> rewards, ArrayList<ArrayList<Property>> slotsRequirements, String previousEventName, String nextEventName, int allowedCardNum) {
+    boolean excluded;
+
+    public Event(String title, String description, String imagePath, int tier, boolean excluded, HashMap<HashMap<Property, Integer>, HashMap<Result, Integer>> resultTable, HashMap<HashMap<Property, Integer>, String> resultDes, HashMap<HashMap<Property, Integer>, ArrayList<String>> rewards, ArrayList<ArrayList<Property>> slotsRequirements, String previousEventName, String nextEventName, int allowedCardNum) {
         this.title = title;
         this.description = description;
         this.tier = tier;
@@ -45,6 +47,8 @@ public class Event implements Drawable, Serializable {
 
         curDes = "";
         curRewardCards = new ArrayList<>();
+
+        this.excluded = excluded;
     }
 
     public String getTitle() {
