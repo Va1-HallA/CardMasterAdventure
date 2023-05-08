@@ -124,7 +124,7 @@ public class Event implements Drawable, Serializable {
 
         boolean fail = true;
         for (HashMap<Property, Integer> conditions : resultTable.keySet()) {
-            if (conditions.keySet().size() == 0) break; // ignore failure condition
+            if (conditions.keySet().size() == 0) continue; // ignore failure condition
             boolean fulfill = true;
             for (Property p : conditions.keySet()) {
                 int targetValue = conditions.get(p);

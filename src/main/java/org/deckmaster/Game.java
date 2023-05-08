@@ -33,7 +33,8 @@ public class Game extends PApplet {
     private EscapeMenu escapeMenu;
     private MainMenu mainMenu;
 
-    ContentLoader contentLoader;
+    public ContentLoader contentLoader;
+    Random random = new Random();
 
     ArrayList<String> trackedEvents;
     ArrayList<String> nonUniqueCards;
@@ -353,6 +354,17 @@ public class Game extends PApplet {
         }
     }
 
+    public void givePlayerLoot() {
+        String cardReceived = nonUniqueCards.get(random.nextInt(nonUniqueCards.size()));
+        player.addCard(contentLoader.loadCard(cardReceived));
+    }
+
+    public void openNewEvent() {
+        String eventName = trackedEvents.get(random.nextInt(trackedEvents.size()));
+        evtscreen = new EventScreen(contentLoader.loadEvent(eventName), player, screen);
+        evtscreen.show();
+    }
+
     public void triggerSpecialEvents(String title) {
         Event suddenDeath = contentLoader.loadEvent(title);
         evtscreen = new EventScreen(suddenDeath, player, screen);
@@ -385,7 +397,6 @@ public class Game extends PApplet {
                     nonUniqueCards.add(c.getName());
                 }
             }
-
         }
     }
 }

@@ -6,6 +6,7 @@ import processing.core.PVector;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 import static org.deckmaster.PlayerAssets.*;
 
@@ -14,6 +15,7 @@ public class Player implements Drawable {
     public PVector pos;
     private final float MOVE_SPEED = 350.0f;
     private MovementDir dir = MovementDir.UP;
+    private Random random = new Random();
 
     public Player (PVector pos) {
         this.pos = pos;
@@ -55,11 +57,13 @@ public class Player implements Drawable {
             MapTile tile = g.map.tileMap.get(playerLocation);
             if (tile.state == TileState.LOOT) {
                 tile.state = TileState.LOOT_EMPTY;
+                g.givePlayerLoot();
             }
 
             if (tile.state == TileState.EVENT) {
                 tile.state = TileState.EMPTY;
                 //TODO: randomly select an active event in the list
+                g.openNewEvent();
                 g.state = GameState.EVENT;
             }
 
@@ -71,6 +75,7 @@ public class Player implements Drawable {
             BuildingTile tile = g.buildingToDraw.tiles.get(playerLocation);
             if (tile.state == TileState.BUILDING_INSIDE_CHEST) {
                 tile.state = TileState.BUILDING_INSIDE_CHEST_OPEN;
+                g.givePlayerLoot();
             }
             if (tile.state == TileState.BUILDING_EXIT) {
                 g.inBuilding = false;
