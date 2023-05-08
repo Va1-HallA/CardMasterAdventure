@@ -9,8 +9,8 @@ result:FUND=1->COMMODITY=1
 resultDes:FUND=1->He took out a box, "Thank you for your patronage. I look forward to meeting you again."
 
 // 5 fund
-result:FUND=1->COMMODITY=2
-resultDes:FUND=1->He took out a box, "Thank you for your patronage. I look forward to meeting you again."
+result:FUND=5->COMMODITY=2
+resultDes:FUND=5->He took out a box, "Thank you for your patronage. I look forward to meeting you again."
 
 // battle
 reward:SWORD=4->Silver Badge

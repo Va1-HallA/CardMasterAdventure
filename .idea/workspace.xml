@@ -5,33 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f309a8a-c691-41b5-9e51-14f05ab0b6bf" name="Changes" comment="updated multiple success condition events &amp; proactive events.">
-      <change afterPath="$PROJECT_DIR$/cards/OldAggron.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cards/OrgeHeart.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cards/SilverBadge.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/events/AlchemistsHut.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/events/OldOrge.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/cards/OldAggron.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/cards/OrgeHeart.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/cards/SilverBadge.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/events/AlchemistsHut.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/events/OldOrge.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cards/GoodBerry.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cards/Drainage.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cards/Drainage.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cards/Fitness.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cards/Fitness.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cards/Mana.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cards/Mana.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cards/RitualOfTowers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cards/RitualOfTowers.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cards/Withering.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cards/Withering.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contentFilenameMap.txt" beforeDir="false" afterPath="$PROJECT_DIR$/contentFilenameMap.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/TrivialMatters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/events/TrivialMatters.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/events/BrassAlchemyShop.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/properties/REPUTATION_CITY_OF_TOWERS.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/properties/CONNECTION_CITY_OF_TOWERS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/properties/REPUTATION_DAWN_CHURCH.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/properties/CONNECTION_DAWN_CHURCH.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/properties/REPUTATION_SWAMP_GUILD.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/properties/CONNECTION_SWAMP_GUILD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Configurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Configurations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/InventoryScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/InventoryScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Property.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/OldAggron.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cards/OldAggron.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/events/AlchemistsHut.txt" beforeDir="false" afterPath="$PROJECT_DIR$/events/AlchemistsHut.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,27 +69,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "C:/Users/cheng/IdeaProjects/CS4303_P4/images/events",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "http.proxy",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/cheng/IdeaProjects/CS4303_P4/images/events&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\images\events" />
