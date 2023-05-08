@@ -7,6 +7,7 @@ public class Input {
     public static boolean aPressed = false;
     public static boolean dPressed = false;
     public static boolean escapePressed = false;
+    public static boolean debugToggle = false;
 
     public static void checkKeyPressed() {
         if (g.key == 'w') wPressed = true;
@@ -24,5 +25,6 @@ public class Input {
         if (g.key == 'a') aPressed = false;
         if (g.key == 's') sPressed = false;
         if (g.key == 'd') dPressed = false;
+        if (g.key == 'l') debugToggle = !debugToggle;
     }
 }

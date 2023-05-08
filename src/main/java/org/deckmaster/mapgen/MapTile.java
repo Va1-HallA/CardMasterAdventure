@@ -369,6 +369,28 @@ public class MapTile implements Drawable, Serializable {
         g.popMatrix();
     }
 
+    public void drawDebug() {
+        g.pushMatrix();
+        float playerHeight = g.map.tileMap.get(TileLocation.worldToTileCoords(g.player.pos)).height;
+        playerHeight = PApplet.lerp(prevPlayerHeight, playerHeight, 0.05f);
+        prevPlayerHeight = playerHeight;
+        float relativeHeight = height < 0 ? -playerHeight : height - playerHeight;
+
+        PVector worldLocation = TileLocation.tileToWorldCoords(location);
+        g.translate(g.player.pos.x, g.player.pos.y);
+        g.scale(PApplet.map(relativeHeight, -1000, 1000, 0.5f, 1.5f));
+
+        if (!state.walkable) {
+            g.fill(255, 0, 0, 100);
+            g.rect(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, TILE_SIZE, TILE_SIZE);
+        } else if (height < 0) {
+            g.fill(255, 0,0, 100);
+            g.rect(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, TILE_SIZE, TILE_SIZE);
+        }
+
+        g.popMatrix();
+    }
+
     @Override
     public void update() {
 
