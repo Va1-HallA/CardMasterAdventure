@@ -1,0 +1,4 @@
+name:Orge Heart
+property:HEART=4
+property:EARTH=4
+imagePath:images/cards/OrgeHeart.jpg

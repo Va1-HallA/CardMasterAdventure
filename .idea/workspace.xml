@@ -5,44 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f309a8a-c691-41b5-9e51-14f05ab0b6bf" name="Changes" comment="updated multiple success condition events &amp; proactive events.">
-      <change afterPath="$PROJECT_DIR$/cards/Drainage.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cards/Fitness.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cards/GoldCoin.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cards/Mana.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cards/Withering.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/events/SuddenDeath.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/cards/Drainage.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/cards/Fitness.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/cards/GoldCoin.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/cards/Mana.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/cards/Withering.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/events/SuddenDeath.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/AIR.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/DEATH.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/EARTH.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/ETERNAL.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/FLAME.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/FUND.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/HEART.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/LEGEND_PALADIN.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/MIRROR.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/REPUTATION_CITY_OF_TOWERS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/REPUTATION_DAWN_CHURCH.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/REPUTATION_SWAMP_GUILD.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/SERPENT.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/SWORD.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/properties/WATER.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cards/OldAggron.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cards/OrgeHeart.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cards/SilverBadge.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/events/AlchemistsHut.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/events/OldOrge.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/cards/OldAggron.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/cards/OrgeHeart.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/cards/SilverBadge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/events/AlchemistsHut.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/events/OldOrge.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/Drainage.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cards/Drainage.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/Fitness.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cards/Fitness.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/Mana.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cards/Mana.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/RitualOfTowers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cards/RitualOfTowers.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cards/Withering.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cards/Withering.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contentFilenameMap.txt" beforeDir="false" afterPath="$PROJECT_DIR$/contentFilenameMap.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/events/TrivialMatters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/events/TrivialMatters.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/properties/moon-icon-8.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/properties/LUNAR.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/events/BrassAlchemyShop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/properties/REPUTATION_CITY_OF_TOWERS.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/properties/CONNECTION_CITY_OF_TOWERS.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/properties/REPUTATION_DAWN_CHURCH.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/properties/CONNECTION_DAWN_CHURCH.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/properties/REPUTATION_SWAMP_GUILD.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/properties/CONNECTION_SWAMP_GUILD.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Configurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Configurations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/ContentLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/ContentLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/EventScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/EventScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/InventoryScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/InventoryScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Property.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Result.java" afterDir="false" />
     </list>
@@ -113,7 +100,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private",
-    "last_opened_file_path": "C:/Users/cheng/IdeaProjects/CS4303_P4/images/properties",
+    "last_opened_file_path": "C:/Users/cheng/IdeaProjects/CS4303_P4/images/events",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -128,13 +115,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\images\properties" />
       <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\images\events" />
       <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\images\cards" />
+      <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\cards" />
+      <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\images\properties" />
       <recent name="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/map" />
-      <recent name="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/images/player" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\images\events" />
+      <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\images\cards" />
       <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\events" />
       <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\images\properties" />
     </key>
@@ -213,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683479924332</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="updated multiple success condition events &amp; proactive events.">
+      <created>1683498457582</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683498457582</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

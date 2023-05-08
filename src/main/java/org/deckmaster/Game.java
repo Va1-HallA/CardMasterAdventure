@@ -30,13 +30,14 @@ public class Game extends PApplet {
     ContentLoader contentLoader;
 
     ArrayList<String> trackedEvents;
+    ArrayList<String> nonUniqueCards;
 
     boolean gameEnd;
 
     @Override
     public void settings() {
         size(displayWidth, displayHeight, P2D);
-//        fullScreen();
+        fullScreen();
     }
 
     @Override
@@ -50,7 +51,8 @@ public class Game extends PApplet {
 
         contentLoader = new ContentLoader();
         trackedEvents = new ArrayList<>();
-        initEvents();
+        nonUniqueCards = new ArrayList<>();
+        initEventsAndCards();
 
         screen = new InventoryScreen(player);
 
@@ -276,15 +278,31 @@ public class Game extends PApplet {
         evtscreen.handleCardsInput();
     }
 
-    private void initEvents() {
+    private void initEventsAndCards() {
         for (String name : contentLoader.nameFileIndexTable.keySet()) {
             Event e = contentLoader.loadEvent(name);
 
             // ignoring proactive event, add others to list
             if (e != null && e.getPreviousEventName().equals("") && !e.excluded) {
                 trackedEvents.add(e.getTitle());
-                System.out.printf("tracked %s.%n", e.getTitle());
             }
+
+            Card c = contentLoader.loadCard(name);
+
+            // ignoring unique (non-legend) cards, add others to list
+            if (c != null) {
+                boolean unique = false;
+                for (Property p : Property.values()) {
+                    if (p.name().startsWith("LEGEND") && c.hasProperty(p)) {
+                        unique = true;
+                        break;
+                    }
+                }
+                if (!unique) {
+                    nonUniqueCards.add(c.getName());
+                }
+            }
+
         }
     }
 }

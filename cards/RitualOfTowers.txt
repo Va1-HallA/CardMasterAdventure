@@ -1,4 +1,4 @@
 name:Ritual of Towers
 property:RITUAL_TOWERS=1
-property:LUNAR=1
+property:LUNAR=4
 imagePath:images/cards/RitualOfTowers.jpg

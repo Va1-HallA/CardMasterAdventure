@@ -24,7 +24,7 @@ public class Configurations {
 
     public static float CARD_TITLE_HEIGHT_PROPORTION = 0.11f;
     public static float CARD_PROP_INFO_WIDTH_PROPORTION = 0.12f;
-    public static float CARD_PROP_INFO_HEIGHT_PROPORTION = 0.04f;
+    public static float CARD_PROP_INFO_HEIGHT_PROPORTION = 0.05f;
 
     /**
      * Property settings

@@ -1,0 +1,5 @@
+name:Silver Badge
+property:LUNAR=2
+property:AIR=2
+property:FUND=2
+imagePath:images/cards/SilverBadge.png

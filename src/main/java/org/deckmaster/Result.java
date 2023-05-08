@@ -1,9 +1,11 @@
 package org.deckmaster;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public enum Result {
     CURSE,
+    COMMODITY,
     CONSUME_FUNDS,
     DRAIN,
     GAME_END,
@@ -24,6 +26,9 @@ public enum Result {
             case CURSE:
                 curse(value);
                 break;
+            case COMMODITY:
+                commodity(value);
+                break;
             case CONSUME_FUNDS:
                 consumeFunds(value);
                 break;
@@ -42,6 +47,21 @@ public enum Result {
             case WITHER:
                 wither(value);
                 break;
+        }
+    }
+
+    private void commodity(int value) {
+        // get random non-unique card
+        ArrayList<Card> addedCard = new ArrayList<>();
+
+        while (addedCard.size() < value) {
+            int randomIdx = ThreadLocalRandom.current().nextInt(0, g.nonUniqueCards.size());
+            Card c = g.contentLoader.loadCard(g.nonUniqueCards.get(randomIdx));
+            addedCard.add(c);
+        }
+
+        for (Card c : addedCard) {
+            player.addCard(c);
         }
     }
 

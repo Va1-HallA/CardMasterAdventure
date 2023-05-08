@@ -104,7 +104,6 @@ public class InventoryScreen implements Drawable {
             g.rect(g.mouseX, g.mouseY, g.width * Configurations.CARD_PROP_INFO_WIDTH_PROPORTION, g.height * Configurations.CARD_PROP_INFO_HEIGHT_PROPORTION);
             g.fill(g.color(255));
             g.textFont(Configurations.PROPERTY_FONT);
-            g.textAlign(PConstants.CENTER);
             g.text(curDisplayingProperty.description, g.mouseX, g.mouseY + g.height * Configurations.CARD_PROP_INFO_HEIGHT_PROPORTION * 0.2f,
                     g.width * Configurations.CARD_PROP_INFO_WIDTH_PROPORTION, g.height * Configurations.CARD_PROP_INFO_HEIGHT_PROPORTION);
             isDisplayingProperty = false;

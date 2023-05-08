@@ -1,4 +1,4 @@
 name:Mana
 property:ETERNAL=1
-property:LUNAR=1
+property:LUNAR=2
 imagePath:images/cards/Mana.jpg

@@ -1,0 +1,22 @@
+title:Old Orge
+description:The skin was ripped open and blood gushed out like a fountain. The monster was walking unsteadily and resting against an oak tree.
+tier:1
+allowedCardNum:2
+imagePath:images/events/OldOrge.jpg
+
+// battle
+reward:SWORD=6->Orge Heart
+result:SWORD=6->WITHER=1
+resultDes:SWORD=6->The wailing lasted only for a moment. The massive body collapsed, the blood gathered into a stream.
+
+// sneak
+reward:SERPENT=4,MIRROR=2->"Old Aggron"
+resultDes:SERPENT=4,MIRROR=2->The magic gently touched the low roar of the old Ogre, the language flowed towards you like a stream: "By the grace of Ludvig, may those demons stay far from me."
+
+// heal
+reward:LUNAR=2,HEART=4->"Old Aggron",Good Berry,Good Berry
+resultDes:LUNAR=2,HEART=4->After the wounds flowed away, the ogre looked at you gratefully.
+
+// default
+result:->WITHER=2
+resultDes:->The pain is tearing at you like a venomous snake bite. The monster roars as it stumbles towards you, and you flee in panic.
