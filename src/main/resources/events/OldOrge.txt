@@ -1,6 +1,6 @@
 title:Old Orge
 description:The skin was ripped open and blood gushed out like a fountain. The monster was walking unsteadily and resting against an oak tree.
-tier:1
+tier:2
 allowedCardNum:2
 imagePath:images/events/OldOrge.jpg
 

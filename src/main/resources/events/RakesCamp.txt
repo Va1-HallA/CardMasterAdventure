@@ -1,0 +1,23 @@
+title:Rake's Camp
+description:Lax Discipline, rough training—but vast in numbers. Rake's band is not picky, from nobles to common farmers, from villages to cities, wherever they go, chaos ensues.
+tier:1
+allowedCardNum:4
+imagePath:
+
+// find Aria
+reward:SWORD=4,MIRROR=6->Aria
+resultDes:SWORD=4,MIRROR=6->
+
+// battle
+reward:SWORD=4->
+resultDes:SWORD=4->
+
+
+// fire
+reward:
+
+// sneak
+
+// default
+result:->WITHER=1
+resultDes:->

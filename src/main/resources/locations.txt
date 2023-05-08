@@ -9,6 +9,7 @@ Drainage:cards/Drainage.txt
 Dusk Dragon:cards/DuskDragon.txt
 Fitness:cards/Fitness.txt
 Gold Coin:cards/GoldCoin.txt
+Good Berry:cards/GoodBerry.txt
 Mana:cards/Mana.txt
 "Old Aggron":cards/OldAggron.txt
 Orge Heart:cards/OrgeHeart.txt

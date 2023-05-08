@@ -60,61 +60,7 @@
       <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/resources/images/properties/SWORD.png" afterDir="false" />
       <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/resources/images/properties/WATER.png" afterDir="false" />
       <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/resources/locations.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/save/event.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/save/map.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/save/player.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/save/pos.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/save/seed.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/Drainage.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/DuskDragon.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/Fitness.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/GoldCoin.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/GoodBerry.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/Mana.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/OldAggron.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/OrgeHeart.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/RitualOfTowers.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/SilverBadge.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/Withering.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/events/AlchemistsHut.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/events/OldOrge.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/events/SuddenDeath.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/events/TrivialMatters.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/Background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/Drainage.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/DuskDragon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/Fitness.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/GoldCoin.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/Mana.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/OldAggron.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/OrgeHeart.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/RitualOfTowers.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/SilverBadge.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/SlotBackground.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/Withering.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events/AlchemistsHut.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events/EventScreenBackground.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events/OldOrge.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events/SuddenDeath.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events/TrivialMatters.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/AIR.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/CONNECTION_CITY_OF_TOWERS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/CONNECTION_DAWN_CHURCH.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/CONNECTION_SWAMP_GUILD.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/DEATH.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/EARTH.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/ETERNAL.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/FLAME.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/FUND.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/HEART.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/LEGEND_DUSK_DRAGON.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/LEGEND_PALADIN.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/MIRROR.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/RITUAL_TOWERS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/SERPENT.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/SWORD.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/WATER.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/locations.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/events/RakesCamp.txt" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/build.gradle" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/build.gradle" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/contentFilenameMap.txt" beforeDir="false" />
@@ -165,56 +111,13 @@
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Property.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Property.java" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Result.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Result.java" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contentFilenameMap.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/properties/moon-icon-8.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/properties/moon-icon-8.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/events/BrassAlchemyShop.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/BrassAlchemyShop.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/fonts/Bell MT.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/Bell MT.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/fonts/Edwardian Script ITC.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/Edwardian Script ITC.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/fonts/Marco-Regular.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fonts/Marco-Regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/cards/Merlin.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/cards/Merlin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/cards/background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/events/BrassAlchemyShop.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/events/BrassAlchemyShop.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Christmas_tree3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Christmas_tree3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Flower_tree2-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Flower_tree2-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Fruit_tree3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Fruit_tree3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Rock1_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Rock1_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Rock1_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Rock1_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Rock1_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Rock1_4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Rock3_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Rock3_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Rock3_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Rock3_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Rock3_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Rock3_4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Rock4_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Rock4_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Rock4_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Rock4_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Rock4_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Rock4_4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Rock5_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Rock5_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Rock5_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Rock5_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Rock5_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Rock5_4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Smithy-TD.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Smithy-TD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/Tree3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/Tree3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/chests.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/chests.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/exclamation.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/exclamation.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/map/indoorTileset.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/map/indoorTileset.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/player/hero.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/player/hero.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/properties/moon-icon-8.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/properties/LUNAR.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saving/event.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saving/map.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saving/player.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saving/pos.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/CardAssets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/CardAssets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/CardSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/CardSlot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Configurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Configurations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/ContentLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/ContentLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/EventScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/EventScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/InventoryScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/InventoryScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Property.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/mapgen/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/events/BrassAlchemyShop.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/events/OldOrge.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/OldOrge.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/locations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locations.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,7 +181,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -295,28 +198,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ToolWindowRun.ShowToolbar": "false",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/resources/fonts",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "http.proxy",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/resources/fonts&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/resources/fonts" />
