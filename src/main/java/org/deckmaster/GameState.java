@@ -1,3 +1,8 @@
 package org.deckmaster;
 
-public enum GameState {MAIN_MENU, WORLD, EVENT}
+public enum GameState {
+    MAIN_MENU,
+    ESCAPE_MENU,
+    WORLD,
+    EVENT;
+}

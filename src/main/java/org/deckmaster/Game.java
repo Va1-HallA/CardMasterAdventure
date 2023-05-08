@@ -3,7 +3,10 @@ import org.deckmaster.mapgen.Building;
 import org.deckmaster.mapgen.Map;
 import org.deckmaster.mapgen.MapTile;
 import org.deckmaster.mapgen.TileLocation;
+import org.deckmaster.ui.EscapeMenu;
+import org.deckmaster.ui.MainMenu;
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PMatrix2D;
 import processing.core.PVector;
 import processing.opengl.PShader;
@@ -25,9 +28,12 @@ public class Game extends PApplet {
     InventoryScreen screen;
     EventScreen evtscreen;
     CardSlot slot;
-    GameState state;
+    public GameState state;
     public boolean inBuilding = false;
     public Building buildingToDraw = null;
+
+    private EscapeMenu escapeMenu;
+    private MainMenu mainMenu;
 
     ContentLoader contentLoader;
 
@@ -42,10 +48,28 @@ public class Game extends PApplet {
     @Override
     public void setup() {
         game = this;
-        state = GameState.WORLD;
+        state = GameState.MAIN_MENU;
         player = new Player(new PVector(25, 25), 10);
 
         map = new Map();
+        map.setup();
+
+        escapeMenu = new EscapeMenu();
+        mainMenu = new MainMenu();
+    }
+
+    public void toMainMenu() {
+        player.pos = new PVector(25, 25);
+        calcCameraPos();
+
+        map.setup();
+        state = GameState.MAIN_MENU;
+    }
+
+    public void startGame() {
+        player.pos = new PVector(25, 25);
+        calcCameraPos();
+
         map.setup();
 
         contentLoader = new ContentLoader();
@@ -64,8 +88,9 @@ public class Game extends PApplet {
         slot.setCoord(new PVector((float) g.width * 0.5f, (float) g.height * 0.3f));
         screen.show();
 
-        evtscreen = new EventScreen(new Event("title", "description", "images/cards/background.png", 1, new HashMap<>(), new HashMap<>(), new ArrayList<>(), "", "", 1), player, screen);
+        evtscreen = new EventScreen(new Event("Explosion at the Brass Alchemy Shop", "description", "images/cards/background.png", 1, new HashMap<>(), new HashMap<>(), new ArrayList<>(), "", "", 1), player, screen);
         evtscreen.show();
+        state = GameState.WORLD;
     }
 
     @Override
@@ -79,18 +104,27 @@ public class Game extends PApplet {
 
     @Override
     public void mouseReleased() {
-        if (state == GameState.WORLD) {
-            screen.leftArrow.onClick(mouseX, mouseY);
-            screen.rightArrow.onClick(mouseX, mouseY);
-            for (Card card: player.getCards()) {
-                if (card.getCoord() != null) card.onRelease(new ArrayList<>());
+        switch (state) {
+            case MAIN_MENU -> {
+                mainMenu.checkButtons();
             }
-        } else if (state == GameState.EVENT) {
-            evtscreen.confirmBtn.onClick(mouseX, mouseY);
-            evtscreen.inventory.leftArrow.onClick(mouseX, mouseY);
-            evtscreen.inventory.rightArrow.onClick(mouseX, mouseY);
-            for (Card card: player.getCards()) {
-                if (card.getCoord() != null) card.onRelease(evtscreen.getSlots());
+            case WORLD -> {
+                screen.leftArrow.onClick(mouseX, mouseY);
+                screen.rightArrow.onClick(mouseX, mouseY);
+                for (Card card: player.getCards()) {
+                    if (card.getCoord() != null) card.onRelease(new ArrayList<>());
+                }
+            }
+            case EVENT -> {
+                evtscreen.confirmBtn.onClick(mouseX, mouseY);
+                evtscreen.inventory.leftArrow.onClick(mouseX, mouseY);
+                evtscreen.inventory.rightArrow.onClick(mouseX, mouseY);
+                for (Card card: player.getCards()) {
+                    if (card.getCoord() != null) card.onRelease(evtscreen.getSlots());
+                }
+            }
+            case ESCAPE_MENU -> {
+                escapeMenu.checkButtons();
             }
         }
     }
@@ -98,11 +132,9 @@ public class Game extends PApplet {
     @Override
     public void draw() {
         // Calculate deltaTime for Physics
-        if (state != GameState.MAIN_MENU) {
-            long deltaTime = System.currentTimeMillis() - lastUpdate;
-            lastUpdate = System.currentTimeMillis();
-            lag += deltaTime;
-        }
+        long deltaTime = System.currentTimeMillis() - lastUpdate;
+        lastUpdate = System.currentTimeMillis();
+        lag += deltaTime;
 
         background(20);
 
@@ -112,8 +144,15 @@ public class Game extends PApplet {
 
         switch (state) {
             case MAIN_MENU -> {
+                map.draw();
+                mainMenu.draw();
             }
             case WORLD -> {
+                if (Input.escapePressed) {
+                    state = GameState.ESCAPE_MENU;
+                    escapeMenu.previousState = GameState.WORLD;
+                    Input.escapePressed = false;
+                }
                 if (!inBuilding) {
                     map.draw();
                 } else {
@@ -125,16 +164,51 @@ public class Game extends PApplet {
 
                 fill(255, 255, 255);
                 textAlign(LEFT, CENTER);
+                textFont(Configurations.MARCO_FONT);
                 textSize(12);
-                text(String.format("X: %f Y: %f Z: %f", player.pos.x, player.pos.y, map.tileMap.get(TileLocation.worldToTileCoords(player.pos)).height), cameraPosition.x - width / 2f + 20, cameraPosition.y - height / 2f + 20);
+                text(String.format("X: %f Y: %f Z: %f",
+                        player.pos.x,
+                        player.pos.y,
+                        map.tileMap.get(TileLocation.worldToTileCoords(player.pos)).height),
+                        cameraPosition.x - width / 2f + 20, cameraPosition.y - height / 2f + 20);
             }
             case EVENT -> {
+                if (Input.escapePressed) {
+                    state = GameState.ESCAPE_MENU;
+                    escapeMenu.previousState = GameState.EVENT;
+                    Input.escapePressed = false;
+                }
                 map.draw();
                 evtscreen.draw();
             }
+            case ESCAPE_MENU -> {
+                switch (escapeMenu.previousState) {
+                    case WORLD -> {
+                        if (!inBuilding) {
+                            map.draw();
+                        } else {
+                            buildingToDraw.draw();
+                        }
+//                slot.draw();
+                        player.draw();
+                        screen.draw();
+
+                    }
+                    case EVENT -> {
+                        map.draw();
+                        evtscreen.draw();
+                    }
+                }
+
+                if (Input.escapePressed) {
+                    state = escapeMenu.previousState;
+                    escapeMenu.previousState = null;
+                    Input.escapePressed = false;
+                }
+                escapeMenu.draw();
+            }
         }
 
-        // Show player coordinates.
         update();
     }
 
@@ -142,6 +216,8 @@ public class Game extends PApplet {
         while (lag > UPDATE_TIME) {
             switch(state) {
                 case MAIN_MENU -> {
+                    float moveAmount = 150f * (UPDATE_TIME / 1000f);
+                    player.pos.add(0, -moveAmount);
                 }
                 case WORLD -> {
                     player.update();
@@ -158,21 +234,6 @@ public class Game extends PApplet {
     }
 
     private void calcCameraPos() {
-//        if (Math.abs(cameraPosition.x - player.pos.x) > width / 4f) {
-//            if (cameraPosition.x > player.pos.x) {
-//                cameraPosition.x -= Math.abs(cameraPosition.x - player.pos.x) - width / 4f;
-//            } else {
-//                cameraPosition.x += Math.abs(cameraPosition.x - player.pos.x) - width / 4f;
-//            }
-//        }
-//
-//        if (Math.abs(cameraPosition.y - player.pos.y) > height / 4f) {
-//            if (cameraPosition.y > player.pos.y) {
-//                cameraPosition.y -= Math.abs(cameraPosition.y - player.pos.y) - height / 4f;
-//            } else {
-//                cameraPosition.y += Math.abs(cameraPosition.y - player.pos.y) - height / 4f;
-//            }
-//        }
         if (cameraPosition.x > player.pos.x) {
             cameraPosition.x -= Math.abs(cameraPosition.x - player.pos.x);
         } else {

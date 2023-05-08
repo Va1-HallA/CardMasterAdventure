@@ -34,7 +34,8 @@ public enum TileState {
     BUILDING_EXIT(true),
     BUILDING_INSIDE_WALL(false),
     BUILDING_INSIDE_CHEST(true),
-    BUILDING_INSIDE_CHEST_OPEN(true);
+    BUILDING_INSIDE_CHEST_OPEN(true),
+    BUILDING_INSIDE_EVENT(true);
 
 
 

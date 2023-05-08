@@ -7,15 +7,21 @@ import processing.core.PVector;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.PriorityQueue;
+import java.util.Random;
 
 public class Map implements Drawable {
-    public HashMap<TileLocation, MapTile> tileMap = new HashMap<>();
+    public HashMap<TileLocation, MapTile> tileMap;
+    static Random random = new Random();
+    private long seed;
 
     public float getHeight(TileLocation loc) {
+        g.noiseSeed(seed);
         return PApplet.map(g.noise(loc.x / 20f + 10000, loc.y / 20f + 10000), 0, 1, -200, 1000);
     }
 
     public void setup() {
+        this.tileMap = new HashMap<>();
+        this.seed = random.nextLong();
         TileLocation startLocation = TileLocation.worldToTileCoords(new PVector(g.cameraPosition.x - g.width, g.cameraPosition.y - g.height));
         for (int x = 0; x < 2 * g.width / MapTile.TILE_SIZE; x++) {
             for (int y = 0; y < 2 * g.height / MapTile.TILE_SIZE; y++) {
@@ -26,7 +32,9 @@ public class Map implements Drawable {
         }
 
         MapTile tileToCheck = tileMap.get(TileLocation.worldToTileCoords(g.player.pos));
-        while (tileToCheck.height < 0 || !tileToCheck.state.walkable) {
+        while (tileToCheck.height < 0 || !tileToCheck.state.walkable
+                || tileToCheck.state == TileState.LOOT || tileToCheck.state == TileState.EVENT
+                || tileToCheck.state == TileState.BUILDING_ENTRANCE) {
             g.player.pos.x += MapTile.TILE_SIZE;
             tileToCheck = tileMap.get(TileLocation.worldToTileCoords(g.player.pos));
         }

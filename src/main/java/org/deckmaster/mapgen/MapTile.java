@@ -15,49 +15,18 @@ public class MapTile implements Drawable, Serializable {
     public float height;
     public TileState state = TileState.EMPTY;
     public Building buildingMap = null;
-
-    static Random random = new Random();
-    static PImage event = g.loadImage("images/map/exclamation.png");
-
-    static PImage tree = g.loadImage("images/map/Tree3.png");
-    static PImage flower_tree = g.loadImage("images/map/Flower_tree2-1.png");
-    static PImage fruit_tree = g.loadImage("images/map/Fruit_tree3.png");
-    static PImage pine_tree = g.loadImage("images/map/Christmas_tree3.png");
-
-    static PImage moss_rock_1 = g.loadImage("images/map/Rock4_3.png");
-    static PImage moss_rock_2 = g.loadImage("images/map/Rock4_4.png");
-    static PImage moss_rock_3 = g.loadImage("images/map/Rock4_1.png");
-
-    static PImage rock_1 = g.loadImage("images/map/Rock1_3.png");
-    static PImage rock_2 = g.loadImage("images/map/Rock1_4.png");
-    static PImage rock_3 = g.loadImage("images/map/Rock1_1.png");
-    static PImage white_rock_1 = g.loadImage("images/map/Rock5_3.png");
-    static PImage white_rock_2 = g.loadImage("images/map/Rock5_4.png");
-    static PImage white_rock_3 = g.loadImage("images/map/Rock5_1.png");
-
-    static PImage snow_rock_1 = g.loadImage("images/map/Rock3_3.png");
-    static PImage snow_rock_2 = g.loadImage("images/map/Rock3_4.png");
-    static PImage snow_rock_3 = g.loadImage("images/map/Rock3_1.png");
-
-    static PImage building = g.loadImage("images/map/Smithy-TD.png");
-
-    static PImage chests = g.loadImage("images/map/chests.png");
-    static PImage chest = chests.get(0, 0, 32, 32);
-    static PImage chestOpen = chests.get(64,0, 32, 32);
-
-    static PImage interiorSet = g.loadImage("images/map/indoorTileset.png");
-    static PImage woodenTile = interiorSet.get(interiorSet.width - 64, 4, 64, 64);
+    public Random random = new Random();
 
     public MapTile(TileLocation loc, float height) {
         this.location = loc;
         this.height = height;
 
-        if (Math.random() < 0.0005f) {
+        if (Math.random() < 0.0005f && height >= 0) {
             state = TileState.LOOT;
             return;
         }
 
-        if (Math.random() < 0.0005f) {
+        if (Math.random() < 0.0005f && height >= 0) {
             state = TileState.EVENT;
             return;
         }
@@ -186,116 +155,100 @@ public class MapTile implements Drawable, Serializable {
         blockMatrix = (PMatrix3D) g.getMatrix();
         g.pop();
 
-        if (this.state != TileState.BUILDING_INSIDE && this.state != TileState.BUILDING_EXIT
-                && this.state != TileState.BUILDING_INSIDE_WALL && this.state != TileState.BUILDING_INSIDE_CHEST
-                && this.state != TileState.BUILDING_INSIDE_CHEST_OPEN ) {
-            if (g.map.tileMap.containsKey(new TileLocation(location.x + 1, location.y))) {
-                MapTile rightTile = g.map.tileMap.get(new TileLocation(location.x + 1, location.y));
-                rightBlockMatrix = getMatrix3D(playerHeight, rightTile);
-            }
-
-            if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y + 1))) {
-                MapTile downTile = g.map.tileMap.get(new TileLocation(location.x, location.y + 1));
-                downBlockMatrix = getMatrix3D(playerHeight, downTile);
-            }
-
-            if (g.map.tileMap.containsKey(new TileLocation(location.x - 1, location.y))) {
-                MapTile leftTile = g.map.tileMap.get(new TileLocation(location.x - 1, location.y));
-                leftBlockMatrix = getMatrix3D(playerHeight, leftTile);
-            }
-
-            if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y - 1))) {
-                MapTile upTile = g.map.tileMap.get(new TileLocation(location.x, location.y - 1));
-                upBlockMatrix = getMatrix3D(playerHeight, upTile);
-            }
-
-            if (height < 400) {
-                g.fill(83, 65, 39);
-            } else if (height >= 400 && height < 800) {
-                g.fill(120 - (height - 400) / 4f);
-            } else {
-                g.fill(255);
-            }
-
-            loc = new TileLocation(location.x + 1, location.y);
-            if (g.map.tileMap.containsKey(loc) && this.height > g.map.tileMap.get(loc).height) {
-                g.push();
-                PVector p1 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-                PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
-                PVector p3 = rightBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-                PVector p4 = rightBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
-
-                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
-                if (p1.x < p3.x) {
-                    drawCustomQuad(p1, p2, p3, p4);
-                }
-                g.pop();
-            }
-
-            loc = new TileLocation(location.x, location.y + 1);
-            if (g.map.tileMap.containsKey(loc) && this.height > g.map.tileMap.get(loc).height) {
-                g.push();
-                PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y + TILE_SIZE), null);
-                PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
-                PVector p3 = downBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y + TILE_SIZE), null);
-                PVector p4 = downBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
-
-                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
-                if (p1.y < p3.y) {
-                    drawCustomQuad(p1, p2, p3, p4);
-                }
-                g.pop();
-            }
-
-            loc = new TileLocation(location.x - 1, location.y);
-            if (g.map.tileMap.containsKey(loc) && this.height > g.map.tileMap.get(loc).height) {
-                g.push();
-                PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-                PVector p2 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
-                PVector p3 = leftBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-                PVector p4 = leftBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
-
-                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
-                if (p1.x > p3.x) {
-                    drawCustomQuad(p1, p2, p3, p4);
-                }
-                g.pop();
-            }
-
-            loc = new TileLocation(location.x, location.y - 1);
-            if (g.map.tileMap.containsKey(loc) && this.height > g.map.tileMap.get(loc).height) {
-                g.push();
-                PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-                PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-                PVector p3 = upBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-                PVector p4 = upBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
-
-                g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
-                if (p1.y > p3.y) {
-                    drawCustomQuad(p1, p2, p3, p4);
-                }
-                g.pop();
-            }
-
-            heightColor(height);
-            g.stroke(0);
-        } else {
-            g.noFill();
-            g.noStroke();
-            if (state == TileState.BUILDING_EXIT) {
-                float outsideHeight = g.map.tileMap.get(this.location).height;
-                g.stroke(0);
-                heightColor(outsideHeight);
-            }
+        if (g.map.tileMap.containsKey(new TileLocation(location.x + 1, location.y))) {
+            MapTile rightTile = g.map.tileMap.get(new TileLocation(location.x + 1, location.y));
+            rightBlockMatrix = getMatrix3D(playerHeight, rightTile);
         }
+
+        if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y + 1))) {
+            MapTile downTile = g.map.tileMap.get(new TileLocation(location.x, location.y + 1));
+            downBlockMatrix = getMatrix3D(playerHeight, downTile);
+        }
+
+        if (g.map.tileMap.containsKey(new TileLocation(location.x - 1, location.y))) {
+            MapTile leftTile = g.map.tileMap.get(new TileLocation(location.x - 1, location.y));
+            leftBlockMatrix = getMatrix3D(playerHeight, leftTile);
+        }
+
+        if (g.map.tileMap.containsKey(new TileLocation(location.x, location.y - 1))) {
+            MapTile upTile = g.map.tileMap.get(new TileLocation(location.x, location.y - 1));
+            upBlockMatrix = getMatrix3D(playerHeight, upTile);
+        }
+
+        if (height < 400) {
+            g.fill(83, 65, 39);
+        } else if (height >= 400 && height < 800) {
+            g.fill(120 - (height - 400) / 4f);
+        } else {
+            g.fill(255);
+        }
+
+        loc = new TileLocation(location.x + 1, location.y);
+        if (g.map.tileMap.containsKey(loc) && this.height > g.map.tileMap.get(loc).height) {
+            g.push();
+            PVector p1 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+            PVector p3 = rightBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p4 = rightBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+
+            g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
+            if (p1.x < p3.x) {
+                drawCustomQuad(p1, p2, p3, p4);
+            }
+            g.pop();
+        }
+
+        loc = new TileLocation(location.x, location.y + 1);
+        if (g.map.tileMap.containsKey(loc) && this.height > g.map.tileMap.get(loc).height) {
+            g.push();
+            PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y + TILE_SIZE), null);
+            PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+            PVector p3 = downBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y + TILE_SIZE), null);
+            PVector p4 = downBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+
+            g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
+            if (p1.y < p3.y) {
+                drawCustomQuad(p1, p2, p3, p4);
+            }
+            g.pop();
+        }
+
+        loc = new TileLocation(location.x - 1, location.y);
+        if (g.map.tileMap.containsKey(loc) && this.height > g.map.tileMap.get(loc).height) {
+            g.push();
+            PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p2 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+            PVector p3 = leftBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p4 = leftBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y + TILE_SIZE - g.player.pos.y), null);
+
+            g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
+            if (p1.x > p3.x) {
+                drawCustomQuad(p1, p2, p3, p4);
+            }
+            g.pop();
+        }
+
+        loc = new TileLocation(location.x, location.y - 1);
+        if (g.map.tileMap.containsKey(loc) && this.height > g.map.tileMap.get(loc).height) {
+            g.push();
+            PVector p1 = blockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p2 = blockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p3 = upBlockMatrix.mult(new PVector(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+            PVector p4 = upBlockMatrix.mult(new PVector(worldLocation.x + TILE_SIZE - g.player.pos.x, worldLocation.y - g.player.pos.y), null);
+
+            g.translate(g.player.pos.x - g.width / 2f, g.player.pos.y - g.height / 2f);
+            if (p1.y > p3.y) {
+                drawCustomQuad(p1, p2, p3, p4);
+            }
+            g.pop();
+        }
+
+        heightColor(height);
+        g.stroke(0);
 
         g.translate(g.player.pos.x, g.player.pos.y);
         g.scale(PApplet.map(relativeHeight, -1000, 1000, 0.5f, 1.5f));
-        if (state == TileState.BUILDING_INSIDE || state == TileState.BUILDING_INSIDE_CHEST || state == TileState.BUILDING_INSIDE_CHEST_OPEN) {
-            g.image(woodenTile, worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, TILE_SIZE, TILE_SIZE);
-        } else {
-            g.rect(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, TILE_SIZE, TILE_SIZE);
-        }
+        g.rect(worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, TILE_SIZE, TILE_SIZE);
         g.popMatrix();
     }
 
@@ -345,72 +298,72 @@ public class MapTile implements Drawable, Serializable {
         g.scale(PApplet.map(relativeHeight, -1000, 1000, 0.5f, 1.5f));
 
         switch (state) {
-            case LOOT, BUILDING_INSIDE_CHEST -> {
-                g.image(chest, worldLocation.x - g.player.pos.x + (TILE_SIZE - chest.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - chest.height) / 2f);
+            case LOOT -> {
+                g.image(MapAssets.chest, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.chest.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.chest.height) / 2f);
             }
-            case LOOT_EMPTY, BUILDING_INSIDE_CHEST_OPEN -> {
-                g.image(chestOpen, worldLocation.x - g.player.pos.x + (TILE_SIZE - chestOpen.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - chestOpen.height) / 2f);
+            case LOOT_EMPTY -> {
+                g.image(MapAssets.chestOpen, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.chestOpen.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.chestOpen.height) / 2f);
             }
 
             case EVENT -> {
-                g.image(event, worldLocation.x - g.player.pos.x + (TILE_SIZE - 12) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - 34) / 2f, 12, 34);
+                g.image(MapAssets.event, worldLocation.x - g.player.pos.x + (TILE_SIZE - 12) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - 34) / 2f, 12, 34);
             }
 
             case TREE -> {
-                g.image(tree, worldLocation.x - g.player.pos.x + (TILE_SIZE - tree.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - tree.height) / 2f);
+                g.image(MapAssets.tree, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.tree.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.tree.height) / 2f);
             }
             case PINE_TREE -> {
-                g.image(pine_tree, worldLocation.x - g.player.pos.x + (TILE_SIZE - pine_tree.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - pine_tree.height) / 2f);
+                g.image(MapAssets.pine_tree, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.pine_tree.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.pine_tree.height) / 2f);
             }
             case FLOWER_TREE -> {
-                g.image(flower_tree, worldLocation.x - g.player.pos.x + (TILE_SIZE - flower_tree.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - flower_tree.height) / 2f);
+                g.image(MapAssets.flower_tree, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.flower_tree.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.flower_tree.height) / 2f);
             }
             case FRUIT_TREE -> {
-                g.image(fruit_tree, worldLocation.x - g.player.pos.x + (TILE_SIZE - fruit_tree.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - fruit_tree.height) / 2f);
+                g.image(MapAssets.fruit_tree, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.fruit_tree.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.fruit_tree.height) / 2f);
             }
 
             case MOSS_ROCK_1 -> {
-                g.image(moss_rock_1, worldLocation.x - g.player.pos.x + (TILE_SIZE - moss_rock_1.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - moss_rock_1.height) / 2f);
+                g.image(MapAssets.moss_rock_1, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.moss_rock_1.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.moss_rock_1.height) / 2f);
             }
             case MOSS_ROCK_2 -> {
-                g.image(moss_rock_2, worldLocation.x - g.player.pos.x + (TILE_SIZE - moss_rock_2.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - moss_rock_2.height) / 2f);
+                g.image(MapAssets.moss_rock_2, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.moss_rock_2.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.moss_rock_2.height) / 2f);
             }
             case MOSS_ROCK_3 -> {
-                g.image(moss_rock_3, worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, 50, 50);
+                g.image(MapAssets.moss_rock_3, worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, 50, 50);
             }
 
 
             case ROCK_1 -> {
-                g.image(rock_1, worldLocation.x - g.player.pos.x + (TILE_SIZE - rock_1.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - rock_1.height) / 2f);
+                g.image(MapAssets.rock_1, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.rock_1.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.rock_1.height) / 2f);
             }
             case ROCK_2 -> {
-                g.image(rock_2, worldLocation.x - g.player.pos.x + (TILE_SIZE - rock_2.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - rock_2.height) / 2f);
+                g.image(MapAssets.rock_2, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.rock_2.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.rock_2.height) / 2f);
             }
             case ROCK_3 -> {
-                g.image(rock_3, worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, 50, 50);
+                g.image(MapAssets.rock_3, worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, 50, 50);
             }
             case WHITE_ROCK_1 -> {
-                g.image(white_rock_1, worldLocation.x - g.player.pos.x + (TILE_SIZE - white_rock_1.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - white_rock_1.height) / 2f);
+                g.image(MapAssets.white_rock_1, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.white_rock_1.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.white_rock_1.height) / 2f);
             }
             case WHITE_ROCK_2 -> {
-                g.image(white_rock_2, worldLocation.x - g.player.pos.x + (TILE_SIZE - white_rock_2.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - white_rock_2.height) / 2f);
+                g.image(MapAssets.white_rock_2, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.white_rock_2.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.white_rock_2.height) / 2f);
             }
             case WHITE_ROCK_3 -> {
-                g.image(white_rock_3, worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, 50, 50);
+                g.image(MapAssets.white_rock_3, worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, 50, 50);
             }
 
             case SNOW_ROCK_1 -> {
-                g.image(snow_rock_1, worldLocation.x - g.player.pos.x + (TILE_SIZE - snow_rock_1.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - snow_rock_1.height) / 2f);
+                g.image(MapAssets.snow_rock_1, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.snow_rock_1.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.snow_rock_1.height) / 2f);
             }
             case SNOW_ROCK_2 -> {
-                g.image(snow_rock_2, worldLocation.x - g.player.pos.x + (TILE_SIZE - snow_rock_2.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - snow_rock_2.height) / 2f);
+                g.image(MapAssets.snow_rock_2, worldLocation.x - g.player.pos.x + (TILE_SIZE - MapAssets.snow_rock_2.width) / 2f, worldLocation.y - g.player.pos.y + (TILE_SIZE - MapAssets.snow_rock_2.height) / 2f);
             }
             case SNOW_ROCK_3 -> {
-                g.image(snow_rock_3, worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, 50, 50);
+                g.image(MapAssets.snow_rock_3, worldLocation.x - g.player.pos.x, worldLocation.y - g.player.pos.y, 50, 50);
             }
 
             case BUILDING_DRAW -> {
-                g.image(building, worldLocation.x - g.player.pos.x - 2 * TILE_SIZE, worldLocation.y - g.player.pos.y - 2 * TILE_SIZE, 4 * TILE_SIZE, 4 * TILE_SIZE);
+                g.image(MapAssets.building, worldLocation.x - g.player.pos.x - 2 * TILE_SIZE, worldLocation.y - g.player.pos.y - 2 * TILE_SIZE, 4 * TILE_SIZE, 4 * TILE_SIZE);
             }
         }
         g.popMatrix();

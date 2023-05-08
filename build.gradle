@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.1'
 }
 
 group 'org.deckmaster'
@@ -26,4 +27,12 @@ test {
 
 application {
     mainClass = 'org.deckmaster.Game'
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs  "resources"
+        }
+    }
 }

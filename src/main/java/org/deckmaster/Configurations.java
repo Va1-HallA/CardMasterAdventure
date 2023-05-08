@@ -7,11 +7,12 @@ public class Configurations {
      * Font settings
      */
     public static float CARD_FONT_SIZE_PROPORTION = 0.009f;
-    public static PFont CARD_FONT = Game.game.createFont("Bell MT", Game.game.width * Configurations.CARD_FONT_SIZE_PROPORTION);
+    public static PFont CARD_FONT = Game.game.createFont("fonts/Bell MT.ttf", Game.game.width * Configurations.CARD_FONT_SIZE_PROPORTION);
     public static float EVT_TITLE_FONT_SIZE_PROPORTION = 0.028f;
     public static float EVT_DES_FONT_SIZE_PROPORTION = 0.012f;
-    public static PFont EVT_TITLE_FONT = Game.game.createFont("Edwardian Script ITC", Game.game.width * Configurations.EVT_TITLE_FONT_SIZE_PROPORTION);
-    public static PFont EVT_DES_FONT = Game.game.createFont("Bell MT", Game.game.width * Configurations.EVT_DES_FONT_SIZE_PROPORTION);
+    public static PFont EVT_TITLE_FONT = Game.game.createFont("fonts/Edwardian Script ITC.ttf", Game.game.width * Configurations.EVT_TITLE_FONT_SIZE_PROPORTION);
+    public static PFont EVT_DES_FONT = Game.game.createFont("fonts/Bell MT.ttf", Game.game.width * Configurations.EVT_DES_FONT_SIZE_PROPORTION);
+    public static PFont MARCO_FONT = Game.game.createFont("fonts/Marco-Regular.ttf", 128);
 
     /**
      * Card settings

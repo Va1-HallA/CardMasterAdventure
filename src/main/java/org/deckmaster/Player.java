@@ -1,14 +1,13 @@
 package org.deckmaster;
 
-import org.deckmaster.mapgen.Map;
-import org.deckmaster.mapgen.MapTile;
-import org.deckmaster.mapgen.TileLocation;
-import org.deckmaster.mapgen.TileState;
+import org.deckmaster.mapgen.*;
 import processing.core.PImage;
 import processing.core.PVector;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import static org.deckmaster.PlayerAssets.*;
 
 public class Player implements Drawable {
     private ArrayList<Card> cards;
@@ -16,18 +15,10 @@ public class Player implements Drawable {
     private float size;
     private final float MOVE_SPEED = 350.0f;
     private MovementDir dir = MovementDir.UP;
-    private PImage playerImage;
-    private PImage up;
-    private PImage down;
-    private PImage left;
 
     public Player (PVector pos, float size) {
         this.pos = pos;
         this.size = size;
-        playerImage = g.loadImage("images/player/hero.png");
-        up = playerImage.get(32, 32, 32, 32);
-        down = playerImage.get(32, 64, 32, 32);
-        left = playerImage.get(32, 0, 32, 32);
         cards = new ArrayList<>();
     }
 
@@ -77,7 +68,7 @@ public class Player implements Drawable {
                 g.inBuilding = true;
             }
         } else {
-            MapTile tile = g.buildingToDraw.tiles.get(playerLocation);
+            BuildingTile tile = g.buildingToDraw.tiles.get(playerLocation);
             if (tile.state == TileState.BUILDING_INSIDE_CHEST) {
                 tile.state = TileState.BUILDING_INSIDE_CHEST_OPEN;
             }
@@ -86,6 +77,7 @@ public class Player implements Drawable {
             }
         }
     }
+
 
     private void handleMovement() {
         float moveAmount = MOVE_SPEED * (g.UPDATE_TIME / 1000f);
@@ -113,29 +105,36 @@ public class Player implements Drawable {
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
                 if (i == 0 && j == 0) continue;
-                MapTile tileToCheck;
                 if (!g.inBuilding) {
-                    tileToCheck = g.map.tileMap.get(new TileLocation(playerLocation.x + i, playerLocation.y + j));
+                    MapTile tileToCheck = g.map.tileMap.get(new TileLocation(playerLocation.x + i, playerLocation.y + j));
+                    if (checkCollision(nextLocation, tileToCheck.height, tileToCheck.state, tileToCheck.location))
+                        return;
                 } else {
-                    tileToCheck = g.buildingToDraw.tiles.get(new TileLocation(playerLocation.x + i, playerLocation.y + j));
-                }
-                if (tileToCheck.height < 0 || !tileToCheck.state.walkable) {
-                    PVector tileLocation = TileLocation.tileToWorldCoords(tileToCheck.location);
-                    PVector p = new PVector();
-                    if (nextLocation.x <= tileLocation.x) {
-                        p.x = tileLocation.x;
-                    } else p.x = Math.min(nextLocation.x, tileLocation.x + MapTile.TILE_SIZE);
-
-                    if (nextLocation.y <= tileLocation.y) {
-                        p.y = tileLocation.y;
-                    } else p.y = Math.min(nextLocation.y, tileLocation.y + MapTile.TILE_SIZE);
-
-                    if (PVector.sub(nextLocation, p).magSq() < 8 * 8) return;
+                    BuildingTile tileToCheck = g.buildingToDraw.tiles.get(new TileLocation(playerLocation.x + i, playerLocation.y + j));
+                    if (checkCollision(nextLocation, tileToCheck.height, tileToCheck.state, tileToCheck.location))
+                        return;
                 }
             }
         }
 
         pos = pos.add(moveVector);
+    }
+
+    private boolean checkCollision(PVector nextLocation, float height, TileState state, TileLocation location) {
+        if (height < 0 || !state.walkable) {
+            PVector tileLocation = TileLocation.tileToWorldCoords(location);
+            PVector p = new PVector();
+            if (nextLocation.x <= tileLocation.x) {
+                p.x = tileLocation.x;
+            } else p.x = Math.min(nextLocation.x, tileLocation.x + MapTile.TILE_SIZE);
+
+            if (nextLocation.y <= tileLocation.y) {
+                p.y = tileLocation.y;
+            } else p.y = Math.min(nextLocation.y, tileLocation.y + MapTile.TILE_SIZE);
+
+            if (PVector.sub(nextLocation, p).magSq() < 8 * 8) return true;
+        }
+        return false;
     }
 
     public ArrayList<Card> getCards() {

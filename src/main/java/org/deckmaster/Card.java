@@ -9,12 +9,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.deckmaster.CardAssets.background;
+
 public class Card implements Comparable, Drawable, Serializable {
 
     private static PVector size = new PVector(g.width * Configurations.CARD_WIDTH_PROPORTION, g.height * Configurations.CARD_HEIGHT_PROPORTION);
-    private static PImage background = g.loadImage("images/cards/background.png");
     private String name;
-    private PImage image;
+    transient PImage image;
     private HashMap<Property, Integer> propertyTable;
     private PVector coord;
     private PVector originalCoord;

@@ -82,7 +82,7 @@ public class InventoryScreen implements Drawable {
         // draw left button
         float buttonSizeProportion = 0.3f;
         Runnable prev = this::previousBatch;
-        leftArrow = new Button((int) (curPosition.x - cardSize.x * buttonSizeProportion), (int) (curPosition.y + cardSize.y * 0.5f), (int) (cardSize.x * buttonSizeProportion), (int) (cardSize.x * buttonSizeProportion), "prev", prev);
+        leftArrow = new Button((int) (curPosition.x - cardSize.x * buttonSizeProportion), (int) (curPosition.y + cardSize.y * 0.5f), (int) (cardSize.x * buttonSizeProportion), (int) (cardSize.x * buttonSizeProportion), "prev", prev, new PVector(0,0,0), 150, Configurations.CARD_FONT, 16);
 
         // draw cards
         for (Card card : curCardList) {
@@ -93,7 +93,7 @@ public class InventoryScreen implements Drawable {
 
         // draw right button
         Runnable next = this::nextBatch;
-        rightArrow = new Button((int) (curPosition.x), (int) (curPosition.y + cardSize.y * 0.5f), (int) (cardSize.x * buttonSizeProportion), (int) (cardSize.x * buttonSizeProportion), "next", next);
+        rightArrow = new Button((int) (curPosition.x), (int) (curPosition.y + cardSize.y * 0.5f), (int) (cardSize.x * buttonSizeProportion), (int) (cardSize.x * buttonSizeProportion), "next", next, new PVector(0,0,0), 150, Configurations.CARD_FONT, 16);
 
         leftArrow.draw();
         rightArrow.draw();

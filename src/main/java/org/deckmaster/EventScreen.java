@@ -34,7 +34,7 @@ public class EventScreen implements Drawable{
                 curPosition.x + g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * 0.5f - btnSize.x * 0.5f,
                 curPosition.y + g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION * Configurations.EVT_BTN_HEIGHT_PROPORTION
         );
-        this.confirmBtn = new Button((int) btnPosition.x, (int) btnPosition.y, (int) btnSize.x, (int) btnSize.y, "confirm", confirm);
+        this.confirmBtn = new Button((int) btnPosition.x, (int) btnPosition.y, (int) btnSize.x, (int) btnSize.y, "confirm", confirm, new PVector(0,0,0), 150, Configurations.CARD_FONT, 20);
     }
 
     public List<CardSlot> getSlots() {
