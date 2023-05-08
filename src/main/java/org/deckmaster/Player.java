@@ -15,7 +15,6 @@ public class Player implements Drawable {
     public PVector pos;
     private final float MOVE_SPEED = 350.0f;
     private MovementDir dir = MovementDir.UP;
-    private Random random = new Random();
 
     public Player (PVector pos) {
         this.pos = pos;
@@ -41,9 +40,18 @@ public class Player implements Drawable {
                 g.image(left, pos.x - 16, pos.y - 16,32, 32);
             }
             case RIGHT -> {
+                g.push();
                 g.scale(-1, 1);
                 g.image(left, -pos.x - 16, pos.y - 16, 32, 32);
+                g.pop();
             }
+        }
+
+        if (Input.debugToggle) {
+            g.stroke(255, 0, 0);
+            g.noFill();
+            g.circle(pos.x, pos.y, 16);
+            g.stroke(0);
         }
         g.popMatrix();
     }

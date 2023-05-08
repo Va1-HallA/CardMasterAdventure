@@ -54,6 +54,9 @@ public class Game extends PApplet {
         player = new Player(new PVector(25, 25));
 
         contentLoader = new ContentLoader();
+        trackedEvents = new ArrayList<>();
+        nonUniqueCards = new ArrayList<>();
+        initEventsAndCards();
 
         map = new Map();
         map.setup();
@@ -74,6 +77,8 @@ public class Game extends PApplet {
         player = new Player(new PVector(25, 25));
         calcCameraPos();
 
+        inBuilding = false;
+        buildingToDraw = null;
         map.setup();
 
         trackedEvents = new ArrayList<>();
@@ -295,13 +300,13 @@ public class Game extends PApplet {
     public void save() {
         try {
             // saving map
-            FileOutputStream mapSeedFoe = new FileOutputStream(Configurations.MAP_SEED_SAVING_LOCATION);
-            ObjectOutputStream mapSeedOos = new ObjectOutputStream(mapSeedFoe);
-            mapSeedOos.writeObject(map.seed);
-
             FileOutputStream mapFoe = new FileOutputStream(Configurations.MAP_SAVING_LOCATION);
             ObjectOutputStream mapOos = new ObjectOutputStream(mapFoe);
-            mapOos.writeObject(map.tileMap);
+            mapOos.writeObject(map);
+
+            FileOutputStream building = new FileOutputStream(Configurations.BUILDING_SAVING_LOCATION);
+            ObjectOutputStream buildingOos = new ObjectOutputStream(building);
+            buildingOos.writeObject(buildingToDraw);
 
             // saving player stats
             FileOutputStream playerFoe = new FileOutputStream(Configurations.PLAYER_SAVING_LOCATION);
@@ -325,13 +330,17 @@ public class Game extends PApplet {
     public void load() {
         try {
             // loading map
-            FileInputStream mapSeedFie = new FileInputStream(Configurations.MAP_SEED_SAVING_LOCATION);
-            ObjectInputStream mapSeedOis = new ObjectInputStream(mapSeedFie);
-            map.seed = (long) mapSeedOis.readObject();
-
             FileInputStream mapFie = new FileInputStream(Configurations.MAP_SAVING_LOCATION);
             ObjectInputStream mapOis = new ObjectInputStream(mapFie);
-            map.tileMap = (HashMap<TileLocation, MapTile>) mapOis.readObject();
+            map = (Map) mapOis.readObject();
+            map.random = new Random();
+
+            FileInputStream buildingFie = new FileInputStream(Configurations.BUILDING_SAVING_LOCATION);
+            ObjectInputStream buildingOis = new ObjectInputStream(buildingFie);
+            buildingToDraw = (Building) buildingOis.readObject();
+            if (buildingToDraw != null) {
+                inBuilding = true;
+            }
 
             player = new Player(new PVector(25, 25));
             screen = new InventoryScreen(player);

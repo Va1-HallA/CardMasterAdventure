@@ -1,17 +1,19 @@
 package org.deckmaster.mapgen;
 
 import org.deckmaster.Drawable;
+import org.deckmaster.Input;
 import processing.core.PApplet;
 import processing.core.PVector;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 import java.util.Random;
 
-public class Map implements Drawable {
+public class Map implements Drawable, Serializable {
     public HashMap<TileLocation, MapTile> tileMap;
-    transient Random random = new Random();
+    public transient Random random = new Random();
     public long seed;
 
     public float getHeight(TileLocation loc) {
@@ -61,6 +63,9 @@ public class Map implements Drawable {
             MapTile tile = tiles.poll();
             tile.draw();
             tile.drawObjects();
+            if (Input.debugToggle) {
+                tile.drawDebug();
+            }
         }
     }
 

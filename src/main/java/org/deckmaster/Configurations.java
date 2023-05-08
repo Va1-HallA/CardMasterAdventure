@@ -63,8 +63,8 @@ public class Configurations {
      */
 
     public static String MAP_SAVING_LOCATION = "save/map.txt";
+    public static String BUILDING_SAVING_LOCATION = "save/building.txt";
     public static String PLAYER_SAVING_LOCATION = "save/player.txt";
     public static String EVENT_SAVING_LOCATION = "save/event.txt";
     public static String POS_SAVING_LOCATION = "save/pos.txt";
-    public static String MAP_SEED_SAVING_LOCATION = "save/seed.txt";
 }
