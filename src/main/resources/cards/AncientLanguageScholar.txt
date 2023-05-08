@@ -1,0 +1,5 @@
+name:"Ancient Language Scholar"
+property:CONNECTION_CITY_OF_TOWERS=1
+property:LUNAR=2
+property:FUND=10
+imagePath:images/cards/AncientLanguageScholar.jpg

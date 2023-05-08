@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f309a8a-c691-41b5-9e51-14f05ab0b6bf" name="Changes" comment="updated multiple success condition events &amp; proactive events.">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/AncientLanguageScholar.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/SapphireNecklace.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/SoulCrystal.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/events/CurseOfTheTower.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/events/LakefrontGolem.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/AncientLanguageScholar.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/SapphireNecklace.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/SoulCrystal.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events/CurseOfTheTower.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events/LakefrontGolem.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/events/TrivialMatters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/TrivialMatters.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/cards/OldAggron.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/cards/OldAggron.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/cards/OrgeHeart.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/cards/OrgeHeart.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/events/YoungMage.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/YoungMage.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/locations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locations.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +138,7 @@
       <recent name="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.CS4303-Game [run]">
+  <component name="RunManager">
     <configuration name="CS4303-Game [run]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -302,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683571579586</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="updated multiple success condition events &amp; proactive events.">
+      <created>1683571807018</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683571807018</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

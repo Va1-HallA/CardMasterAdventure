@@ -1,0 +1,19 @@
+title:Curse of the Tower
+description:Interweaving beams of light disappeared in an instant as the magical duel ended. The victor took an amulet from the fallen opponent. You recognized the young mage who had asked about the whereabouts of the druids not long ago, Rivior.
+previousEvent:Young Mage
+nextEvent:Lakefront Golem
+tier:2
+allowedCardNum:3
+imagePath:images/events/CurseOfTheTower.jpg
+
+// battle
+reward:SWORD=8->Sapphire Necklace
+result:SWORD=8->WITHER=1
+resultDes:SWORD=8->Simple, direct, a life lost in the underworld. Another noble mage died at the hands of barbarians.
+
+// magic duel
+reward:LUNAR=6->Sapphire Necklace
+resultDes:LUNAR=6->Magic duels, elegant confrontation. The tide of magic rushes towards the opponent. The winner takes the spoils from the loser's hand, as always.
+
+// default
+resultDes:->You met the other person's gaze, then slowly walked away.

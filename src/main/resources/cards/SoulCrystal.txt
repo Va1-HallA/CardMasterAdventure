@@ -1,0 +1,6 @@
+name:Soul Crystal
+property:LUNAR=4
+property:FUND=8
+property:HEART=6
+property:WATER=6
+imagePath:images/cards/SoulCrystal.jpg

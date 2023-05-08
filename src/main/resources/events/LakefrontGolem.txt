@@ -1,0 +1,17 @@
+title:Lakefront Golem
+description:A golem stood still by the lake, covered in vines. The name of its owner, Rivior, was inscribed on its chest.
+previousEvent:Curse of the Tower
+tier:3
+allowedCardNum:4
+imagePath:images/events/LakefrontGolem.jpg
+
+// revive the golem
+reward:LUNAR=6,HEART=10->"Ancient Language Scholar"
+resultDes:LUNAR=6,HEART=10->Free from the vines, back to the light. After having its soul sealed within the golem, it finally gained its freedom.
+
+// destroy the golem
+reward:SWORD=12->Soul Crystal
+resultDes:SWORD=12->The sound of metal shattering was surprisingly crisp. The golem cracked open in the middle, revealing its core.
+
+// default
+resultDes:->The golem remained still, gazing at the surface of the lake, just like before. You turned around and left.

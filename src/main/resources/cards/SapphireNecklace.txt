@@ -1,0 +1,7 @@
+name:Sapphire Necklace
+property:CONNECTION_CITY_OF_TOWERS=1
+property:LUNAR=2
+property:FUND=4
+property:WATER=6
+property:MIRROR=6
+imagePath:images/cards/SapphireNecklace.jpg

@@ -1,6 +1,6 @@
 title:Young Mage
 description:In the small roadside tavern, a young man in a long robe was inquiring about something with others. Among the few words you could hear, the word "Druid" was mentioned.
-// nextEvent:...
+nextEvent:Curse of the Tower
 tier:1
 allowedCardNum:1
 imagePath:images/events/YoungMage.jpg

@@ -1,5 +1,7 @@
 // events
 Alchemist's Hut:events/AlchemistsHut.txt
+Curse of the Tower:events/CurseOfTheTower.txt
+Lakefront Golem:events/LakefrontGolem.txt
 Old Orge:events/OldOrge.txt
 Rake's Camp:events/RakesCamp.txt
 Sudden Death:events/SuddenDeath.txt
@@ -7,6 +9,7 @@ Trivial Matters:events/TrivialMatters.txt
 Young Mage:events/YoungMage.txt
 
 // cards
+"Ancient Language Scholar":cards/AncientLanguageScholar.txt
 Aria:cards/Aria.txt
 Aria's Necklace:cards/AriasNecklace.txt
 Drainage:cards/Drainage.txt
@@ -21,7 +24,9 @@ Mana:cards/Mana.txt
 Orge Heart:cards/OrgeHeart.txt
 Ritual of Towers:cards/RitualOfTowers.txt
 Rivior:cards/Rivior.txt
+Sapphire Necklace:cards/SapphireNecklace.txt
 Silence Scroll:cards/SilenceScroll.txt
 Silver Badge:cards/SilverBadge.txt
+Soul Crystal:cards/SoulCrystal.txt
 Withering:cards/Withering.txt
 Wolf Pattern Greatsword:cards/WolfPatternGreatsword.txt
