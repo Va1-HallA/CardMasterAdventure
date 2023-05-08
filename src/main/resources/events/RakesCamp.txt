@@ -1,0 +1,25 @@
+title:Rake's Camp
+description:Lax Discipline, rough training, but vast in numbers. Rake's band is not picky, from nobles to common farmers, from villages to cities, wherever they go, chaos ensues.
+tier:1
+allowedCardNum:4
+imagePath:
+
+// find Aria
+reward:SWORD=4,MIRROR=6->Aria,Wolf Pattern Greatsword,Gold Coin
+resultDes:SWORD=4,MIRROR=6->A separate compartment is in one corner of the camp, where a little girl is bound inside.
+
+// battle
+reward:SWORD=4->Wolf Pattern Greatsword,Gold Coin
+resultDes:SWORD=4->The bandits scattered.
+
+
+// fire
+reward:FLAME=6->Aria's Necklace,Gold Coin
+resultDes:FLAME=6->The bandits didn't even notice the smell of burnt meat. When they finally came to their senses, the entire camp was already engulfed in flames.
+
+// sneak
+resultDes:SERPENT=2->You slipped away quietly without attracting anyone's attention.
+
+// default
+result:->WITHER=1,CONSUME_FUND=1
+resultDes:->

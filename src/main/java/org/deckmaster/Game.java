@@ -44,7 +44,7 @@ public class Game extends PApplet {
     @Override
     public void settings() {
         size(displayWidth, displayHeight, P2D);
-        fullScreen();
+//        fullScreen();
     }
 
     @Override
@@ -398,5 +398,8 @@ public class Game extends PApplet {
                 }
             }
         }
+
+        System.out.println("tracked events: " + trackedEvents.toString());
+        System.out.println("non-unique cards: " + nonUniqueCards.toString());
     }
 }

@@ -1,5 +1,6 @@
 package org.deckmaster;
 
+import org.checkerframework.checker.units.qual.A;
 import processing.core.PImage;
 
 import java.io.Serializable;
@@ -123,7 +124,21 @@ public class Event implements Drawable, Serializable {
         }
 
         boolean fail = true;
-        for (HashMap<Property, Integer> conditions : resultTable.keySet()) {
+
+        // sort the condition list, so complicated conditions are checked first
+        ArrayList<HashMap<Property, Integer>> conditionList = new ArrayList<>(resultDes.keySet());
+        ArrayList<HashMap<Property, Integer>> sorted = new ArrayList<>();
+        int maxSize = 0;
+        for (HashMap<Property, Integer> conditions : conditionList) {
+            if (conditions.size() > maxSize) maxSize = conditions.size();
+        }
+
+        while (maxSize >= 0) {
+            for (HashMap<Property, Integer> conditions : conditionList) if (conditions.size() == maxSize) sorted.add(conditions);
+            maxSize -= 1;
+        }
+
+        for (HashMap<Property, Integer> conditions : sorted) {
             if (conditions.keySet().size() == 0) continue; // ignore failure condition
             boolean fulfill = true;
             for (Property p : conditions.keySet()) {
@@ -154,6 +169,11 @@ public class Event implements Drawable, Serializable {
                 for (Card c : curRewardCards) {
                     g.player.addCard(c);
                 }
+
+                // update game active events
+                g.trackedEvents.remove(this.getTitle());
+                if (!this.nextEventName.equals("")) g.trackedEvents.add(nextEventName);
+
                 break;
             }
         }
@@ -169,10 +189,6 @@ public class Event implements Drawable, Serializable {
                 }
             }
         }
-
-        // update game active events
-        g.trackedEvents.remove(this.getTitle());
-        if (!this.nextEventName.equals("")) g.trackedEvents.add(nextEventName);
     }
 
     @Override
