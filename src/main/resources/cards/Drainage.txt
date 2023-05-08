@@ -1,0 +1,5 @@
+name:Drainage
+property:ETERNAL=1
+property:DEATH=2
+property:EARTH=2
+imagePath:images/cards/Drainage.jpg

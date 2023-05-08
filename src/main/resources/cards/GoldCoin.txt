@@ -1,0 +1,3 @@
+name:Gold Coin
+property:FUND=1
+imagePath:images/cards/GoldCoin.jpg

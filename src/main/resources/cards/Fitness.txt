@@ -1,0 +1,5 @@
+name:Fitness
+property:HEART=2
+property:EARTH=2
+property:ETERNAL=1
+imagePath:images/cards/Fitness.jpg

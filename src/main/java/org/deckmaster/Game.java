@@ -9,7 +9,6 @@ import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PMatrix2D;
 import processing.core.PVector;
-import processing.opengl.PShader;
 
 import java.io.*;
 import java.util.*;
@@ -31,13 +30,15 @@ public class Game extends PApplet {
     public GameState state;
     public boolean inBuilding = false;
     public Building buildingToDraw = null;
-
     private EscapeMenu escapeMenu;
     private MainMenu mainMenu;
 
     ContentLoader contentLoader;
 
     ArrayList<String> trackedEvents;
+    ArrayList<String> nonUniqueCards;
+
+    boolean gameEnd;
 
     @Override
     public void settings() {
@@ -49,7 +50,9 @@ public class Game extends PApplet {
     public void setup() {
         game = this;
         state = GameState.MAIN_MENU;
-        player = new Player(new PVector(25, 25), 10);
+        player = new Player(new PVector(25, 25));
+
+        contentLoader = new ContentLoader();
 
         map = new Map();
         map.setup();
@@ -59,7 +62,7 @@ public class Game extends PApplet {
     }
 
     public void toMainMenu() {
-        player.pos = new PVector(25, 25);
+        player = new Player(new PVector(25, 25));
         calcCameraPos();
 
         map.setup();
@@ -67,29 +70,32 @@ public class Game extends PApplet {
     }
 
     public void startGame() {
-        player.pos = new PVector(25, 25);
+        player = new Player(new PVector(25, 25));
         calcCameraPos();
 
         map.setup();
 
-        contentLoader = new ContentLoader();
         trackedEvents = new ArrayList<>();
-        initEvents();
+        nonUniqueCards = new ArrayList<>();
+        initEventsAndCards();
 
         screen = new InventoryScreen(player);
 
         for (int i = 0; i < 10; i++) {
-            Card c = new Card("a", "images/cards/Merlin.png", new HashMap<>());
-            c.addProperty(Property.LUNAR, 1);
+//            Card c = new Card("a", "images/cards/Merlin.png", new HashMap<>());
+            Card c = contentLoader.loadCard("Ritual of Towers");
             player.addCard(c);
         }
+        Card fitness = contentLoader.loadCard("Fitness");
+        player.addCard(fitness);
 
-        slot = new CardSlot(new ArrayList<>(List.of(Property.LUNAR)));
-        slot.setCoord(new PVector((float) g.width * 0.5f, (float) g.height * 0.3f));
+//        slot = new CardSlot(new ArrayList<>(List.of(Property.LUNAR)));
+//        slot.setCoord(new PVector((float) g.width * 0.5f, (float) g.height * 0.3f));
         screen.show();
 
-        evtscreen = new EventScreen(new Event("Explosion at the Brass Alchemy Shop", "description", "images/cards/background.png", 1, new HashMap<>(), new HashMap<>(), new ArrayList<>(), "", "", 1), player, screen);
-        evtscreen.show();
+        evtscreen = null;
+
+        gameEnd = false;
         state = GameState.WORLD;
     }
 
@@ -221,7 +227,7 @@ public class Game extends PApplet {
                 }
                 case WORLD -> {
                     player.update();
-                    slot.update();
+//                    slot.update();
                     screen.update();
                 }
                 case EVENT -> {
@@ -256,10 +262,21 @@ public class Game extends PApplet {
     public void keyReleased() {
         Input.checkKeyReleased();
         if (key == 't') {
-            Event event = contentLoader.loadEvent("xxx"); // TODO: PROACTIVE EVENT
-            evtscreen = new EventScreen(event, player, screen);
-            evtscreen.show();
-            state = GameState.EVENT;
+            switch (state) {
+                case WORLD -> {
+                    Event event = contentLoader.loadEvent("Trivial Matters"); // TODO: PROACTIVE EVENT
+                    evtscreen = new EventScreen(event, player, screen);
+                    evtscreen.show();
+                    state = GameState.EVENT;
+                }
+                case EVENT -> {
+                    List<CardSlot> slots = evtscreen.getSlots();
+                    for (CardSlot slot: slots) {
+                        if (slot.isFilled()) slot.getFilledCard().unpair();
+                    }
+                    state = GameState.WORLD;
+                }
+            }
         }
     }
 
@@ -274,6 +291,10 @@ public class Game extends PApplet {
     public void save() {
         try {
             // saving map
+            FileOutputStream mapSeedFoe = new FileOutputStream(Configurations.MAP_SEED_SAVING_LOCATION);
+            ObjectOutputStream mapSeedOos = new ObjectOutputStream(mapSeedFoe);
+            mapSeedOos.writeObject(map.seed);
+
             FileOutputStream mapFoe = new FileOutputStream(Configurations.MAP_SAVING_LOCATION);
             ObjectOutputStream mapOos = new ObjectOutputStream(mapFoe);
             mapOos.writeObject(map.tileMap);
@@ -300,9 +321,16 @@ public class Game extends PApplet {
     public void load() {
         try {
             // loading map
+            FileInputStream mapSeedFie = new FileInputStream(Configurations.MAP_SEED_SAVING_LOCATION);
+            ObjectInputStream mapSeedOis = new ObjectInputStream(mapSeedFie);
+            map.seed = (long) mapSeedOis.readObject();
+
             FileInputStream mapFie = new FileInputStream(Configurations.MAP_SAVING_LOCATION);
             ObjectInputStream mapOis = new ObjectInputStream(mapFie);
             map.tileMap = (HashMap<TileLocation, MapTile>) mapOis.readObject();
+
+            player = new Player(new PVector(25, 25));
+            screen = new InventoryScreen(player);
 
             // loading player
             FileInputStream playerFie = new FileInputStream(Configurations.PLAYER_SAVING_LOCATION);
@@ -325,12 +353,39 @@ public class Game extends PApplet {
         }
     }
 
-    private void initEvents() {
+    public void triggerSpecialEvents(String title) {
+        Event suddenDeath = contentLoader.loadEvent(title);
+        evtscreen = new EventScreen(suddenDeath, player, screen);
+        evtscreen.show();
+        state = GameState.EVENT;
+        evtscreen.handleCardsInput();
+    }
+
+    private void initEventsAndCards() {
         for (String name : contentLoader.nameFileIndexTable.keySet()) {
             Event e = contentLoader.loadEvent(name);
-            if (e != null && e.getPreviousEventName().equals("")) {
+
+            // ignoring proactive event, add others to list
+            if (e != null && e.getPreviousEventName().equals("") && !e.excluded) {
                 trackedEvents.add(e.getTitle());
             }
+
+            Card c = contentLoader.loadCard(name);
+
+            // ignoring unique (non-legend) cards, add others to list
+            if (c != null) {
+                boolean unique = false;
+                for (Property p : Property.values()) {
+                    if (p.name().startsWith("LEGEND") && c.hasProperty(p)) {
+                        unique = true;
+                        break;
+                    }
+                }
+                if (!unique) {
+                    nonUniqueCards.add(c.getName());
+                }
+            }
+
         }
     }
 }

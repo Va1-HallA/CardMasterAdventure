@@ -1,11 +1,13 @@
 package org.deckmaster;
 
+import processing.core.PImage;
 import processing.core.PVector;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EventScreen implements Drawable{
+    private static PImage background = g.loadImage("images/events/EventScreenBackground.jpg");
     private List<CardSlot> slots;
     private Event event;
     private Player player;
@@ -77,14 +79,16 @@ public class EventScreen implements Drawable{
         g.image(event.getImage(), curPosition.x, curPosition.y);
 
         curPosition.add(new PVector(g.width * Configurations.EVT_IMG_WIDTH_PROPORTION, 0));
-        g.fill(50);
-        g.rect(curPosition.x, curPosition.y, g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION, g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION);
+        background.resize((int) (g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION), (int) (g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION));
+        g.image(background, curPosition.x, curPosition.y);
+//        g.fill(50);
+//        g.rect(curPosition.x, curPosition.y, g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION, g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION);
 
         g.fill(0);
         g.textFont(Configurations.EVT_TITLE_FONT);
         PVector textPosition = new PVector(curPosition.x, curPosition.y);
         textPosition.add(new PVector(g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * 0.5f, g.height * Configurations.EVT_TITLE_Y_PROPORTION));
-        g.text(event.getTitle(), textPosition.x, textPosition.y, g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION);
+        g.text(event.getTitle(), textPosition.x, textPosition.y);
 
         if (state == State.EVENT) drawEventInfo(curPosition, textPosition);
         else if(state == State.RESULT) drawResultInfo(curPosition, textPosition);
@@ -112,9 +116,10 @@ public class EventScreen implements Drawable{
     private void drawEventInfo(PVector curPosition, PVector textPosition) {
         // drawing event info
         float textHeight = g.textAscent() + g.textDescent();
-        textPosition.add(new PVector(0, textHeight));
+        textPosition.add(new PVector(-0.5f * g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION, textHeight));
         g.textFont(Configurations.EVT_DES_FONT);
-        g.text(event.getDescription(), textPosition.x, textPosition.y, g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION);
+        g.text(event.getDescription(), textPosition.x, textPosition.y,
+                g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION, g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION * Configurations.EVT_TEXT_HEIGHT_PROPORTION);
 
         // drawing card slots
         float slotsHeight = curPosition.y + g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION * Configurations.SLOT_HEIGHT_PROPORTION;
@@ -133,9 +138,10 @@ public class EventScreen implements Drawable{
     private void drawResultInfo(PVector curPosition, PVector textPosition) {
         // drawing result info
         float textHeight = g.textAscent() + g.textDescent();
-        textPosition.add(new PVector(0, textHeight));
+        textPosition.add(new PVector(-0.5f * g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION, textHeight));
         g.textFont(Configurations.EVT_DES_FONT);
-        g.text(event.getCurDes(), textPosition.x, textPosition.y, g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION);
+        g.text(event.getCurDes(), textPosition.x, textPosition.y,
+                g.width * Configurations.EVT_MAIN_WIDTH_PROPORTION * Configurations.EVT_TEXT_WIDTH_PROPORTION, g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION * Configurations.EVT_TEXT_HEIGHT_PROPORTION);
 
         // drawing rewards (if any)
         float slotsHeight = curPosition.y + g.height * Configurations.EVT_MAIN_HEIGHT_PROPORTION * Configurations.SLOT_HEIGHT_PROPORTION;
@@ -152,12 +158,16 @@ public class EventScreen implements Drawable{
 
     }
 
-    private void handleCardsInput() {
+    void handleCardsInput() {
         ArrayList<Card> input = new ArrayList<>();
         for (CardSlot cardSlot: slots) {
             if (cardSlot.isFilled()) {
                 Card card = cardSlot.getFilledCard();
                 input.add(card);
+                card.setCoord(new PVector(0, 0));
+                card.unpair();
+                // delete appropriate cards after push the button
+                if (!card.hasProperty(Property.ETERNAL)) player.removeCard(card);
             }
         }
 
@@ -166,10 +176,15 @@ public class EventScreen implements Drawable{
         confirmBtn.switchFunction(this::handleEventScreen);
     }
 
-    private void handleEventScreen() {
+    void handleEventScreen() {
         this.vanish();
         this.state = State.EVENT;
         confirmBtn.switchFunction(this::handleCardsInput);
-        g.state = GameState.WORLD;
+
+        // if the result contains function that ends the game, end the game
+        if (g.gameEnd) {
+            g.gameEnd = false;
+            g.state = GameState.MAIN_MENU;
+        } else g.state = GameState.WORLD;
     }
 }

@@ -23,12 +23,15 @@ public class Event implements Drawable, Serializable {
     private HashMap<HashMap<Property, Integer>, String> resultDes; // empty key for fail condition
     private ArrayList<ArrayList<Property>> slotsRequirements;
     private PImage image;
+    private String imagePath;
 
     // result vars
     private String curDes;
     private ArrayList<Card> curRewardCards;
 
-    public Event(String title, String description, String imagePath, int tier, HashMap<HashMap<Property, Integer>, HashMap<Result, Integer>> resultTable, HashMap<HashMap<Property, Integer>, ArrayList<String>> rewards, ArrayList<ArrayList<Property>> slotsRequirements, String previousEventName, String nextEventName, int allowedCardNum) {
+    boolean excluded;
+
+    public Event(String title, String description, String imagePath, int tier, boolean excluded, HashMap<HashMap<Property, Integer>, HashMap<Result, Integer>> resultTable, HashMap<HashMap<Property, Integer>, String> resultDes, HashMap<HashMap<Property, Integer>, ArrayList<String>> rewards, ArrayList<ArrayList<Property>> slotsRequirements, String previousEventName, String nextEventName, int allowedCardNum) {
         this.title = title;
         this.description = description;
         this.tier = tier;
@@ -36,14 +39,18 @@ public class Event implements Drawable, Serializable {
         this.previousEventName = previousEventName;
         this.nextEventName = nextEventName;
         this.image = g.loadImage(imagePath);
+        this.imagePath = imagePath;
         this.resultTable = new HashMap<>(resultTable);
         this.rewards = new HashMap<>(rewards);
-        this.slotsRequirements = slotsRequirements;
+        this.slotsRequirements = new ArrayList<>(slotsRequirements);
+        this.resultDes = new HashMap<>(resultDes);
 
         image.resize((int) (g.width * Configurations.EVT_IMG_WIDTH_PROPORTION), (int) (g.height * Configurations.EVT_IMG_HEIGHT_PROPORTION));
 
         curDes = "";
         curRewardCards = new ArrayList<>();
+
+        this.excluded = excluded;
     }
 
     public String getTitle() {
@@ -63,6 +70,7 @@ public class Event implements Drawable, Serializable {
     }
 
     public PImage getImage() {
+        if (image == null) image = g.loadImage(imagePath);
         return image;
     }
 
@@ -128,6 +136,7 @@ public class Event implements Drawable, Serializable {
 
             if (fulfill) {
                 fail = false;
+                curRewardCards = new ArrayList<>();
                 HashMap<Result, Integer> resExecution = resultTable.get(conditions);
                 ArrayList<String> rewStr = rewards.get(conditions);
                 String resDes = resultDes.get(conditions);
@@ -154,8 +163,10 @@ public class Event implements Drawable, Serializable {
             HashMap<Result, Integer> resExecution = resultTable.get(failCondition);
             curDes = resultDes.get(failCondition);
 
-            for (Result r : resExecution.keySet()) {
-                r.execute(resExecution.get(r));
+            if (resExecution != null) {
+                for (Result r : resExecution.keySet()) {
+                    r.execute(resExecution.get(r));
+                }
             }
         }
 

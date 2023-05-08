@@ -12,13 +12,11 @@ import static org.deckmaster.PlayerAssets.*;
 public class Player implements Drawable {
     private ArrayList<Card> cards;
     public PVector pos;
-    private float size;
     private final float MOVE_SPEED = 350.0f;
     private MovementDir dir = MovementDir.UP;
 
-    public Player (PVector pos, float size) {
+    public Player (PVector pos) {
         this.pos = pos;
-        this.size = size;
         cards = new ArrayList<>();
     }
 
@@ -50,6 +48,7 @@ public class Player implements Drawable {
 
     @Override
     public void update() {
+        checkDeath();
         handleMovement();
         TileLocation playerLocation = TileLocation.worldToTileCoords(pos);
         if (!g.inBuilding) {
@@ -60,6 +59,7 @@ public class Player implements Drawable {
 
             if (tile.state == TileState.EVENT) {
                 tile.state = TileState.EMPTY;
+                //TODO: randomly select an active event in the list
                 g.state = GameState.EVENT;
             }
 
@@ -77,7 +77,6 @@ public class Player implements Drawable {
             }
         }
     }
-
 
     private void handleMovement() {
         float moveAmount = MOVE_SPEED * (g.UPDATE_TIME / 1000f);
@@ -150,6 +149,20 @@ public class Player implements Drawable {
 
     public void removeCard(Card card) {
         cards.remove(card);
+    }
+
+    private void checkDeath() {
+        // check current fitness when in world state, if no fitness, trigger special event and end game
+        if (g.state == GameState.WORLD) {
+            boolean death = true;
+            for (Card c : cards) {
+                if (c.getName().equals("Fitness")) {
+                    death = false;
+                    break;
+                }
+            }
+            if (death) g.triggerSpecialEvents("Sudden Death");
+        }
     }
 }
 

@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import static org.deckmaster.CardAssets.slotBackground;
+
 public class CardSlot implements Drawable {
     private static PVector size = new PVector(g.width * Configurations.CARD_WIDTH_PROPORTION, g.height * Configurations.CARD_HEIGHT_PROPORTION);
-    PImage bckground = g.loadImage("images/cards/background.png");
     private PVector coord;
     private ArrayList<Property> requirements;
     private Card filledCard;
@@ -76,8 +77,8 @@ public class CardSlot implements Drawable {
     public void draw() {
 //        g.fill(0);
 //        g.rect(coord.x, coord.y, size.x, size.y);
-        bckground.resize((int) size.x, (int) size.y);
-        g.image(bckground, coord.x, coord.y);
+        slotBackground.resize((int) size.x, (int) size.y);
+        g.image(slotBackground, coord.x, coord.y);
         if (filledCard != null) filledCard.draw();
     }
 

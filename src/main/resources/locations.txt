@@ -1,0 +1,17 @@
+// events
+Alchemist's Hut:events/AlchemistsHut.txt
+Old Orge:events/OldOrge.txt
+Sudden Death:events/SuddenDeath.txt
+Trivial Matters:events/TrivialMatters.txt
+
+// cards
+Drainage:cards/Drainage.txt
+Dusk Dragon:cards/DuskDragon.txt
+Fitness:cards/Fitness.txt
+Gold Coin:cards/GoldCoin.txt
+Mana:cards/Mana.txt
+"Old Aggron":cards/OldAggron.txt
+Orge Heart:cards/OrgeHeart.txt
+Ritual of Towers:cards/RitualOfTowers.txt
+Silver Badge:cards/SilverBadge.txt
+Withering:cards/Withering.txt

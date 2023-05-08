@@ -1,0 +1,3 @@
+name:"Old Aggron"
+property:FUND=4
+imagePath:images/cards/OldAggron.jpg

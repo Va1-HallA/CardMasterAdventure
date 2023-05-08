@@ -11,8 +11,8 @@ import java.util.Random;
 
 public class Map implements Drawable {
     public HashMap<TileLocation, MapTile> tileMap;
-    static Random random = new Random();
-    private long seed;
+    transient Random random = new Random();
+    public long seed;
 
     public float getHeight(TileLocation loc) {
         g.noiseSeed(seed);

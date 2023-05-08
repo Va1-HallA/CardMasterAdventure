@@ -1,0 +1,23 @@
+title:Trivial Matters
+description:Contemplation, a brief rest, or communication with an individual.
+tier:1
+excluded:true
+allowedCardNum:3
+imagePath:images/events/TrivialMatters.jpg
+
+// connect swamp guild, get random card
+result:FUND=2,CONNECTION_SWAMP_GUILD=1->COMMODITY=1
+resultDes:FUND=2,CONNECTION_SWAMP_GUILD=1->"Hope this letter finds you well.Thank you for your letter. The merchandise has been enclosed with this letter. Looking forward to seeing you again."
+
+// tower ritual - get dusk dragon
+reward:RITUAL_TOWERS=1,MIRROR=8->Dusk Dragon
+resultDes:RITUAL_TOWERS=1,MIRROR=8->The moonlight recedes like water, and dusk follows closely. The dragon landed on the top of the tower, golden eyes gazing down upon the earth.
+
+// dusk dragon - final boss fight
+result:LEGEND_DUSK_DRAGON=1,SWORD=16->GAME_END=1
+result:LEGEND_DUSK_DRAGON=1,SERPENT=10,SWORD=4->GAME_END=1
+resultDes:LEGEND_DUSK_DRAGON=1,SWORD=16->Dragon roars, blood spills, and all falls into dusk. The tall towers collapse, the dragons plummet, the sky burns to ash. The roots of the old world peel away, and the new world sprouts in the dead soil.
+resultDes:LEGEND_DUSK_DRAGON=1,SERPENT=10,SWORD=4->Dragon roars, blood spills, and all falls into dusk. The tall towers collapse, the dragons plummet, the sky burns to ash. The roots of the old world peel away, and the new world sprouts in the dead soil.
+
+// default
+resultDes:->Nothing happened, and the dawn remained clear and transparent.

@@ -1,0 +1,20 @@
+title:Alchemist's Hut
+description:Candles, smoke, reflections on glass jars. A small figure stands behind the counter, with a cloak bearing the emblem of an Ouroboros.
+tier:1
+allowedCardNum:2
+imagePath:images/events/AlchemistsHut.jpg
+
+// 1 fund
+result:FUND=1->COMMODITY=1
+resultDes:FUND=1->He took out a box, "Thank you for your patronage. I look forward to meeting you again."
+
+// 5 fund
+result:FUND=5->COMMODITY=2
+resultDes:FUND=5->He took out a box, "Thank you for your patronage. I look forward to meeting you again."
+
+// battle
+reward:SWORD=4->Silver Badge
+resultDes:SWORD=4->Ended with a scream and his life. In an instant, everything returned to calm.
+
+// default
+resultDes:->"What, not buying anything?" the sharpness in his tone was almost palpable. "Too bad, please bring more coins next time."
