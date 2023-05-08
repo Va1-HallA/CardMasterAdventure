@@ -185,6 +185,11 @@ public class EventScreen implements Drawable{
         if (g.gameEnd) {
             g.gameEnd = false;
             g.state = GameState.MAIN_MENU;
-        } else g.state = GameState.WORLD;
+        } else {
+            for (Card c : player.getCards()) {
+                c.unpair();
+            }
+            g.state = GameState.WORLD;
+        }
     }
 }

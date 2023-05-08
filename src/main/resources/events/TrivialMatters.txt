@@ -5,6 +5,8 @@ excluded:true
 allowedCardNum:3
 imagePath:images/events/TrivialMatters.jpg
 
+// connect Aria, get magic
+
 // connect swamp guild, get random card
 result:FUND=2,CONNECTION_SWAMP_GUILD=1->COMMODITY=1
 resultDes:FUND=2,CONNECTION_SWAMP_GUILD=1->"Hope this letter finds you well.Thank you for your letter. The merchandise has been enclosed with this letter. Looking forward to seeing you again."

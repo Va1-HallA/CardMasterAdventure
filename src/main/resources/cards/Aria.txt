@@ -1,0 +1,5 @@
+name:Aria
+property:CONNECTION_DRUID_SOCIETY=1
+property:LEGEND_UNIQUE=1
+property:ETERNAL=1
+imagePath:images/cards/Aria.jpg

@@ -152,9 +152,12 @@ public class Event implements Drawable, Serializable {
             if (fulfill) {
                 fail = false;
                 curRewardCards = new ArrayList<>();
-                HashMap<Result, Integer> resExecution = resultTable.get(conditions);
-                ArrayList<String> rewStr = rewards.get(conditions);
-                String resDes = resultDes.get(conditions);
+                HashMap<Result, Integer> resExecution = new HashMap<>();
+                ArrayList<String> rewStr = new ArrayList<>();
+                String resDes = "";
+                if (resultTable.containsKey(conditions)) resExecution = resultTable.get(conditions);
+                if (rewards.containsKey(conditions)) rewStr = rewards.get(conditions);
+                if (resultDes.containsKey(conditions)) resDes = resultDes.get(conditions);
 
                 curDes = resDes;
                 for (String str : rewStr) {

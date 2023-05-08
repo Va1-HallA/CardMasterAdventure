@@ -1,0 +1,4 @@
+name:Wolf Pattern Greatsword
+property:SWORD=4
+property:FUND=1
+imagePath:images/cards/WolfPatternGreatsword.jpg

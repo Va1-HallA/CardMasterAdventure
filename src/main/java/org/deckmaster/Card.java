@@ -118,7 +118,6 @@ public class Card implements Comparable, Drawable, Serializable {
     }
 
     public void onClick(int mx, int my) {
-        // TODO: onclick = start dragging, onhold = dragging, onrelease = check if inside a slot, if not back to original position, if yes stay in slot
         if (mx > coord.x && mx < coord.x + size.x && my > coord.y && my < coord.y + size.y) {
             drag(mx, my);
         }
@@ -147,8 +146,6 @@ public class Card implements Comparable, Drawable, Serializable {
         }
         cardBackground.resize((int) size.x, (int) size.y);
         image.resize((int) (size.x * Configurations.CARD_IMAGE_X_PROPORTION), (int) (size.y * Configurations.CARD_IMAGE_Y_PROPORTION));
-//        g.fill(g.color(0));
-//        g.rect(coord.x, coord.y, size.x, size.y);
         g.image(cardBackground, coord.x, coord.y);
         g.fill(g.color(0));
         g.textFont(Configurations.CARD_FONT);
@@ -160,21 +157,23 @@ public class Card implements Comparable, Drawable, Serializable {
         int iconSizeX = (int) (size.x * Configurations.PROPERTY_ICON_WIDTH_PROPORTION);
         int iconSizeY = (int) (size.y * Configurations.PROPERTY_ICON_HEIGHT_PROPORTION);
         PVector curPropertyCoord = new PVector(
-                coord.x + size.x * 0.82f - iconSizeX * (1 + Configurations.PROPERTY_VALUE_INTERVAL_PROPORTION) ,
+                coord.x + size.x * 0.82f - iconSizeX * (1 + Configurations.PROPERTY_ICON_INTERVAL_PROPORTION) ,
                 coord.y + size.y * 0.89f - iconSizeY
         );
+
+        g.textSize(Game.game.width * Configurations.CARD_FONT_SIZE_PROPORTION * 0.7f);
         for (Map.Entry<Property, Integer> entry : propertyTable.entrySet()) {
             PImage icon = entry.getKey().icon;
             icon.resize(iconSizeX, iconSizeY);
             g.image(icon, curPropertyCoord.x, curPropertyCoord.y);
-            g.text(entry.getValue(), curPropertyCoord.x + iconSizeX * (1 + Configurations.PROPERTY_VALUE_INTERVAL_PROPORTION), curPropertyCoord.y + iconSizeY);
+            g.text(entry.getValue(), curPropertyCoord.x + iconSizeX * (1 + Configurations.PROPERTY_ICON_INTERVAL_PROPORTION), curPropertyCoord.y + iconSizeY);
 
             // updating property locations
             propertyCoords.put(
                     entry.getKey(),
                     new PVector[]{
                             new PVector(curPropertyCoord.x, curPropertyCoord.y),
-                            new PVector(curPropertyCoord.x + iconSizeX * (1 + Configurations.PROPERTY_VALUE_INTERVAL_PROPORTION), curPropertyCoord.y + iconSizeY)
+                            new PVector(curPropertyCoord.x + iconSizeX * (1 + Configurations.PROPERTY_ICON_INTERVAL_PROPORTION), curPropertyCoord.y + iconSizeY)
                     });
             curPropertyCoord.add(new PVector(-1.2f * (iconSizeX * (1 + Configurations.PROPERTY_VALUE_INTERVAL_PROPORTION)), 0));
         }

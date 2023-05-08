@@ -2,7 +2,7 @@ title:Rake's Camp
 description:Lax Discipline, rough training, but vast in numbers. Rake's band is not picky, from nobles to common farmers, from villages to cities, wherever they go, chaos ensues.
 tier:1
 allowedCardNum:4
-imagePath:
+imagePath:images/events/RakesCamp.jpg
 
 // find Aria
 reward:SWORD=4,MIRROR=6->Aria,Wolf Pattern Greatsword,Gold Coin
@@ -22,4 +22,4 @@ resultDes:SERPENT=2->You slipped away quietly without attracting anyone's attent
 
 // default
 result:->WITHER=1,CONSUME_FUND=1
-resultDes:->
+resultDes:->Your futile resistance was ultimately in vain, and you were robbed clean by the bandits.

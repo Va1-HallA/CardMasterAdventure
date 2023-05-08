@@ -90,6 +90,9 @@ public class Game extends PApplet {
         Card fitness = contentLoader.loadCard("Fitness");
         player.addCard(fitness);
 
+        Card silverBadge = contentLoader.loadCard("Silver Badge");
+        player.addCard(silverBadge);
+
 //        slot = new CardSlot(new ArrayList<>(List.of(Property.LUNAR)));
 //        slot.setCoord(new PVector((float) g.width * 0.5f, (float) g.height * 0.3f));
         screen.show();
