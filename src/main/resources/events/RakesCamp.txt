@@ -5,11 +5,11 @@ allowedCardNum:4
 imagePath:images/events/RakesCamp.jpg
 
 // find Aria
-reward:SWORD=4,MIRROR=6->Aria,Wolf Pattern Greatsword,Gold Coin
+reward:SWORD=4,MIRROR=6->Empty Camp,Aria,Wolf Pattern Greatsword,Gold Coin
 resultDes:SWORD=4,MIRROR=6->A separate compartment is in one corner of the camp, where a little girl is bound inside.
 
 // battle
-reward:SWORD=4->Wolf Pattern Greatsword,Gold Coin
+reward:SWORD=4->Empty Camp,Wolf Pattern Greatsword,Gold Coin
 resultDes:SWORD=4->The bandits scattered.
 
 

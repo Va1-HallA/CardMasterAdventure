@@ -1,0 +1,4 @@
+name:Rivior
+property:CONNECTION_CITY_OF_TOWERS=1
+property:LEGEND_UNIQUE=1
+imagePath:images/cards/Rivior.jpg

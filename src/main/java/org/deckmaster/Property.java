@@ -19,6 +19,7 @@ public enum Property {
     LEGEND_UNIQUE("images/properties/LEGEND_UNIQUE.png", "In storybooks and folk tales, there are often vague stories mentioned that are yet to be examined for their authenticity. Nevertheless, regardless of the truth, legends remain as legends."),
     LUNAR("images/properties/LUNAR.png", "Moon. The source of magic, a mysterious symbol. Every night, mana flows through her body like threads, and then drifts down to the ground."),
     MIRROR("images/properties/MIRROR.png", "Mirror. The eye behind the door, the whisper at the feast. Mirror is the synonym of exploration, the mysterious opposite."),
+    RESIDENCE("images/properties/RESIDENCE.png", "Fireplace, warm bed, and food: anything that you can think of as \"home.\""),
     RITUAL_TOWERS("images/properties/RITUAL_TOWERS.png", "The Ritual of the Towers. A ritual is a large-scale magic that combines spells, runes, and planning. This is the most secretive ritual from a certain high tower."),
     SWORD("images/properties/SWORD.png", "Sword. The sword is a symbol of conquest and harm, all lives come into direct contact with it meets their ends without exception."),
     SERPENT("images/properties/SERPENT.png", "Serpent. The serpent is a symbol of secrecy, lurking in the shadows of the night."),

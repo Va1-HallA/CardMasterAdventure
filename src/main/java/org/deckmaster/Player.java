@@ -1,9 +1,11 @@
 package org.deckmaster;
 
+import org.checkerframework.checker.units.qual.A;
 import org.deckmaster.mapgen.*;
 import processing.core.PImage;
 import processing.core.PVector;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -156,7 +158,26 @@ public class Player implements Drawable {
     public void setCards(ArrayList<Card> cards) {this.cards = cards;}
 
     public void addCard(Card card) {
-        cards.add(card);
+        // at most hold 1 same LEGEND card
+        boolean isLegend = false;
+        for (Property p : Property.values()) {
+            if (p.name().startsWith("LEGEND") && card.hasProperty(p)) {
+                isLegend = true;
+                break;
+            }
+        }
+
+        if (isLegend) {
+            boolean haveSameCard = false;
+            for (Card c : cards) {
+                if (c.getName().equals(card.getName())) {
+                    haveSameCard = true;
+                    break;
+                }
+            }
+
+            if (!haveSameCard) cards.add(card);
+        } else cards.add(card);
         Collections.sort(cards);
     }
 

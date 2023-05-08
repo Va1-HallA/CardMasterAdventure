@@ -174,8 +174,10 @@ public class Event implements Drawable, Serializable {
                 }
 
                 // update game active events
-                g.trackedEvents.remove(this.getTitle());
+                if (!this.previousEventName.equals("")) g.trackedEvents.remove(this.getTitle());
+
                 if (!this.nextEventName.equals("")) g.trackedEvents.add(nextEventName);
+
 
                 break;
             }

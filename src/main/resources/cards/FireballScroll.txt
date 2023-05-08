@@ -1,0 +1,7 @@
+name:Fireball Scroll
+property:FLAME=6
+property:SWORD=6
+property:LUNAR=4
+
+// scrolls use same image
+imagePath:images/cards/SpellScroll.jpg

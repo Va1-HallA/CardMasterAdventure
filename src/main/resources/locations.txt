@@ -4,12 +4,15 @@ Old Orge:events/OldOrge.txt
 Rake's Camp:events/RakesCamp.txt
 Sudden Death:events/SuddenDeath.txt
 Trivial Matters:events/TrivialMatters.txt
+Young Mage:events/YoungMage.txt
 
 // cards
 Aria:cards/Aria.txt
 Aria's Necklace:cards/AriasNecklace.txt
 Drainage:cards/Drainage.txt
 Dusk Dragon:cards/DuskDragon.txt
+Empty Camp:cards/EmptyCamp.txt
+Fireball Scroll:cards/FireballScroll.txt
 Fitness:cards/Fitness.txt
 Gold Coin:cards/GoldCoin.txt
 Good Berry:cards/GoodBerry.txt
@@ -17,6 +20,8 @@ Mana:cards/Mana.txt
 "Old Aggron":cards/OldAggron.txt
 Orge Heart:cards/OrgeHeart.txt
 Ritual of Towers:cards/RitualOfTowers.txt
+Rivior:cards/Rivior.txt
+Silence Scroll:cards/SilenceScroll.txt
 Silver Badge:cards/SilverBadge.txt
 Withering:cards/Withering.txt
 Wolf Pattern Greatsword:cards/WolfPatternGreatsword.txt

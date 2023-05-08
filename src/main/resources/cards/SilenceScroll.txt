@@ -1,0 +1,7 @@
+name:Silence Scroll
+property:SERPENT=6
+property:MIRROR=2
+property:LUNAR=4
+
+// scrolls use same image
+imagePath:images/cards/SpellScroll.jpg
