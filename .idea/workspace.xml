@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f309a8a-c691-41b5-9e51-14f05ab0b6bf" name="Changes" comment="Moved the assets and made the game save and load successfully.">
+    <list default="true" id="1f309a8a-c691-41b5-9e51-14f05ab0b6bf" name="Changes" comment="updated multiple success condition events &amp; proactive events.">
       <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/save/event.txt" afterDir="false" />
       <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/save/map.txt" afterDir="false" />
       <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/save/player.txt" afterDir="false" />
@@ -60,7 +60,6 @@
       <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/resources/images/properties/SWORD.png" afterDir="false" />
       <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/resources/images/properties/WATER.png" afterDir="false" />
       <change afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/resources/locations.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/events/RakesCamp.txt" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/build.gradle" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/build.gradle" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/contentFilenameMap.txt" beforeDir="false" />
@@ -111,13 +110,9 @@
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Property.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Property.java" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Result.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Result.java" afterDir="false" />
       <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/mapgen/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/events/BrassAlchemyShop.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/events/OldOrge.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/OldOrge.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/locations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locations.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/events/RakesCamp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/RakesCamp.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -364,7 +359,28 @@
       <option name="project" value="LOCAL" />
       <updated>1683415989151</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="updated multiple success condition events &amp; proactive events.">
+      <created>1683560373659</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683560373659</updated>
+    </task>
+    <task id="LOCAL-00005" summary="updated multiple success condition events &amp; proactive events.">
+      <created>1683560386877</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683560386877</updated>
+    </task>
+    <task id="LOCAL-00006" summary="updated multiple success condition events &amp; proactive events.">
+      <created>1683560392776</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683560392776</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,10 +401,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added some foliage and rocks to the terrain." />
     <MESSAGE value="Card and event system" />
-    <MESSAGE value="updated multiple success condition events &amp; proactive events." />
     <MESSAGE value="Added the assets, made the possibility of creating a fat jar, and added some menus." />
     <MESSAGE value="Moved the assets and made the game save and load successfully." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved the assets and made the game save and load successfully." />
+    <MESSAGE value="updated multiple success condition events &amp; proactive events." />
+    <option name="LAST_COMMIT_MESSAGE" value="updated multiple success condition events &amp; proactive events." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

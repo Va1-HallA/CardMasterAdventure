@@ -126,7 +126,7 @@ public class Event implements Drawable, Serializable {
         boolean fail = true;
 
         // sort the condition list, so complicated conditions are checked first
-        ArrayList<HashMap<Property, Integer>> conditionList = new ArrayList<>(resultTable.keySet());
+        ArrayList<HashMap<Property, Integer>> conditionList = new ArrayList<>(resultDes.keySet());
         ArrayList<HashMap<Property, Integer>> sorted = new ArrayList<>();
         int maxSize = 0;
         for (HashMap<Property, Integer> conditions : conditionList) {
