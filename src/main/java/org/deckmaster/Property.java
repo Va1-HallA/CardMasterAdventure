@@ -22,6 +22,7 @@ public enum Property {
     RITUAL_TOWERS("images/properties/RITUAL_TOWERS.png", "The Ritual of the Towers. A ritual is a large-scale magic that combines spells, runes, and planning. This is the most secretive ritual from a certain high tower."),
     SWORD("images/properties/SWORD.png", "Sword. The sword is a symbol of conquest and harm, all lives come into direct contact with it meets their ends without exception."),
     SERPENT("images/properties/SERPENT.png", "Serpent. The serpent is a symbol of secrecy, lurking in the shadows of the night."),
+    SETTLEMENT("", ""),
     WATER("images/properties/WATER.png", "Water Element. The flowing moon, the place of origin for all things. This element represents human life, an intangible and delicate crown."),
     ;
     PImage icon;

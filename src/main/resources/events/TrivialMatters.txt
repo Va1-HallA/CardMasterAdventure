@@ -5,7 +5,11 @@ excluded:true
 allowedCardNum:3
 imagePath:images/events/TrivialMatters.jpg
 
-// connect Aria, get magic
+// consume fund and settlement, recover health
+result:FUND=2->REVIVE=1
+resultDes:FUND=2->
+
+// connect Druid Society, get magic
 
 // connect swamp guild, get random card
 result:FUND=2,CONNECTION_SWAMP_GUILD=1->COMMODITY=1

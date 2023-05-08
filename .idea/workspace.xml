@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1f309a8a-c691-41b5-9e51-14f05ab0b6bf" name="Changes" comment="updated multiple success condition events &amp; proactive events.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/events/RakesCamp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/RakesCamp.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Property.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/events/TrivialMatters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/TrivialMatters.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683565187200</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="updated multiple success condition events &amp; proactive events.">
+      <created>1683565388862</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683565388862</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
