@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f309a8a-c691-41b5-9e51-14f05ab0b6bf" name="Changes" comment="updated multiple success condition events &amp; proactive events.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/Rivior.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/events/YoungMage.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/Rivior.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events/YoungMage.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/locations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locations.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/events/TrivialMatters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/TrivialMatters.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +295,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683570094458</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="updated multiple success condition events &amp; proactive events.">
+      <created>1683571579586</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683571579586</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

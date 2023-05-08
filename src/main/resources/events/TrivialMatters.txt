@@ -13,8 +13,8 @@ resultDes:FUND=2,RESIDENCE=1->A leisurely time. Food, bed, everything is proceed
 reward:CONNECTION_DRUID_SOCIETY=1,LUNAR=2,HEART=2->Good Berry
 resultDes:CONNECTION_DRUID_SOCIETY=1,LUNAR=2,HEART=2->The message came on the breeze, birds bearing pages. A means of communication exclusive to the druids.
 
-reward:CONNECTION_DRUID_SOCIETY=1,LUNAR=2,FIRE=4->Fireball Scroll
-resultDes:CONNECTION_DRUID_SOCIETY=1,LUNAR=2,FIRE=4->The message came on the breeze, birds bearing pages. A means of communication exclusive to the druids.
+reward:CONNECTION_DRUID_SOCIETY=1,LUNAR=2,FLAME=4->Fireball Scroll
+resultDes:CONNECTION_DRUID_SOCIETY=1,LUNAR=2,FLAME=4->The message came on the breeze, birds bearing pages. A means of communication exclusive to the druids.
 
 reward:CONNECTION_DRUID_SOCIETY=1,LUNAR=2,AIR=4->Silence Scroll
 resultDes:CONNECTION_DRUID_SOCIETY=1,LUNAR=2,AIR=4->The message came on the breeze, birds bearing pages. A means of communication exclusive to the druids.
