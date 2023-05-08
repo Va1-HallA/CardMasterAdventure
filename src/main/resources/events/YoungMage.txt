@@ -1,0 +1,13 @@
+title:Young Mage
+description:In the small roadside tavern, a young man in a long robe was inquiring about something with others. Among the few words you could hear, the word "Druid" was mentioned.
+// nextEvent:...
+tier:1
+allowedCardNum:1
+imagePath:images/events/YoungMage.jpg
+
+// mentioned druid info
+reward:CONNECTION_DRUID_SOCIETY=1->Rivior
+resultDes:CONNECTION_DRUID_SOCIETY=1->"Do you know where the druids are? Thank you so much. My name is Rivior, a mage from the city of the towers. It's nice to meet you, and I hope we can meet again on our journey."
+
+// default
+resultDes:->You just glanced at him and continued on your journey.
