@@ -1,0 +1,3 @@
+name:Empty Camp
+property:RESIDENCE=1
+imagePath:images/cards/EmptyCamp.jpg

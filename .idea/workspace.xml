@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f309a8a-c691-41b5-9e51-14f05ab0b6bf" name="Changes" comment="updated multiple success condition events &amp; proactive events.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/EmptyCamp.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/FireballScroll.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/SilenceScroll.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/EmptyCamp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/SpellScoll.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/RESIDENCE.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Property.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/events/RakesCamp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/RakesCamp.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/events/TrivialMatters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/TrivialMatters.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/locations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locations.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683568023785</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="updated multiple success condition events &amp; proactive events.">
+      <created>1683568110786</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683568110786</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
