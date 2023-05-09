@@ -1,0 +1,14 @@
+title:Cathedral of Saint Sophia
+description:The night was still as water. You pushed open the door to the cathedral, the heavy sound echoing through the hall. Moonlight poured through the stained glass windows, climbing up the two bodies in the center of the hall. The knight in white armor had pierced the heart of a bloated monster with his sword, but had lost his own life in the process. For a moment, the monster's massive body trembled before throwing the knight off. It turned its head towards you.
+tier:3
+allowedCardNum:2
+previousEvent:Nameless Graveyard
+imagePath:images/events/CathedralOfSaintSophia.jpg
+
+// Sword
+reward:SWORD=12->White Holy Sword
+resultDes:SWORD=12->The massive body collapsed with a loud thud. The moon spread its arms around its soul, and tranquility returned to the hall.
+
+// default
+result:->WITHER=3
+resultDes:->Death in black followed you like a shadow, and you ran with all your might into the night.

@@ -1,10 +1,14 @@
 // events
 Alchemist's Hut:events/AlchemistsHut.txt
+Cathedral of Saint Sophia:events/CathedralOfSaintSophia.txt
 Curse of the Tower:events/CurseOfTheTower.txt
 Lakefront Golem:events/LakefrontGolem.txt
+Nameless Graveyard:events/NamelessGraveyard.txt
 Old Orge:events/OldOrge.txt
 Rake's Camp:events/RakesCamp.txt
 Sudden Death:events/SuddenDeath.txt
+The Rotten Town:events/TheRottenTown.txt
+Traveling Soul Merchant:events/TravelingSoulMerchant.txt
 Trivial Matters:events/TrivialMatters.txt
 Young Mage:events/YoungMage.txt
 
@@ -19,14 +23,18 @@ Fireball Scroll:cards/FireballScroll.txt
 Fitness:cards/Fitness.txt
 Gold Coin:cards/GoldCoin.txt
 Good Berry:cards/GoodBerry.txt
+Magnificent Magic Mirror:cards/MagnificentMagicMirror.txt
 Mana:cards/Mana.txt
+Nameless Knight:cards/NamelessKnight.txt
 "Old Aggron":cards/OldAggron.txt
 Orge Heart:cards/OrgeHeart.txt
+Ritual of Dawn:cards/RitualOfDawn.txt
 Ritual of Towers:cards/RitualOfTowers.txt
 Rivior:cards/Rivior.txt
 Sapphire Necklace:cards/SapphireNecklace.txt
 Silence Scroll:cards/SilenceScroll.txt
 Silver Badge:cards/SilverBadge.txt
 Soul Crystal:cards/SoulCrystal.txt
+White Holy Sword:cards/WhiteHolySword.txt
 Withering:cards/Withering.txt
 Wolf Pattern Greatsword:cards/WolfPatternGreatsword.txt

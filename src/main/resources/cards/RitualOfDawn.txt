@@ -1,0 +1,4 @@
+name:Ritual of Dawn
+property:RITUAL_DAWN=1
+property:LUNAR=4
+imagePath:images/cards/RitualOfDawn.jpg

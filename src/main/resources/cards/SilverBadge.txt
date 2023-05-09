@@ -1,8 +1,5 @@
 name:Silver Badge
-property:LUNAR=10
+property:LUNAR=2
 property:AIR=2
-property:FUND=10
-property:SWORD=10
-property:SERPENT=10
-property:MIRROR=10
+property:FUND=2
 imagePath:images/cards/SilverBadge.png

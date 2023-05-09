@@ -1,0 +1,16 @@
+title:The Rotten Town
+description:Muddy roads grip tightly onto the soles of travelers' shoes, and decaying fences are crowded with crows. On the village square, the gallows stood like a withered arm, stretching across the road. The portly priest proclaiming in a loud voice, "In the name of Ludwig, let the guilty be cleansed with the noose. May the dawn forever shine." He pointed at a ragged boy.
+tier:1
+allowedCardNum:2
+nextEvent:Nameless Graveyard
+imagePath:images/events/TheRottenTown.jpg
+
+// sneak magic
+resultDes:SERPENT=2,LUNAR=2->A network of magic shadows was built, separating the priest's line of sight. The boy looked gratefully at you and turned to escape into the shadows.
+
+// battle
+reward:SWORD=4->Gold Coin,Ritual of Dawn
+resultDes:SWORD=4->The crows flew and pecked at the corpse. The messenger of death announced the priest's death, while the boy disappeared without a trace.
+
+// default
+resultDes:->Stay silent, stay graceful. You leave without a word.

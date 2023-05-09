@@ -87,19 +87,14 @@ public class Game extends PApplet {
 
         screen = new InventoryScreen(player);
 
-        for (int i = 0; i < 10; i++) {
-//            Card c = new Card("a", "images/cards/Merlin.png", new HashMap<>());
-            Card c = contentLoader.loadCard("Ritual of Towers");
-            player.addCard(c);
+        // assign the player 3 fitness and 3 mana
+        for (int i = 0; i < 3; i++) {
+            Card fitness = contentLoader.loadCard("Fitness");
+            player.addCard(fitness);
+
+            Card mana = contentLoader.loadCard("Mana");
+            player.addCard(mana);
         }
-        Card fitness = contentLoader.loadCard("Fitness");
-        player.addCard(fitness);
-
-        Card silverBadge = contentLoader.loadCard("Silver Badge");
-        player.addCard(silverBadge);
-
-//        slot = new CardSlot(new ArrayList<>(List.of(Property.LUNAR)));
-//        slot.setCoord(new PVector((float) g.width * 0.5f, (float) g.height * 0.3f));
         screen.show();
 
         evtscreen = null;
@@ -204,7 +199,7 @@ public class Game extends PApplet {
                         } else {
                             buildingToDraw.draw();
                         }
-//                slot.draw();
+
                         player.draw();
                         screen.draw();
 
@@ -236,7 +231,6 @@ public class Game extends PApplet {
                 }
                 case WORLD -> {
                     player.update();
-//                    slot.update();
                     screen.update();
                 }
                 case EVENT -> {
@@ -411,7 +405,7 @@ public class Game extends PApplet {
             }
         }
 
-        System.out.println("tracked events: " + trackedEvents.toString());
-        System.out.println("non-unique cards: " + nonUniqueCards.toString());
+//        System.out.println("tracked events: " + trackedEvents.toString());
+//        System.out.println("non-unique cards: " + nonUniqueCards.toString());
     }
 }

@@ -15,7 +15,6 @@ public enum Result {
     ;
 
     static final Game g = Game.game;
-    static final Player player = g.player;
 
     Result() {
 
@@ -61,7 +60,7 @@ public enum Result {
         }
 
         for (Card c : addedCard) {
-            player.addCard(c);
+            g.player.addCard(c);
         }
     }
 
@@ -69,7 +68,7 @@ public enum Result {
         // remove fund cards that has property value x
         int removed = 0;
         ArrayList<Card> removedCard = new ArrayList<>();
-        for (Card c : player.getCards()) {
+        for (Card c : g.player.getCards()) {
             if (removed >= value) break;
             if (c.hasProperty(Property.FUND)) {
                 int val = c.getPropertyTable().get(Property.FUND);
@@ -79,7 +78,7 @@ public enum Result {
         }
 
         for (Card c : removedCard) {
-            player.removeCard(c);
+            g.player.removeCard(c);
         }
     }
 
@@ -87,7 +86,7 @@ public enum Result {
         // remove fitness or withering permanently
         int removed = 0;
         ArrayList<Card> removedCard = new ArrayList<>();
-        for (Card c : player.getCards()) {
+        for (Card c : g.player.getCards()) {
             if (removed >= value) break;
             if (c.getName().equals("Withering")) {
                 removed += 1;
@@ -96,7 +95,7 @@ public enum Result {
         }
 
         for (Card c : removedCard) {
-            player.removeCard(c);
+            g.player.removeCard(c);
         }
 
         // if no enough withering, remove fitness instead
@@ -105,7 +104,7 @@ public enum Result {
             int newRemoved = 0;
             removedCard.clear();
 
-            for (Card c : player.getCards()) {
+            for (Card c : g.player.getCards()) {
                 if (newRemoved >= newTarget) break;
                 if (c.getName().equals("Fitness")) {
                     newRemoved += 1;
@@ -114,7 +113,7 @@ public enum Result {
             }
 
             for (Card c : removedCard) {
-                player.removeCard(c);
+                g.player.removeCard(c);
             }
         }
     }
@@ -124,7 +123,7 @@ public enum Result {
         int removed = 0;
         ArrayList<Card> removedCard = new ArrayList<>();
         ArrayList<Card> addedCard = new ArrayList<>();
-        for (Card c : player.getCards()) {
+        for (Card c : g.player.getCards()) {
             if (removed >= value) break;
             if (c.getName().equals("Mana")) {
                 removed += 1;
@@ -136,11 +135,11 @@ public enum Result {
         }
 
         for (Card c : removedCard) {
-            player.removeCard(c);
+            g.player.removeCard(c);
         }
 
         for (Card c : addedCard) {
-            player.addCard(c);
+            g.player.addCard(c);
         }
 
         // turn rest debt value of fitness into withering if mana is not enough
@@ -159,7 +158,7 @@ public enum Result {
         int recovered = 0;
         ArrayList<Card> removedCard = new ArrayList<>();
         ArrayList<Card> addedCard = new ArrayList<>();
-        for (Card c : player.getCards()) {
+        for (Card c : g.player.getCards()) {
             if (recovered >= value) break;
             if (c.getName().equals("Drainage")) {
                 recovered += 1;
@@ -171,11 +170,11 @@ public enum Result {
         }
 
         for (Card c : removedCard) {
-            player.removeCard(c);
+            g.player.removeCard(c);
         }
 
         for (Card c : addedCard) {
-            player.addCard(c);
+            g.player.addCard(c);
         }
     }
 
@@ -185,7 +184,7 @@ public enum Result {
         int recovered = 0;
         ArrayList<Card> removedCard = new ArrayList<>();
         ArrayList<Card> addedCard = new ArrayList<>();
-        for (Card c : player.getCards()) {
+        for (Card c : g.player.getCards()) {
             if (recovered >= value) break;
             if (c.getName().equals("Withering")) {
                 recovered += 1;
@@ -197,11 +196,11 @@ public enum Result {
         }
 
         for (Card c : removedCard) {
-            player.removeCard(c);
+            g.player.removeCard(c);
         }
 
         for (Card c : addedCard) {
-            player.addCard(c);
+            g.player.addCard(c);
         }
     }
 
@@ -211,7 +210,7 @@ public enum Result {
         int removed = 0;
         ArrayList<Card> removedCard = new ArrayList<>();
         ArrayList<Card> addedCard = new ArrayList<>();
-        for (Card c : player.getCards()) {
+        for (Card c : g.player.getCards()) {
             if (removed >= value) break;
             if (c.getName().equals("Fitness")) {
                 removed += 1;
@@ -223,11 +222,11 @@ public enum Result {
         }
 
         for (Card c : removedCard) {
-            player.removeCard(c);
+            g.player.removeCard(c);
         }
 
         for (Card c : addedCard) {
-            player.addCard(c);
+            g.player.addCard(c);
         }
     }
 }

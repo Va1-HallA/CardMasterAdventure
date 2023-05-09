@@ -1,0 +1,14 @@
+title:Nameless Graveyard
+description:The sunset burned like flames. A knight in full white armor knelt before a tombstone. Crows circled overhead, cawing loudly. You recognized him as the boy from the rotten town. He was silent, as if life had left him. After a long while, he began to sob.
+tier:2
+allowedCardNum:3
+previousEvent:The Rotten Town
+nextEvent:Cathedral of Saint Sophia
+imagePath:images/events/NamelessGraveyard.jpg
+
+// Heart
+reward:HEART=8->Nameless Knight
+resultDes:HEART=8->"Ah, it's you," he gratefully raised his head, "Thank you, I feel much better." The distant cathedral stood silently in the sunset, and the paladin's gaze turned to it.
+
+// default
+resultDes:->The nameless person does nameless things. You turn around and leave.

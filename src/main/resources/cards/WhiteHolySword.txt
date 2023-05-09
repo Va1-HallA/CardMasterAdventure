@@ -1,0 +1,7 @@
+name:White Holy Sword
+property:SWORD=12
+property:LUNAR=6
+property:FLAME=6
+property:ETERNAL=1
+property:LEGEND_PALADIN=1
+imagePath:images/cards/WhiteHolySword.jpg

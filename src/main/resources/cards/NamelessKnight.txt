@@ -1,0 +1,4 @@
+name:Nameless Knight
+property:SWORD=4
+property:LEGEND_UNIQUE=1
+imagePath:images/cards/NamelessKnight.jpg

@@ -1,0 +1,5 @@
+name:Magnificent Magic Mirror
+property:LUNAR=4
+property:FUND=4
+property:MIRROR=6
+imagePath:images/cards/MagnificentMagicMirror.jpg

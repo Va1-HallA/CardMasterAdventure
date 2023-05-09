@@ -23,8 +23,17 @@ resultDes:CONNECTION_DRUID_SOCIETY=1,LUNAR=2,AIR=4->The message came on the bree
 result:FUND=2,CONNECTION_SWAMP_GUILD=1->COMMODITY=1
 resultDes:FUND=2,CONNECTION_SWAMP_GUILD=1->"Hope this letter finds you well.Thank you for your letter. The merchandise has been enclosed with this letter. Looking forward to seeing you again."
 
+// dawn ritual - get fund using health or fill mana
+reward:RITUAL_DAWN=1,HEART=2->Gold Coin,Gold Coin
+result:RITUAL_DAWN=1,HEART=2->DRAIN=1
+resultDes:RITUAL_DAWN=1,HEART=2->"Those who offer their hearts will be rewarded," Ludwig once admonished. So the believers followed the instructions and got what they wished for.
+
+result:RITUAL_DAWN=1->FILL=1
+resultDes:RITUAL_DAWN=1->The power returns to your body.
+
 // tower ritual - get dusk dragon
 reward:RITUAL_TOWERS=1,MIRROR=8->Dusk Dragon
+result:RITUAL_TOWERS=1,MIRROR=8->DRAIN=3
 resultDes:RITUAL_TOWERS=1,MIRROR=8->The moonlight recedes like water, and dusk follows closely. The dragon landed on the top of the tower, golden eyes gazing down upon the earth.
 
 // dusk dragon - final boss fight
