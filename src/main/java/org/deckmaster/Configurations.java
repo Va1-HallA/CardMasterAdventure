@@ -31,8 +31,8 @@ public class Configurations {
      * Property settings
      */
     public static float PROPERTY_ICON_WIDTH_PROPORTION = 0.064f;
-    public static float PROPERTY_ICON_HEIGHT_PROPORTION = 0.044f;
-    public static float PROPERTY_ICON_INTERVAL_PROPORTION = 0.4f;
+    public static float PROPERTY_ICON_HEIGHT_PROPORTION = 0.064f;
+    public static float PROPERTY_ICON_INTERVAL_PROPORTION = 0.45f;
     public static float PROPERTY_VALUE_INTERVAL_PROPORTION = 0.85f;
     public static PFont PROPERTY_FONT = Game.game.createFont("fonts/Bell MT.ttf", Game.game.width * Configurations.CARD_FONT_SIZE_PROPORTION * 0.9f);
 
@@ -62,9 +62,9 @@ public class Configurations {
      * Saving settings
      */
 
-    public static String MAP_SAVING_LOCATION = "save/map.txt";
-    public static String BUILDING_SAVING_LOCATION = "save/building.txt";
-    public static String PLAYER_SAVING_LOCATION = "save/player.txt";
-    public static String EVENT_SAVING_LOCATION = "save/event.txt";
-    public static String POS_SAVING_LOCATION = "save/pos.txt";
+    public static String MAP_SAVING_LOCATION = "./save/map.txt";
+    public static String BUILDING_SAVING_LOCATION = "./save/building.txt";
+    public static String PLAYER_SAVING_LOCATION = "./save/player.txt";
+    public static String EVENT_SAVING_LOCATION = "./save/event.txt";
+    public static String POS_SAVING_LOCATION = "./save/pos.txt";
 }

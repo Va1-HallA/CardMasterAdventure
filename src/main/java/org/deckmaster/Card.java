@@ -166,6 +166,7 @@ public class Card implements Comparable, Drawable, Serializable {
             PImage icon = entry.getKey().icon;
             icon.resize(iconSizeX, iconSizeY);
             g.image(icon, curPropertyCoord.x, curPropertyCoord.y);
+            g.textSize(12);
             g.text(entry.getValue(), curPropertyCoord.x + iconSizeX * (1 + Configurations.PROPERTY_ICON_INTERVAL_PROPORTION), curPropertyCoord.y + iconSizeY);
 
             // updating property locations

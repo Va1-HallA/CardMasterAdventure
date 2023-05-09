@@ -11,6 +11,8 @@ import processing.core.PMatrix2D;
 import processing.core.PVector;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 
@@ -44,7 +46,7 @@ public class Game extends PApplet {
     @Override
     public void settings() {
         size(displayWidth, displayHeight, P2D);
-//        fullScreen();
+        fullScreen();
     }
 
     @Override
@@ -95,6 +97,7 @@ public class Game extends PApplet {
             Card mana = contentLoader.loadCard("Mana");
             player.addCard(mana);
         }
+
         screen.show();
 
         evtscreen = null;
@@ -293,6 +296,10 @@ public class Game extends PApplet {
 
     public void save() {
         try {
+            Path saveFolder = Path.of("./save");
+            if (!Files.exists(saveFolder)) {
+                Files.createDirectories(saveFolder);
+            }
             // saving map
             FileOutputStream mapFoe = new FileOutputStream(Configurations.MAP_SAVING_LOCATION);
             ObjectOutputStream mapOos = new ObjectOutputStream(mapFoe);

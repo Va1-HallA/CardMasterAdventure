@@ -4,10 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f309a8a-c691-41b5-9e51-14f05ab0b6bf" name="Changes" comment="Added new events &amp; cards">
+    <list default="true" id="1f309a8a-c691-41b5-9e51-14f05ab0b6bf" name="Changes" comment="Merge Stuff">
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/gradle.xml" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/save/seed.txt" beforeDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Card.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Card.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Configurations.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Configurations.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/ContentLoader.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/ContentLoader.java" afterDir="false" />
+      <change beforePath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cards/AriasNecklace.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/cards/AriasNecklace.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/save/seed.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Configurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Configurations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/ContentLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/ContentLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +82,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -88,28 +99,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ToolWindowRun.ShowToolbar": "false",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "C:/Users/cheng/IdeaProjects/CS4303_P4/src/main/resources/images/cards",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "http.proxy",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/cheng/IdeaProjects/CS4303_P4/src/main/resources/images/cards&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\cheng\IdeaProjects\CS4303_P4\src\main\resources\images\cards" />
@@ -126,7 +137,7 @@
       <recent name="/cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/resources/resources" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.CS4303-Game::cs:home:oyy1:Documents:Year4:CS4303:CS4303-Game [shadowJar]">
     <configuration name="CS4303-Game [run]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -364,7 +375,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file:///cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Game.java</url>
-          <line>338</line>
+          <line>339</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -379,8 +390,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file:///cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Game.java</url>
-          <line>362</line>
+          <line>363</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file:///cs/home/oyy1/Documents/Year4/CS4303/CS4303-Game/src/main/java/org/deckmaster/Event.java</url>
+          <line>186</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -395,6 +411,6 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CS4303_Game$CS4303_Game__run_.ic" NAME="CS4303-Game [run] Coverage Results" MODIFIED="1683549165770" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/CS4303_Game$CS4303_Game__run_.ic" NAME="CS4303-Game [run] Coverage Results" MODIFIED="1683632831226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
