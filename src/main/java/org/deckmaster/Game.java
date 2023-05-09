@@ -305,10 +305,6 @@ public class Game extends PApplet {
             ObjectOutputStream mapOos = new ObjectOutputStream(mapFoe);
             mapOos.writeObject(map);
 
-            FileOutputStream building = new FileOutputStream(Configurations.BUILDING_SAVING_LOCATION);
-            ObjectOutputStream buildingOos = new ObjectOutputStream(building);
-            buildingOos.writeObject(buildingToDraw);
-
             // saving player stats
             FileOutputStream playerFoe = new FileOutputStream(Configurations.PLAYER_SAVING_LOCATION);
             ObjectOutputStream playerOos = new ObjectOutputStream(playerFoe);
@@ -335,13 +331,6 @@ public class Game extends PApplet {
             ObjectInputStream mapOis = new ObjectInputStream(mapFie);
             map = (Map) mapOis.readObject();
             map.random = new Random();
-
-            FileInputStream buildingFie = new FileInputStream(Configurations.BUILDING_SAVING_LOCATION);
-            ObjectInputStream buildingOis = new ObjectInputStream(buildingFie);
-            buildingToDraw = (Building) buildingOis.readObject();
-            if (buildingToDraw != null) {
-                inBuilding = true;
-            }
 
             player = new Player(new PVector(25, 25));
             screen = new InventoryScreen(player);

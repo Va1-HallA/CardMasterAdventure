@@ -65,30 +65,34 @@ public class Player implements Drawable {
         TileLocation playerLocation = TileLocation.worldToTileCoords(pos);
         if (!g.inBuilding) {
             MapTile tile = g.map.tileMap.get(playerLocation);
-            if (tile.state == TileState.LOOT) {
-                tile.state = TileState.LOOT_EMPTY;
-                g.givePlayerLoot();
-            }
+            if (tile != null) {
+                if (tile.state == TileState.LOOT) {
+                    tile.state = TileState.LOOT_EMPTY;
+                    g.givePlayerLoot();
+                }
 
-            if (tile.state == TileState.EVENT) {
-                tile.state = TileState.EMPTY;
-                //TODO: randomly select an active event in the list
-                g.openNewEvent();
-                g.state = GameState.EVENT;
-            }
+                if (tile.state == TileState.EVENT) {
+                    tile.state = TileState.EMPTY;
+                    //TODO: randomly select an active event in the list
+                    g.openNewEvent();
+                    g.state = GameState.EVENT;
+                }
 
-            if (tile.state == TileState.BUILDING_ENTRANCE) {
-                g.buildingToDraw = tile.buildingMap;
-                g.inBuilding = true;
+                if (tile.state == TileState.BUILDING_ENTRANCE) {
+                    g.buildingToDraw = tile.buildingMap;
+                    g.inBuilding = true;
+                }
             }
         } else {
             BuildingTile tile = g.buildingToDraw.tiles.get(playerLocation);
-            if (tile.state == TileState.BUILDING_INSIDE_CHEST) {
-                tile.state = TileState.BUILDING_INSIDE_CHEST_OPEN;
-                g.givePlayerLoot();
-            }
-            if (tile.state == TileState.BUILDING_EXIT) {
-                g.inBuilding = false;
+            if (tile != null) {
+                if (tile.state == TileState.BUILDING_INSIDE_CHEST) {
+                    tile.state = TileState.BUILDING_INSIDE_CHEST_OPEN;
+                    g.givePlayerLoot();
+                }
+                if (tile.state == TileState.BUILDING_EXIT) {
+                    g.inBuilding = false;
+                }
             }
         }
     }
@@ -121,11 +125,11 @@ public class Player implements Drawable {
                 if (i == 0 && j == 0) continue;
                 if (!g.inBuilding) {
                     MapTile tileToCheck = g.map.tileMap.get(new TileLocation(playerLocation.x + i, playerLocation.y + j));
-                    if (checkCollision(nextLocation, tileToCheck.height, tileToCheck.state, tileToCheck.location))
+                    if (tileToCheck != null && checkCollision(nextLocation, tileToCheck.height, tileToCheck.state, tileToCheck.location))
                         return;
                 } else {
                     BuildingTile tileToCheck = g.buildingToDraw.tiles.get(new TileLocation(playerLocation.x + i, playerLocation.y + j));
-                    if (checkCollision(nextLocation, tileToCheck.height, tileToCheck.state, tileToCheck.location))
+                    if (tileToCheck != null && checkCollision(nextLocation, tileToCheck.height, tileToCheck.state, tileToCheck.location))
                         return;
                 }
             }
