@@ -2,4 +2,5 @@ name:Aria's Necklace
 property:LUNAR=4
 property:WATER=2
 property:FUND=2
+property:LEGEND_UNIQUE=1
 imagePath:images/cards/AriasNecklace.jpg

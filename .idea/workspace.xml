@@ -4,33 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f309a8a-c691-41b5-9e51-14f05ab0b6bf" name="Changes" comment="updated multiple success condition events &amp; proactive events.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/MagnificentMagicMirror.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/NamelessKnight.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/RitualOfDawn.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cards/WhiteHolySword.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/events/CathedralOfSaintSophia.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/events/NamelessGraveyard.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/events/TheRottenTown.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/events/TravelingSoulMerchant.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/MagnificentMagicMirror.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/NamelessKnight.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/RitualOfDawn.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cards/WhiteHolySword.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events/CathedralOfSaintSophia.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events/NamelessGraveyard.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events/TheRottenTown.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events/TravelingSoulMerchant.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/properties/RITUAL_DAWN.png" afterDir="false" />
+    <list default="true" id="1f309a8a-c691-41b5-9e51-14f05ab0b6bf" name="Changes" comment="Added new events &amp; cards">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Property.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Property.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cards/SilverBadge.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/cards/SilverBadge.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/events/AlchemistsHut.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/AlchemistsHut.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/events/TrivialMatters.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/events/TrivialMatters.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/cards/SpellScoll.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/cards/SpellScroll.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/locations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/locations.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/deckmaster/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/cards/AriasNecklace.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/cards/AriasNecklace.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683580866634</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added new events &amp; cards">
+      <created>1683596068651</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1683596068651</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,7 +356,8 @@
     <MESSAGE value="Moved the assets and made the game save and load successfully." />
     <MESSAGE value="Added events and cards from the world tiles." />
     <MESSAGE value="updated multiple success condition events &amp; proactive events." />
-    <option name="LAST_COMMIT_MESSAGE" value="updated multiple success condition events &amp; proactive events." />
+    <MESSAGE value="Added new events &amp; cards" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new events &amp; cards" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
